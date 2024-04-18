@@ -1,0 +1,21 @@
+.header {
+  width: 100%;
+  padding: 13px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  box-shadow: 0 1px 0 0 #e2e6e9;
+
+  &--menu,
+  &--logo {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+
+    & img,
+    .header--logo img {
+      display: block;
+    }
+  }
+}

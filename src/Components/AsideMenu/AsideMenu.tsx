@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Search: React.FC = () => {
+const AsideMenu: React.FC = () => {
   return <div>{/* Content of your HomePage component */}</div>;
 };
 
-export default Search;
+export default AsideMenu;

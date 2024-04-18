@@ -1,9 +1,7 @@
-// import React from 'react';
+import React from 'react';
 
-// const ProductDetailsPage: React.FC = () => {
-// //   return (
-// //     <div>{/* Content of your HomePage component */}</div>
-// //   );
-// // }
+const ProductDetailsPage: React.FC = () => {
+  return <div>{/* Content of your HomePage component */}</div>;
+};
 
-// export default ProductDetailsPage;
+export default ProductDetailsPage;

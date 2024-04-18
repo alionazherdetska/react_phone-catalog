@@ -1,25 +1,26 @@
 .product__card {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   margin: 0 16px;
 
   border-radius: 8px;
   border: 1px solid #e2e6e9;
   background: #fff;
   justify-content: space-between;
-  width: 212px;
-  height: 439px;
+  width: inherit;
+  height: inherit;
   padding: 32px;
   font-family: inherit;
 
   &--top {
+    width: inherit;
     position: relative;
     font-family: inherit;
     display: flex;
     flex-direction: column;
 
     &--name {
+      width: inherit;
       margin: 24px 0 8px;
       color: #0f0f11;
       font-family: inherit;
@@ -30,11 +31,12 @@
     }
 
     &--img {
-      width: 148px;
+      width: inherit;
       height: 129px;
     }
 
     &::after {
+      width: inherit;
       position: absolute;
       content: '';
       height: 1px;
@@ -96,7 +98,6 @@
     }
 
     &--actions {
-      // padding-top: 8px;
       width: 100%;
       display: flex;
       align-items: center;
@@ -126,6 +127,9 @@
 
       &--like {
         background: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         padding: 0;
         margin: 0;
         width: 40px;

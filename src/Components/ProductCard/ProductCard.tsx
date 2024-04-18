@@ -34,7 +34,7 @@ const ProductCard: React.FC = () => {
             Add to cart
           </button>
           <button className="product__card--bottom--actions--like">
-            <img src="/icon/heart.svg" />
+            <img src="/icons/heart.svg" />
           </button>
         </div>
       </section>

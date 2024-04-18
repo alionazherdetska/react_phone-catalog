@@ -1,24 +1,13 @@
+@import '/src/styles/utils/variables.scss';
+
 .home {
-  &__header {
-    width: 100%;
-    padding: 0 0 56px;
+  background-color: #fafbfc;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 
-    &__top {
-      padding: 13px 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #fff;
-      box-shadow: 0 1px 0 0 #e2e6e9;
-
-      &--icon {
-        &--menu {
-          background-image: url('../../../public/icons/menu.svg');
-          width: 16px;
-          height: 16px;
-          text-decoration: none;
-        }
-      }
+    &__product-card {
+      width: 212px;
+      height: 439px;
     }
 
     &__bottom {
@@ -29,7 +18,7 @@
 
       &--banner {
         width: 100vw;
-        height: 320px;
+        aspect-ratio: 1/1;
       }
 
       &--title {
@@ -41,9 +30,9 @@
 
       &--slider {
         width: 80px;
+        padding-bottom: $phone-sections-gap;
       }
     }
-  }
 
   &__new__models {
     width: 100%;
@@ -78,6 +67,102 @@
         border-radius: 48px;
         border: 1px solid #e2e6e9;
       }
+    }
+  }
+
+  &__categories {
+    display: flex;
+    font-family: inherit;
+    width: inherit;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: $phone-sections-gap 16px 0;
+
+    &--list {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      &--phones,
+      &--tablets,
+      &--accessories {
+        &--img {
+          width: 100%;
+          border-radius: 8px;
+          transform: translate(20%, 20%);
+        }
+
+        &--wrapper {
+          overflow: hidden;
+          aspect-ratio: 1/1;
+        }
+
+        p {
+          margin: 0;
+          padding: 0 0 32px;
+          color: #89939a;
+          font-family: inherit;
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 21px;
+        }
+
+        h3 {
+          margin: 0;
+          padding: 24px 0 0;
+          color: #0f0f11;
+          font-family: inherit;
+          font-size: 20px;
+          font-weight: 700;
+          line-height: normal;
+        }
+      }
+
+      &--phones {
+        &--wrapper {
+          background: #6d6474;
+        }
+      }
+
+      &--tablets {
+        &--wrapper {
+          background: #8d8d92;
+        }
+      }
+
+      &--accessories {
+        &--img {
+          height: 100%;
+          object-fit: cover;
+          object-position: left top;
+        }
+
+        &--wrapper {
+          background: #d53c51;
+        }
+      }
+    }
+  }
+
+  &__hot--prices {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    gap: 72px;
+    margin: 0 0 24px;
+
+    &--title {
+      font-family: inherit;
+      margin: 0;
+      padding: 0;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 140%;
     }
   }
 }

@@ -1,1 +1,1 @@
-// export { default as ProductCard } from './ProductPage';
+export { default as ProductCard } from './ProductCard';
