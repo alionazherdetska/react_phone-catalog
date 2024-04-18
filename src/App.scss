@@ -31,8 +31,15 @@ body {
   padding: 0;
 }
 
+@import "./Components/ProductDetailsPage/ProductDetailsPage";
+@import "./Components/NotFoundPage/NotFoundPage";
+@import "./Components/ShoppingCart/ShoppingCart";
 @import "./Components/HomePage/HomePage.module";
 @import "./Components/ProductCard/ProductCard";
-
-
-
+@import "./Components/ProductPage/ProductPage";
+@import "./Components/AsideMenu/AsideMenu";
+@import "./Components/Favorites/Favorites";
+@import "./Components/Search/Search";
+@import "./Components/Footer/Footer";
+@import "./Components/Header/Header";
+@import "./Components/Phones/Phones";
