@@ -1,7 +1,14 @@
 import React from 'react';
+import { Header } from '../Header';
+import { Footer } from '../Footer';
 
 const Favorites: React.FC = () => {
-  return <div>{/* Content of your HomePage component */}</div>;
+  return (
+    <>
+      <Header />
+      <Footer />
+    </>
+  );
 };
 
 export default Favorites;
