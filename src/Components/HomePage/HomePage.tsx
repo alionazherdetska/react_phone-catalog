@@ -23,8 +23,7 @@ const HomePage: React.FC = () => {
           alt="Slider"
         />
       </div>
-
-      <main>
+      <>
         <section className="home__new__models">
           <h2 className="home__new__models--title">Brand new models</h2>
           <Slider />
@@ -78,8 +77,7 @@ const HomePage: React.FC = () => {
         <section className="home__product-card">
           <ProductCard />
         </section>
-      </main>
-
+      </>
       <Footer />
     </div>
   );

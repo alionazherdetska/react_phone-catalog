@@ -4,13 +4,15 @@
   background-color: #fafbfc;
   display: grid;
   grid-template-rows: auto 1fr auto;
+  grid-template-columns: repeat(4, 1fr);
 
     &__product-card {
-      width: 212px;
+      grid-column: 1 / 4;
       height: 439px;
     }
 
     &__bottom {
+      grid-column: span 4;
       width: inherit;
       display: flex;
       flex-direction: column;
@@ -35,7 +37,7 @@
     }
 
   &__new__models {
-    width: 100%;
+    grid-column: span 4;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -71,6 +73,7 @@
   }
 
   &__categories {
+    grid-column: 1 / 5;
     display: flex;
     font-family: inherit;
     width: inherit;
@@ -148,6 +151,7 @@
   }
 
   &__hot--prices {
+    grid-column: 1 / 5;
     width: 100%;
     display: flex;
     justify-content: space-between;
