@@ -1,7 +1,14 @@
 import React from 'react';
+import { Header } from '../Header';
+import { Footer } from '../Footer';
 
 const ShoppingCart: React.FC = () => {
-  return <div>{/* Content of your HomePage component */}</div>;
+  return (
+    <>
+      <Header />
+      <Footer />
+    </>
+  );
 };
 
 export default ShoppingCart;
