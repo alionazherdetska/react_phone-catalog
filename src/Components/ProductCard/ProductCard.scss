@@ -107,11 +107,13 @@
 
       &--add {
         height: 40px;
+
         @include button-style;
       }
 
       &--like {
         @include like-button_style;
+        
         width: 40px;
         height: 40px;
       }
