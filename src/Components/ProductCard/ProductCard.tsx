@@ -20,19 +20,23 @@ const ProductCard: React.FC = () => {
             <p>Screen</p>
             <span>6.1” OLED</span>
           </div>
+
           <div className="product__card--bottom--properties--specific">
             <p>Capacity</p>
             <span>128 GB</span>
           </div>
+
           <div className="product__card--bottom--properties--specific">
             <p>RAM</p>
             <span>6 GB</span>
           </div>
         </div>
+
         <div className="product__card--bottom--actions">
           <button className="product__card--bottom--actions--add">
             Add to cart
           </button>
+
           <button className="product__card--bottom--actions--like">
             <img src="/icons/heart.svg" />
           </button>

@@ -23,6 +23,7 @@ const ItemCard: React.FC = () => {
               alt="Slider"
             />
           </div>
+
           <h4 className="item-card__top--search-params__name">Phones</h4>
           <img
             src="/icons/slider_gray.svg"
@@ -33,6 +34,7 @@ const ItemCard: React.FC = () => {
             Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
           </h4>
         </div>
+
         <div className="item-card__top--search-params__back">
           <img
             src="/icons/slider_black.svg"
@@ -100,14 +102,17 @@ const ItemCard: React.FC = () => {
             <p>Screen</p>
             <span>6.5” OLED</span>
           </div>
+
           <div className="item-card__main--properties--specific">
             <p>Resolution</p>
             <span>2688x1242</span>
           </div>
+
           <div className="item-card__main--properties--specific">
             <p>Processor</p>
             <span>Apple A12 Bionic</span>
           </div>
+
           <div className="item-card__main--properties--specific">
             <p>RAM</p>
             <span>3 GB</span>
@@ -158,30 +163,37 @@ const ItemCard: React.FC = () => {
               <p>Screen</p>
               <span>6.5” OLED</span>
             </div>
+
             <div className="item-card__main--properties--specific">
               <p>Resolution</p>
               <span>2688x1242</span>
             </div>
+
             <div className="item-card__main--properties--specific">
               <p>Processor</p>
               <span>Apple A12 Bionic</span>
             </div>
+
             <div className="item-card__main--properties--specific">
               <p>RAM</p>
               <span>3 GB</span>
             </div>
+
             <div className="item-card__main--properties--specific">
               <p>Built in memory</p>
               <span>64 GB</span>
             </div>
+
             <div className="item-card__main--properties--specific">
               <p>Camera</p>
               <span>12 Mp + 12 Mp + 12 Mp (Triple)</span>
             </div>
+
             <div className="item-card__main--properties--specific">
               <p>Zoom</p>
               <span>Optical, 2x</span>
             </div>
+
             <div className="item-card__main--properties--specific">
               <p>Cell</p>
               <span>GSM, LTE, UMTS</span>

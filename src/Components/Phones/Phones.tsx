@@ -16,17 +16,20 @@ const Phones: React.FC = () => {
               className="phones__top--search-params__icons-home"
               alt="Home"
             />
+
             <img
               src="/icons/slider_gray.svg"
               className="phones__top--search-params__icons-slider"
               alt="Slider"
             />
           </div>
+
           <h4 className="phones__top--search-params__name">Phones</h4>
         </div>
         <h1>Mobile phones</h1>
         <p>95 models</p>
       </section>
+
       <section className="phones__main">
         <div className="phones__main__sorting-by">
           <label htmlFor="sortingBy">Sort by</label>
@@ -34,6 +37,7 @@ const Phones: React.FC = () => {
             <option className="phones__main__sorting-by__option">Newest</option>
           </select>
         </div>
+
         <div className="phones__main__amount">
           <label htmlFor="perPage">Items on page</label>
           <select id="perPage">
@@ -41,11 +45,13 @@ const Phones: React.FC = () => {
           </select>
         </div>
       </section>
+
       <ul className="phones__list">
         <div className="phones__list__product-card">
           <ProductCard />
         </div>
       </ul>
+
       <ul className="phones--slider">
         <li className="phones--slider--layout">
           <img src="/icons/slider_gray.svg" alt="Slider to the left" />
@@ -56,6 +62,7 @@ const Phones: React.FC = () => {
           <li>3</li>
           <li>4</li>
         </ul>
+
         <li className="phones--slider--layout">
           <img src="/icons/slider_black.svg" alt="Slider to the right" />
         </li>

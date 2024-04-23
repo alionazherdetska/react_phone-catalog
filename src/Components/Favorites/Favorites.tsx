@@ -7,6 +7,7 @@ const Favorites: React.FC = () => {
   return (
     <div className="favorites">
       <Header />
+
       <section className="favorites__top">
         <div className="favorites__top--search-params">
           <div className="favorites__top--search-params__icons">
@@ -21,11 +22,13 @@ const Favorites: React.FC = () => {
               alt="Slider"
             />
           </div>
+
           <h4 className="favorites__top--search-params__name">Phones</h4>
         </div>
         <h1>Favourites</h1>
         <p>5 items</p>
       </section>
+
       <div className="favorites__product-card">
         <ProductCard />
       </div>
