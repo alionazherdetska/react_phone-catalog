@@ -31,6 +31,8 @@ const Favorites: React.FC = () => {
 
       <div className="favorites__product-card">
         <ProductCard />
+        <ProductCard />
+        <ProductCard />
       </div>
       <Footer />
     </div>

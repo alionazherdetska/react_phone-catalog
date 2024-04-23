@@ -6,6 +6,10 @@
   width: 100%;
   background: #fafbfc;
 
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
   &__top {
     grid-column: span 4;
     margin: 24px 16px 0;
@@ -14,6 +18,11 @@
     flex-direction: column;
     align-items: start;
     justify-content: center;
+
+    @include on-tablet {
+      grid-column: span 12;
+      margin: 24px 24px 0;
+    }
 
     & h1 {
       margin: 24px 0 32px;
@@ -24,6 +33,12 @@
       font-weight: 800;
       line-height: 41px;
       letter-spacing: -0.32px;
+
+      @include on-tablet {
+        font-size: 48px;
+        line-height: 56px;
+        letter-spacing: -0.48px;
+      }
     }
 
     &--search-params {
@@ -69,16 +84,40 @@
     border: 1px solid #e2e6e9;
     background: #fff;
 
+    @include on-tablet {
+      grid-column: span 12;
+      flex-direction: row;
+      align-items: center;
+      padding: 24px;
+      justify-content: space-between;
+    }
+
     &__top {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 16px;
 
+      @include on-tablet {
+        gap: 24px;
+      }
+
       &__close {
         display: flex;
         justify-content: center;
         align-items: center;
+      }
+
+      &__name {
+        width: 100%;
+        color: #0f0f11;
+        font-family: inherit;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 21px;
+        display: flex;
+        flex-grow: 1;
       }
 
       &__img {
@@ -94,6 +133,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      @include on-tablet {
+        width: auto;
+        gap: 24px;
+        justify-content: center;
+      }
 
       &__counter {
         display: flex;
@@ -136,6 +181,11 @@
     border: 1px solid #e2e6e9;
     background: #fff;
 
+    @include on-tablet {
+      grid-column: span 12;
+      margin: 32px 24px 0;
+    }
+
     &__top {
       width: 100%;
       padding-bottom: 16px;
@@ -173,7 +223,7 @@
       width: 100%;
       & button {
         @include button-style;
-        
+
         height: 48px;
         width: 100%;
       }

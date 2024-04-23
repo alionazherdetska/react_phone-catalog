@@ -41,7 +41,7 @@ const ItemCard: React.FC = () => {
             className="phones__top--search-params__icons-slider"
             alt="Slider"
           />
-          <h4 className="item-card__top--search-params__name">Back</h4>
+          <h4 className="item-card__top--search-params__back__name">Back</h4>
         </div>
         <h1>Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)</h1>
       </section>

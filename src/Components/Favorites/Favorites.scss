@@ -4,6 +4,10 @@
   width: 100%;
   background: #fafbfc;
 
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
   &__top {
     grid-column: span 4;
     margin: 24px 16px 0;
@@ -13,14 +17,26 @@
     align-items: start;
     justify-content: center;
 
+    @include on-tablet {
+      grid-column: span 12;
+      margin: 24px 24px 0;
+    }
+
     & h1 {
       margin: 24px 0 8px;
+      text-align: left;
       color: #0f0f11;
       font-family: inherit;
       font-size: 22px;
       font-style: normal;
       font-weight: 800;
       line-height: 140%;
+
+      @include on-tablet {
+        font-size: 48px;
+        letter-spacing: -0.48px;
+        line-height: 56px;
+      }
     }
 
     & p {
@@ -31,6 +47,10 @@
       font-style: normal;
       font-weight: 600;
       line-height: 21px;
+
+      @include on-tablet {
+        margin-bottom: 40px;
+      }
     }
 
     &--search-params {
@@ -64,7 +84,21 @@
   }
   &__product-card {
     grid-column: span 4;
-    height: 439px;
-    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    height: auto;
+    margin: 0 16px;
+
+    @include on-tablet {
+      align-items: center;
+      justify-content: space-between;
+      grid-column: span 12;
+      flex-direction: row;
+      gap: 16px;
+      /* stylelint-disable-next-line declaration-block-no-redundant-longhand-properties */
+      flex-wrap: wrap;
+      margin: 0 24px;
+    }
   }
 }

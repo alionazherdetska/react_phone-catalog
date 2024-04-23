@@ -16,6 +16,10 @@
     align-items: start;
     justify-content: center;
 
+    @include on-tablet {
+      grid-column: span 12;
+    }
+
     & h1 {
       margin: 16px 0 32px;
       color: #0f0f11;
@@ -49,6 +53,18 @@
         gap: 4px;
         margin: 24px 0 0;
         padding: 0;
+
+        &__name {
+          margin: 0;
+          padding-top: 1px;
+          color: #89939a;
+          font-family: inherit;
+          font-size: 12px;
+          display: flex;
+          text-align: center;
+          font-weight: 600;
+          line-height: 12px;
+        }
       }
 
       &__name {
@@ -96,6 +112,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    @include on-tablet {
+      grid-column: span 12;
+    }
 
     &__front-img {
       background-color: #fafbfc;
@@ -346,7 +366,38 @@
 
   &__product-card {
     grid-column: 1 / 4;
-    height: 439px;
-    margin-top: 8px;
+    height: auto;
+    margin: 8px 16px 0;
   }
 }
+
+
+
+// let day = new Date().getDay();
+// let translatedDay;
+
+// switch (day) {
+//     case 0:
+//         translatedDay = "Sonntag";
+//         break;
+//     case 1:
+//         translatedDay = "Montag";
+//         break;
+//     case 2:
+//         translatedDay = "Dienstag";
+//         break;
+//     case 3:
+//         translatedDay = "Mittwoch";
+//         break;
+//     case 4:
+//         translatedDay = "Donnerstag";
+//         break;
+//     case 5:
+//         translatedDay = "Freitag";
+//         break;
+//     case 6:
+//         translatedDay = "Samstag";
+//         break;
+// }
+
+// console.log(translatedDay);

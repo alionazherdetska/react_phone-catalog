@@ -8,8 +8,8 @@
 
     &__product-card {
       grid-column: 1 / 4;
-      height: 439px;
-      margin-bottom: 8px;
+      height: auto;
+      margin: 0 16px 8px;
     }
 
     &__bottom {
