@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.b0079b81.css",
-    "main.js": "./static/js/main.ed9a152c.js",
+    "main.js": "./static/js/main.7e81f256.js",
     "static/media/category-tablets.png": "./static/media/category-tablets.51782e18205a1ca01ce8.png",
     "static/media/iphone11pro_1.png": "./static/media/iphone11pro_1.046182dd957cf36861c8.png",
     "static/media/category-phones.png": "./static/media/category-phones.af93d992917380dfe206.png",
@@ -24,10 +24,10 @@
     "static/media/dots_home-page_left.svg": "./static/media/dots_home-page_left.fefd1ccb91d2bb1064439e28858526bf.svg",
     "static/media/terracota.svg": "./static/media/terracota.27c6b2816acf978f14a3ffb4d8b5d653.svg",
     "main.b0079b81.css.map": "./static/css/main.b0079b81.css.map",
-    "main.ed9a152c.js.map": "./static/js/main.ed9a152c.js.map"
+    "main.7e81f256.js.map": "./static/js/main.7e81f256.js.map"
   },
   "entrypoints": [
     "static/css/main.b0079b81.css",
-    "static/js/main.ed9a152c.js"
+    "static/js/main.7e81f256.js"
   ]
 }
