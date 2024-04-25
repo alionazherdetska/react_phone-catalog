@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.b0079b81.css",
-    "main.js": "./static/js/main.7e81f256.js",
+    "main.css": "./static/css/main.ebbf9bf8.css",
+    "main.js": "./static/js/main.f41c0e46.js",
     "static/media/category-tablets.png": "./static/media/category-tablets.51782e18205a1ca01ce8.png",
     "static/media/iphone11pro_1.png": "./static/media/iphone11pro_1.046182dd957cf36861c8.png",
     "static/media/category-phones.png": "./static/media/category-phones.af93d992917380dfe206.png",
@@ -17,17 +17,23 @@
     "static/media/iphone_14.png": "./static/media/iphone_14.3075f9596dd9cd1ed460.png",
     "static/media/heart.svg": "./static/media/heart.c45ac92a293eae3c5863d291242a513b.svg",
     "static/media/home.svg": "./static/media/home.3b19e0360589e60c1936abc495a0fd43.svg",
+    "static/media/close.svg": "./static/media/close.da9389a3881623d2428ef675ea4f51f4.svg",
     "static/media/menu.svg": "./static/media/menu.73ddde2c093f9fb313b993eaba038f9a.svg",
+    "static/media/plus.svg": "./static/media/plus.5840abd28029a21f0fb5e04bda8a334f.svg",
     "static/media/slider_black.svg": "./static/media/slider_black.59b4a1187aa1b0c9d3148cdace39a924.svg",
     "static/media/slider_gray.svg": "./static/media/slider_gray.d191884d8d5611ac5f3ae84e69c0fbf9.svg",
+    "static/media/minus.svg": "./static/media/minus.e021256f41036632d339c2684235dbfb.svg",
     "index.html": "./index.html",
+    "static/media/dark_gray.svg": "./static/media/dark_gray.b7473e5b2e674392ecf070b0df9d841a.svg",
     "static/media/dots_home-page_left.svg": "./static/media/dots_home-page_left.fefd1ccb91d2bb1064439e28858526bf.svg",
+    "static/media/light_gray.svg": "./static/media/light_gray.417890723ed368284233c0037441140d.svg",
+    "static/media/slate_gray.svg": "./static/media/slate_gray.b4522a65dce449667fc9392299df16be.svg",
     "static/media/terracota.svg": "./static/media/terracota.27c6b2816acf978f14a3ffb4d8b5d653.svg",
-    "main.b0079b81.css.map": "./static/css/main.b0079b81.css.map",
-    "main.7e81f256.js.map": "./static/js/main.7e81f256.js.map"
+    "main.ebbf9bf8.css.map": "./static/css/main.ebbf9bf8.css.map",
+    "main.f41c0e46.js.map": "./static/js/main.f41c0e46.js.map"
   },
   "entrypoints": [
-    "static/css/main.b0079b81.css",
-    "static/js/main.7e81f256.js"
+    "static/css/main.ebbf9bf8.css",
+    "static/js/main.f41c0e46.js"
   ]
 }
