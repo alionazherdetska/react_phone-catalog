@@ -2,6 +2,11 @@ import React from 'react';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
 
+import minus from '../../assets/icons/minus.svg';
+import plus from '../../assets/icons/plus.svg';
+import close from '../../assets/icons/close.svg';
+import black_slider from '../../assets/icons/slider_black.svg';
+
 const ShoppingCart: React.FC = () => {
   return (
     <div className="shopping-cart">
@@ -11,7 +16,7 @@ const ShoppingCart: React.FC = () => {
         <div className="shopping-cart__top--search-params">
           <div className="favorites__top--search-params__icons">
             <img
-              src="/icons/slider_black.svg"
+              src={black_slider}
               className="shopping-cart__top--search-params__icons-slider"
               alt="Slider"
             />
@@ -25,7 +30,7 @@ const ShoppingCart: React.FC = () => {
       <article className="shopping-cart__element">
         <div className="shopping-cart__element__top">
           <div className="shopping-cart__element__top__close">
-            <img src="/icons/close.svg" alt="Closing icon" />
+            <img src={close} alt="Closing icon" />
           </div>
 
           <div className="shopping-cart__element__top__img">
@@ -43,12 +48,12 @@ const ShoppingCart: React.FC = () => {
         <div className="shopping-cart__element__bottom">
           <div className="shopping-cart__element__bottom__counter">
             <div className="shopping-cart__element__bottom__counter__img">
-              <img src="/icons/minus.svg" alt="Minus" />
+              <img src={minus} alt="Minus" />
             </div>
 
             <p>1</p>
             <div className="shopping-cart__element__bottom__counter__img">
-              <img src="/icons/plus.svg" alt="Plus" />
+              <img src={plus} alt="Plus" />
             </div>
           </div>
           <div className="shopping-cart__element__bottom__price">$999</div>

@@ -3,6 +3,11 @@ import ProductCard from '../ProductCard/ProductCard';
 import { Footer } from '../Footer';
 import { Slider } from '../Slider';
 import { Header } from '../Header';
+import home_banner from './../../assets/icons/homePage_banner.jpg';
+import home_slider from './../../assets/icons/dots_home-page_left.svg';
+import phone_category from './../../assets/icons/category-phones.png';
+import tablet_category from './../../assets/icons/category-tablets.png';
+import accessory_category from './../../assets/icons/category-accessories.png';
 
 const HomePage: React.FC = () => {
   return (
@@ -13,17 +18,13 @@ const HomePage: React.FC = () => {
         <h1 className="home__bottom--title">Welcome to Nice Gadgets store!</h1>
         <a href="#">
           <img
-            src="/homePage_banner.jpg"
+            src={home_banner}
             className="home__bottom--banner"
             alt="Home Page Banner"
           />
         </a>
 
-        <img
-          className="home__bottom--slider"
-          src="/icons/dots_home-page_left.svg"
-          alt="Slider"
-        />
+        <img className="home__bottom--slider" src={home_slider} alt="Slider" />
       </div>
 
       <>
@@ -42,7 +43,7 @@ const HomePage: React.FC = () => {
             <li className="home__categories--list--phones">
               <div className="home__categories--list--phones--wrapper">
                 <img
-                  src="/img/category-phones.webp"
+                  src={phone_category}
                   alt="Category Phones"
                   className="home__categories--list--phones--img"
                 />
@@ -54,7 +55,7 @@ const HomePage: React.FC = () => {
             <li className="home__categories--list--tablets">
               <div className="home__categories--list--tablets--wrapper">
                 <img
-                  src="/img/category-tablets.png"
+                  src={tablet_category}
                   className="home__categories--list--tablets--img"
                   alt="Category Tablets"
                 />
@@ -66,7 +67,7 @@ const HomePage: React.FC = () => {
             <li className="home__categories--list--accessories">
               <div className="home__categories--list--accessories--wrapper">
                 <img
-                  src="/img/category-accessories.png"
+                  src={accessory_category}
                   className="home__categories--list--accessories--img"
                   alt="Category Accessories"
                 />

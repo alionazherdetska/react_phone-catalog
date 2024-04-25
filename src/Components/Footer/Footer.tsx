@@ -1,4 +1,6 @@
 import React from 'react';
+import footer_logo from '../../assets/icons/nice_gadgets_logo.png';
+import slider_black from '../../assets/icons/slider_black.svg';
 
 const Footer: React.FC = () => {
   return (
@@ -6,7 +8,7 @@ const Footer: React.FC = () => {
       <a href="#">
         <img
           className="footer__img"
-          src="/icons/nice_gadgets_logo.png"
+          src={footer_logo}
           alt="Nice Gadgets Logo"
         />
       </a>
@@ -22,7 +24,7 @@ const Footer: React.FC = () => {
         <div className="footer__back--to--top__layout">
           <img
             className="footer__back--to--top__layout--slider"
-            src="/icons/slider_black.svg"
+            src={slider_black}
             alt="Slider to the top"
           />
         </div>

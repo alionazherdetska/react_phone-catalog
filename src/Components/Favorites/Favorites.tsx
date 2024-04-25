@@ -2,6 +2,8 @@ import React from 'react';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
 import { ProductCard } from '../ProductCard';
+import gray_slider from '../../assets/icons/slider_gray.svg';
+import home_icon from '../../assets/icons/home.svg';
 
 const Favorites: React.FC = () => {
   return (
@@ -12,12 +14,12 @@ const Favorites: React.FC = () => {
         <div className="favorites__top--search-params">
           <div className="favorites__top--search-params__icons">
             <img
-              src="/icons/home.svg"
+              src={home_icon}
               className="favorites__top--search-params__icons-home"
               alt="Home"
             />
             <img
-              src="/icons/slider_gray.svg"
+              src={gray_slider}
               className="favorites__top--search-params__icons-slider"
               alt="Slider"
             />

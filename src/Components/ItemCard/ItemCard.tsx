@@ -1,10 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
+import classNames from 'classnames';
+
 import { Header } from '../Header';
 import { Footer } from '../Footer';
 import { Slider } from '../Slider';
 import { ProductCard } from '../ProductCard';
 
+import home_icon from '../../assets/icons/home.svg';
+import heart_icon from '../../assets/icons/heart.svg';
+import gray_slider from '../../assets/icons/slider_gray.svg';
+import black_slider from '../../assets/icons/slider_black.svg';
+import banner_photo from '../../assets/layout/iphone11pro_1.png';
+import small_photo_2 from '../../assets/layout/iphone11pro_2.png';
+import small_photo_3 from '../../assets/layout/iphone11pro_3.png';
+import small_photo_4 from '../../assets/layout/iphone11pro_4.png';
+import small_photo_5 from '../../assets/layout/iphone11pro_5.png';
+import terracota from '../../assets/layout/colors/terracota.svg';
+import slate_gray from '../../assets/layout/colors/slate_gray.svg';
+import dark_gray from '../../assets/layout/colors/dark_gray.svg';
+import light_gray from '../../assets/layout/colors/light_gray.svg';
+
 const ItemCard: React.FC = () => {
+  const [bannerPhoto, setBannerPhoto] = useState(banner_photo);
+
+  const handleImageChange = (newBannerPhoto: File) => {
+    setBannerPhoto(newBannerPhoto);
+  };
+
   return (
     <div className="item-card">
       <Header />
@@ -13,12 +35,12 @@ const ItemCard: React.FC = () => {
         <div className="item-card__top--search-params">
           <div className="item-card__top--search-params__icons">
             <img
-              src="/icons/home.svg"
+              src={home_icon}
               className="item-card__top--search-params__icons-home"
               alt="Home"
             />
             <img
-              src="/icons/slider_gray.svg"
+              src={gray_slider}
               className="item-card__top--search-params__icons-slider"
               alt="Slider"
             />
@@ -26,7 +48,7 @@ const ItemCard: React.FC = () => {
 
           <h4 className="item-card__top--search-params__name">Phones</h4>
           <img
-            src="/icons/slider_gray.svg"
+            src={gray_slider}
             className="item-card__top--search-params__icons-slider"
             alt="Slider"
           />
@@ -37,7 +59,7 @@ const ItemCard: React.FC = () => {
 
         <div className="item-card__top--search-params__back">
           <img
-            src="/icons/slider_black.svg"
+            src={black_slider}
             className="phones__top--search-params__icons-slider"
             alt="Slider"
           />
@@ -47,79 +69,128 @@ const ItemCard: React.FC = () => {
       </section>
 
       <main className="item-card__main">
-        <div className="item-card__main__front-img">
-          <img src="/img/layout/iphone11pro_1.png" alt="Iphone" />
-        </div>
-
-        <div className="item-card__main__bottom-imgs">
-          <img src="/img/layout/iphone11pro_1.png" alt="Iphone" />
-          <img src="/img/layout/iphone11pro_2.png" alt="Iphone" />
-          <img src="/img/layout/iphone11pro_3.png" alt="Iphone" />
-          <img src="/img/layout/iphone11pro_4.png" alt="Iphone" />
-          <img src="/img/layout/iphone11pro_5.png" alt="Iphone" />
-        </div>
-
-        <div className="item-card__main__colors-label">
-          <p>Available colors</p>
-          <p>ID: 802390</p>
-        </div>
-        <div className="item-card__main__actual-colors">
-          <img src="/img/layout/colors/terracota.svg" alt="Terracota color" />
-          <img src="/img/layout/colors/slate_gray.svg" alt="Slate gray color" />
-          <img src="/img/layout/colors/dark_gray.svg" alt="Dark gray color" />
-          <img src="/img/layout/colors/light_gray.svg" alt="Light gray color" />
-        </div>
-
-        <div className="item-card__main__capacity">
-          <p>Select capacity</p>
-        </div>
-        <div className="item-card__main__capacity--options">
-          <button className="item-card__main__capacity--options-active">
-            64 GB
-          </button>
-          <button className="item-card__main__capacity--options-passive">
-            256 GB
-          </button>
-          <button className="item-card__main__capacity--options-passive">
-            512 GB
-          </button>
-        </div>
-
-        <div className="item-card__main__price">
-          <span className="item-card__main__price--discount">$799</span>
-          <span className="item-card__main__price--original">$1199</span>
-        </div>
-
-        <div className="item-card__main--bottom">
-          <button className="item-card__main--bottom--add">Add to cart</button>
-          <button className="item-card__main--bottom--like">
-            <img src="/icons/heart.svg" />
-          </button>
-        </div>
-
-        <div className="item-card__main--properties">
-          <div className="item-card__main--properties--specific">
-            <p>Screen</p>
-            <span>6.5” OLED</span>
+        <div className="item-card__main__imgs">
+          <div className="item-card__main__imgs__front-img">
+            <img src={bannerPhoto} alt="Iphone" />
           </div>
 
-          <div className="item-card__main--properties--specific">
-            <p>Resolution</p>
-            <span>2688x1242</span>
-          </div>
+          <div className="item-card__main__imgs__bottom-imgs">
+            <img
+              src={banner_photo}
+              className={classNames({
+                'is-active': bannerPhoto === banner_photo,
+              })}
+              onClick={() => handleImageChange(banner_photo)}
+              alt="Iphone"
+            />
 
-          <div className="item-card__main--properties--specific">
-            <p>Processor</p>
-            <span>Apple A12 Bionic</span>
-          </div>
+            <img
+              src={small_photo_2}
+              className={classNames({
+                'is-active': bannerPhoto === small_photo_2,
+              })}
+              onClick={() => handleImageChange(small_photo_2)}
+              alt="Iphone"
+            />
 
-          <div className="item-card__main--properties--specific">
-            <p>RAM</p>
-            <span>3 GB</span>
+            <img
+              src={small_photo_3}
+              className={classNames({
+                'is-active': bannerPhoto === small_photo_3,
+              })}
+              onClick={() => handleImageChange(small_photo_3)}
+              alt="Iphone"
+            />
+
+            <img
+              className={classNames({
+                'is-active': bannerPhoto === small_photo_4,
+              })}
+              onClick={() => handleImageChange(small_photo_4)}
+              src={small_photo_4}
+              alt="Iphone"
+            />
+
+            <img
+              className={classNames({
+                'is-active': bannerPhoto === small_photo_5,
+              })}
+              onClick={() => handleImageChange(small_photo_5)}
+              src={small_photo_5}
+              alt="Iphone"
+            />
           </div>
         </div>
 
-        <div className="item-card__main__general">
+        <div className="item-card__main__info">
+          <div className="item-card__main__info__colors-label">
+            <p>Available colors</p>
+            <p>ID: 802390</p>
+          </div>
+          <div className="item-card__main__info__actual-colors">
+            <img src={terracota} alt="Terracota color" />
+            <img src={slate_gray} alt="Slate gray color" />
+            <img src={dark_gray} alt="Dark gray color" />
+            <img src={light_gray} alt="Light gray color" />
+          </div>
+
+          <div className="item-card__main__info__capacity">
+            <p>Select capacity</p>
+          </div>
+          <div className="item-card__main__info__capacity-options">
+            <button className="item-card__main__info__capacity-options-active">
+              64 GB
+            </button>
+            <button className="item-card__main__info__capacity-options-passive">
+              256 GB
+            </button>
+            <button className="item-card__main__info__capacity-options-passive">
+              512 GB
+            </button>
+          </div>
+
+          <div className="item-card__main__info__price">
+            <span className="item-card__main__info__price--discount">$799</span>
+            <span className="item-card__main__info__price--original">
+              $1199
+            </span>
+          </div>
+
+          <div className="item-card__main__info--bottom">
+            <button className="item-card__main__info--bottom--add">
+              Add to cart
+            </button>
+            <button className="item-card__main__info--bottom--like">
+              <img src={heart_icon} />
+            </button>
+          </div>
+
+          <div className="item-card__main__info--properties">
+            <div className="item-card__main__info--properties--specific">
+              <p>Screen</p>
+              <span>6.5” OLED</span>
+            </div>
+
+            <div className="item-card__main__info--properties--specific">
+              <p>Resolution</p>
+              <span>2688x1242</span>
+            </div>
+
+            <div className="item-card__main__info--properties--specific">
+              <p>Processor</p>
+              <span>Apple A12 Bionic</span>
+            </div>
+
+            <div className="item-card__main__info--properties--specific">
+              <p>RAM</p>
+              <span>3 GB</span>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <div className="item-card__about">
+        <div className="item-card__about__general">
           <h2>About</h2>
           <h3>And then there was Pro</h3>
           <p>
@@ -156,56 +227,56 @@ const ItemCard: React.FC = () => {
           </p>
         </div>
 
-        <div className="item-card__main__tec-specs">
+        <div className="item-card__about__tec-specs">
           <h2>Tech specs</h2>
-          <div className="item-card__main--properties">
-            <div className="item-card__main--properties--specific">
+          <div className="item-card__about--properties">
+            <div className="item-card__about--properties--specific">
               <p>Screen</p>
               <span>6.5” OLED</span>
             </div>
 
-            <div className="item-card__main--properties--specific">
+            <div className="item-card__about--properties--specific">
               <p>Resolution</p>
               <span>2688x1242</span>
             </div>
 
-            <div className="item-card__main--properties--specific">
+            <div className="item-card__about--properties--specific">
               <p>Processor</p>
               <span>Apple A12 Bionic</span>
             </div>
 
-            <div className="item-card__main--properties--specific">
+            <div className="item-card__about--properties--specific">
               <p>RAM</p>
               <span>3 GB</span>
             </div>
 
-            <div className="item-card__main--properties--specific">
+            <div className="item-card__about--properties--specific">
               <p>Built in memory</p>
               <span>64 GB</span>
             </div>
 
-            <div className="item-card__main--properties--specific">
+            <div className="item-card__about--properties--specific">
               <p>Camera</p>
               <span>12 Mp + 12 Mp + 12 Mp (Triple)</span>
             </div>
 
-            <div className="item-card__main--properties--specific">
+            <div className="item-card__about--properties--specific">
               <p>Zoom</p>
               <span>Optical, 2x</span>
             </div>
 
-            <div className="item-card__main--properties--specific">
+            <div className="item-card__about--properties--specific">
               <p>Cell</p>
               <span>GSM, LTE, UMTS</span>
             </div>
           </div>
         </div>
 
-        <div className="item-card__main__suggestions">
+        <div className="item-card__about__suggestions">
           <h2>You may also like</h2>
           <Slider />
         </div>
-      </main>
+      </div>
 
       <div className="item-card__product-card">
         <ProductCard />

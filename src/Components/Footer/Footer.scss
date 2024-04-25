@@ -12,6 +12,7 @@
 
   @include on-tablet {
     grid-column: span 12;
+    padding: 32px 24px;
   }
 
   &__img {

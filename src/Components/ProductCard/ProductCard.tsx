@@ -1,13 +1,12 @@
 import React from 'react';
+import heart_icon from '../../assets/icons/heart.svg';
+import product_card_img from '../../assets/layout/iphone_14.png';
 
 const ProductCard: React.FC = () => {
   return (
     <article className="product__card">
       <section className="product__card--top">
-        <img
-          className="product__card--top--img"
-          src="/img/layout/iphone_14.png"
-        />
+        <img className="product__card--top--img" src={product_card_img} />
         <h3 className="product__card--top--name">
           Apple iPhone 14 Pro 128GB Silver (MQ023)
         </h3>
@@ -38,7 +37,7 @@ const ProductCard: React.FC = () => {
           </button>
 
           <button className="product__card--bottom--actions--like">
-            <img src="/icons/heart.svg" />
+            <img src={heart_icon} />
           </button>
         </div>
       </section>

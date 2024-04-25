@@ -2,6 +2,9 @@ import React from 'react';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
 import { ProductCard } from '../ProductCard';
+import home_icon from '../../assets/icons/home.svg';
+import gray_slider from '../../assets/icons/slider_gray.svg';
+import black_slider from '../../assets/icons/slider_black.svg';
 
 const Phones: React.FC = () => {
   return (
@@ -12,13 +15,13 @@ const Phones: React.FC = () => {
         <div className="phones__top--search-params">
           <div className="phones__top--search-params__icons">
             <img
-              src="/icons/home.svg"
+              src={home_icon}
               className="phones__top--search-params__icons-home"
               alt="Home"
             />
 
             <img
-              src="/icons/slider_gray.svg"
+              src={gray_slider}
               className="phones__top--search-params__icons-slider"
               alt="Slider"
             />
@@ -54,7 +57,7 @@ const Phones: React.FC = () => {
 
       <ul className="phones--slider">
         <li className="phones--slider--layout">
-          <img src="/icons/slider_gray.svg" alt="Slider to the left" />
+          <img src={gray_slider} alt="Slider to the left" />
         </li>
         <ul className="phones--slider--pages">
           <li>1</li>
@@ -64,7 +67,7 @@ const Phones: React.FC = () => {
         </ul>
 
         <li className="phones--slider--layout">
-          <img src="/icons/slider_black.svg" alt="Slider to the right" />
+          <img src={black_slider} alt="Slider to the right" />
         </li>
       </ul>
       <Footer />

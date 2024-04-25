@@ -10,6 +10,7 @@
 
   @include on-tablet {
     grid-column: span 12;
+    padding: 13px 24px;
   }
 
   &--menu,
