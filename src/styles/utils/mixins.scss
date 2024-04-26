@@ -6,6 +6,12 @@
   }
 }
 
+@mixin page-specific-styles($page) {
+  @if $page == 'Phones' {
+    @content;
+  }
+}
+
 @mixin on-desktop {
   @media (min-width: $desktop-min-width) {
     @content;
@@ -17,7 +23,6 @@
     @content;
   }
 }
-
 
 @mixin button-style {
   border: none;
