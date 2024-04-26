@@ -1,6 +1,6 @@
 import React from 'react';
 import heart_icon from '../../assets/icons/heart.svg';
-import product_card_img from '../../assets/layout/iphone_14.png';
+import product_card_img from '../../assets/icons/category-phones.png';
 
 const ProductCard: React.FC = () => {
   return (
