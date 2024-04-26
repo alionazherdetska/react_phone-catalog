@@ -52,8 +52,8 @@
     }
 
     &--search-params {
+      width: 100%;
       display: flex;
-      justify-content: center;
       align-items: flex-end;
       gap: 8px;
 
@@ -100,7 +100,6 @@
           font-size: 12px;
           font-style: normal;
           font-weight: 600;
-          width: 200px;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -386,7 +385,7 @@
 
       & span {
         @include span;
-        
+
         font-size: 14px;
         font-weight: 600;
         line-height: 21px;

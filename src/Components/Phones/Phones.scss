@@ -4,6 +4,10 @@
   grid-template-columns: repeat(4, 1fr);
   width: inherit;
 
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
   &__top {
     grid-column: span 4;
     margin: 24px 16px 0;
@@ -13,6 +17,11 @@
     align-items: start;
     justify-content: center;
 
+    @include on-tablet {
+      grid-column: span 12;
+      margin: 24px 24px 0;
+    }
+
     & h1 {
       margin: 24px 0 8px;
       color: #0f0f11;
@@ -21,6 +30,13 @@
       font-weight: 800;
       line-height: 41px;
       letter-spacing: -0.32px;
+
+      @include on-tablet {
+        font-size: 48px;
+        font-weight: 800;
+        line-height: 56px;
+        letter-spacing: -0.48px;
+      }
     }
 
     & p {
@@ -31,6 +47,10 @@
       font-style: normal;
       font-weight: 600;
       line-height: 21px;
+
+      @include on-tablet {
+        margin: 0 0 40px;
+      }
     }
 
     &--search-params {
@@ -70,6 +90,13 @@
     display: flex;
     align-items: center;
 
+    @include on-tablet {
+      grid-column: 1/7;
+      margin: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(7 1fr);
+    }
+
     & label {
       color: #89939a;
       font-family: inherit;
@@ -77,6 +104,18 @@
       font-style: normal;
       font-weight: 700;
       line-height: normal;
+    }
+
+    &__sorting-by {
+      @include on-tablet {
+        grid-column: 1/5;
+      }
+    }
+
+    &__amount {
+      @include on-tablet {
+        grid-column: 5/7;
+      }
     }
 
     &__sorting-by,
@@ -108,11 +147,33 @@
     margin: 0;
     padding: 0;
     width: inherit;
+    display: flex;
+    gap: 16px;
+
+    @include on-tablet {
+      grid-column: span 12;
+      gap: 16px;
+    }
 
     &__product-card {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      height: auto;
       margin: 0 16px;
-      width: inherit;
-      height: 440px;
+
+      @include on-tablet {
+        width: auto;
+        align-items: center;
+        justify-content: space-between;
+        grid-column: span 12;
+        flex-direction: row;
+        gap: 16px;
+        /* stylelint-disable-next-line declaration-block-no-redundant-longhand-properties */
+        flex-wrap: wrap;
+        margin: 0 24px;
+      }
     }
   }
 
@@ -126,6 +187,10 @@
     justify-content: center;
     align-items: center;
     list-style: none;
+
+    @include on-tablet {
+      grid-column: span 12;
+    }
 
     &--layout {
       display: flex;

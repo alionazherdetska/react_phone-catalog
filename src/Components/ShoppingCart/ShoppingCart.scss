@@ -122,8 +122,13 @@
 
       &__img {
         & img {
-          height: 66px;
-          width: 66px;
+          height: 54px;
+          width: 87px;
+
+          @include on-tablet {
+            height: 90px;
+            width: 140px;
+          }
         }
       }
     }

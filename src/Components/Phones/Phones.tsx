@@ -52,6 +52,8 @@ const Phones: React.FC = () => {
       <ul className="phones__list">
         <div className="phones__list__product-card">
           <ProductCard />
+          <ProductCard />
+          <ProductCard />
         </div>
       </ul>
 

@@ -3,10 +3,13 @@ import ProductCard from '../ProductCard/ProductCard';
 import { Footer } from '../Footer';
 import { Slider } from '../Slider';
 import { Header } from '../Header';
-import home_banner from './../../assets/icons/homePage_banner.jpg';
-import home_slider from './../../assets/icons/dots_home-page_left.svg';
+
+import black_slider from '../../assets/icons/slider_black.svg';
 import phone_category from './../../assets/icons/category-phones.png';
+import home_slider from './../../assets/icons/dots_home-page_left.svg';
 import tablet_category from './../../assets/icons/category-tablets.png';
+import home_banner_phone from './../../assets/icons/homePage_banner.jpg';
+import home_banner_bigScreen from './../../assets/icons/banner_bigScreen.svg';
 import accessory_category from './../../assets/icons/category-accessories.png';
 
 const HomePage: React.FC = () => {
@@ -16,14 +19,27 @@ const HomePage: React.FC = () => {
 
       <div className="home__bottom">
         <h1 className="home__bottom--title">Welcome to Nice Gadgets store!</h1>
-        <a href="#">
-          <img
-            src={home_banner}
-            className="home__bottom--banner"
-            alt="Home Page Banner"
-          />
-        </a>
+        <div className="home__bottom__slider">
+          <li className="home__bottom__slider-left">
+            <img src={black_slider} alt="Slider to the left" />
+          </li>
 
+          <a className="home_bottom--img" href="#">
+            <img
+              src={home_banner_phone}
+              className="home__bottom--img--banner"
+              alt="Home Page Banner"
+            />
+            <img
+              src={home_banner_bigScreen}
+              className="home__bottom--img--bigScreen"
+              alt="Home Page Banner"
+            />
+          </a>
+          <li className="home__bottom__slider-right">
+            <img src={black_slider} alt="Slider to the right" />
+          </li>
+        </div>
         <img className="home__bottom--slider" src={home_slider} alt="Slider" />
       </div>
 
@@ -32,9 +48,22 @@ const HomePage: React.FC = () => {
           <h2 className="home__new__models--title">Brand new models</h2>
           <Slider />
         </section>
-        <section className="home__product-card">
-          <ProductCard />
-        </section>
+        <div className="home__product-card__scroll">
+          <ul className="home__product-card__scroll__content">
+            <li>
+              <ProductCard />
+            </li>
+            <li>
+              <ProductCard />
+            </li>
+            <li>
+              <ProductCard />
+            </li>
+            <li>
+              <ProductCard />
+            </li>
+          </ul>
+        </div>
 
         <section className="home__categories">
           <h2 className="home__categories--title">Shop by category</h2>
@@ -82,9 +111,22 @@ const HomePage: React.FC = () => {
           <h2 className="home__hot--prices--title">Hot prices</h2>
           <Slider />
         </section>
-        <section className="home__product-card">
-          <ProductCard />
-        </section>
+        <div className="home__product-card__scroll">
+          <ul className="home__product-card__scroll__content">
+            <li>
+              <ProductCard />
+            </li>
+            <li>
+              <ProductCard />
+            </li>
+            <li>
+              <ProductCard />
+            </li>
+            <li>
+              <ProductCard />
+            </li>
+          </ul>
+        </div>
       </>
 
       <Footer />

@@ -5,6 +5,7 @@ import { Footer } from '../Footer';
 import minus from '../../assets/icons/minus.svg';
 import plus from '../../assets/icons/plus.svg';
 import close from '../../assets/icons/close.svg';
+import iphone_14Pro from '../../assets/layout/iphone_14.png';
 import black_slider from '../../assets/icons/slider_black.svg';
 
 const ShoppingCart: React.FC = () => {
@@ -34,10 +35,7 @@ const ShoppingCart: React.FC = () => {
           </div>
 
           <div className="shopping-cart__element__top__img">
-            <img
-              src="/img/phones/apple-iphone-14-pro/gold/00.webp"
-              alt="Iphone 14 Pro"
-            />
+            <img src={iphone_14Pro} alt="Iphone 14 Pro" />
           </div>
 
           <div className="shopping-cart__element__top__name">
