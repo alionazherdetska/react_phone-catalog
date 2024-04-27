@@ -1,16 +1,21 @@
 .phones {
   display: grid;
-  grid-template-rows: auto 1fr auto;
   grid-template-columns: repeat(4, 1fr);
   width: inherit;
+  margin: 0 16px;
 
   @include on-tablet {
     grid-template-columns: repeat(12, 1fr);
+    margin: 0 24px;
+  }
+
+  @include on-tablet {
+    margin: 0 32px;
   }
 
   &__top {
     grid-column: span 4;
-    margin: 24px 16px 0;
+    margin: 24px 0 0;
     width: inherit;
     display: flex;
     flex-direction: column;
@@ -19,7 +24,7 @@
 
     @include on-tablet {
       grid-column: span 12;
-      margin: 24px 24px 0;
+      margin: 24px 0 0;
     }
 
     & h1 {
@@ -85,14 +90,14 @@
   &__main {
     grid-column: span 4;
     width: inherit;
-    margin: 0 16px;
+    margin: 0;
     gap: 16px;
     display: flex;
     align-items: center;
 
     @include on-tablet {
       grid-column: 1/7;
-      margin: 0 24px;
+      margin: 0;
       display: grid;
       grid-template-columns: repeat(7 1fr);
     }
@@ -142,40 +147,33 @@
     }
   }
 
-  &__list {
-    grid-column: span 4;
-    margin: 0;
-    padding: 0;
-    width: inherit;
-    display: flex;
-    gap: 16px;
-
-    @include on-tablet {
-      grid-column: span 12;
-      gap: 16px;
-    }
-
     &__product-card {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
+      grid-column: span 4;
+      display: grid;
       gap: 40px;
       height: auto;
-      margin: 0 16px;
+      margin: 0;
 
       @include on-tablet {
-        width: auto;
-        align-items: center;
-        justify-content: space-between;
         grid-column: span 12;
-        flex-direction: row;
-        gap: 16px;
-        /* stylelint-disable-next-line declaration-block-no-redundant-longhand-properties */
-        flex-wrap: wrap;
-        margin: 0 24px;
+      }
+
+      & li {
+        list-style: none;
+      }
+
+      @include on-tablet {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include on-wide-tablet {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @include on-desktop {
+        grid-template-columns: repeat(4, 1fr);
       }
     }
-  }
 
   &--slider {
     grid-column: span 4;

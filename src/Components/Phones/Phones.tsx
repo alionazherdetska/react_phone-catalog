@@ -1,6 +1,4 @@
 import React from 'react';
-import { Header } from '../Header';
-import { Footer } from '../Footer';
 import { ProductCard } from '../ProductCard';
 import home_icon from '../../assets/icons/home.svg';
 import gray_slider from '../../assets/icons/slider_gray.svg';
@@ -9,8 +7,6 @@ import black_slider from '../../assets/icons/slider_black.svg';
 const Phones: React.FC = () => {
   return (
     <div className="phones">
-      <Header />
-
       <section className="phones__top">
         <div className="phones__top--search-params">
           <div className="phones__top--search-params__icons">
@@ -49,13 +45,20 @@ const Phones: React.FC = () => {
         </div>
       </section>
 
-      <ul className="phones__list">
-        <div className="phones__list__product-card">
+      <div className="phones__product-card">
+        <li>
           <ProductCard />
+        </li>
+        <li>
           <ProductCard />
+        </li>
+        <li>
           <ProductCard />
-        </div>
-      </ul>
+        </li>
+        <li>
+          <ProductCard />
+        </li>
+      </div>
 
       <ul className="phones--slider">
         <li className="phones--slider--layout">
@@ -72,7 +75,6 @@ const Phones: React.FC = () => {
           <img src={black_slider} alt="Slider to the right" />
         </li>
       </ul>
-      <Footer />
     </div>
   );
 };
