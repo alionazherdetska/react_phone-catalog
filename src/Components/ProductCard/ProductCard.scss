@@ -33,9 +33,17 @@
     }
 
     &--img {
-      height: 130px;
+      height: $phone-product-card-img-height;
       flex-grow: 0;
       align-self: center;
+
+      @include on-tablet {
+        height: $tablet-product-card-img-height;
+      }
+
+      @include on-desktop {
+        height: $desktop-product-card-img-height;
+      }
     }
 
     &::after {

@@ -11,8 +11,16 @@
   padding: 32px 16px;
 
   @include on-tablet {
+    gap: 0;
     grid-column: span 12;
     padding: 32px 24px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @include on-desktop {
+    padding: 32px;
   }
 
   &__img {
@@ -36,6 +44,11 @@
     line-height: 11px;
     letter-spacing: 0.48px;
     text-transform: uppercase;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 107px;
+    }
   }
 
   &__back--to--top {
@@ -53,6 +66,10 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+
+    @include on-tablet {
+      width: auto;
+    }
 
     &__layout {
       border-radius: 48px;
