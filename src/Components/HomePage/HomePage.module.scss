@@ -3,40 +3,70 @@
 .home {
   background-color: #fafbfc;
   display: grid;
-  grid-template-rows: auto 1fr auto;
   grid-template-columns: repeat(4, 1fr);
+  padding: 0 16px;
 
   @include on-tablet {
     grid-template-columns: repeat(12, 1fr);
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(12, 1fr);
+    padding: 0 32px;
   }
 
   &__product-card__scroll {
-    margin: 0 16px;
     grid-column: span 4;
     padding: 0;
     overflow-x: scroll;
 
     @include on-tablet {
       grid-column: span 12;
-      margin: 0 24px;
       justify-content: space-between;
     }
 
     &__content {
       padding: 0;
+      margin: 0;
       gap: 16px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
 
+      @include on-tablet {
+        grid-template-columns: repeat(12, 1fr);
+      }
+
+      @include on-wide-tablet {
+        gap: 36px;
+        grid-template-columns: repeat(12, 1fr);
+      }
+
+      @include on-desktop {
+        grid-template-columns: repeat(4, 1fr);
+      }
 
       & li {
         list-style: none;
         width: $phone-product-card-width;
-      }
 
-      @include on-tablet {
-        display: grid;
-        width: 237px;
+        @include on-tablet {
+          width: $tablet-product-card-width;
+        }
+
+        @include on-wide-tablet {
+          width: $wide-tablet-product-card-width;
+        }
+
+        @include on-desktop {
+          width: 100%;
+          &:nth-child(1),
+          &:nth-child(2),
+          &:nth-child(3),
+          &:nth-child(4) {
+            grid-column: span 1;
+          }
+        }
       }
     }
   }
@@ -50,7 +80,6 @@
 
     @include on-tablet {
       grid-column: span 12;
-      margin: 0 24px;
     }
 
     &--img {
@@ -61,7 +90,7 @@
       }
 
       &--banner {
-        width: 100%;
+        width: 100vw;
         aspect-ratio: 1/1;
 
         @include on-tablet {
@@ -69,10 +98,27 @@
         }
       }
 
-      &--bigScreen {
+      &--tablet {
         display: none;
 
         @include on-tablet {
+          display: flex;
+          width: 100%;
+        }
+
+        @include on-desktop {
+          display: none;
+        }
+      }
+
+      &--desktop {
+        display: none;
+
+        @include on-tablet {
+          display: none;
+        }
+
+        @include on-desktop {
           display: flex;
           width: 100%;
         }
@@ -114,7 +160,7 @@
     &--title {
       display: flex;
       width: 100%;
-      padding: 24px 16px;
+      padding: 24px 0;
       margin: 0;
       font-size: 32px;
       line-height: 41px;
@@ -123,9 +169,14 @@
       @include on-tablet {
         padding: 32px 0;
         font-size: 48px;
-        font-weight: 800;
+        font-weight: 700;
         line-height: 56px;
-        letter-spacing: -0.48px;
+        letter-spacing: -1%;
+        text-align: left;
+      }
+
+      @include on-desktop {
+        padding: 56px 0;
       }
     }
 
@@ -136,6 +187,10 @@
       @include on-tablet {
         padding-bottom: $tablet-sections-gap;
       }
+
+      @include on-desktop {
+        padding-bottom: $desktop-sections-gap;
+      }
     }
   }
 
@@ -144,13 +199,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 16px;
+    padding: 0;
     gap: 72px;
     margin: 0 0 24px;
 
     @include on-tablet {
       grid-column: span 12;
-      padding: 0 24px;
     }
 
     &--title {
@@ -195,14 +249,19 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    padding: $phone-sections-gap 16px 0;
+    padding: $phone-sections-gap 0 0;
 
     @include on-tablet {
       grid-column: span 12;
-      padding: $tablet-sections-gap 24px 0;
+      padding: $tablet-sections-gap 0 0;
     }
 
-    &__title {
+    @include on-desktop {
+      grid-column: span 12;
+      padding: $desktop-sections-gap 0 0;
+    }
+
+    &--title {
       font-family: inherit;
       font-size: 22px;
       font-weight: 800;
@@ -302,13 +361,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 16px;
+    padding: 0;
     gap: 72px;
     margin: 24px 0;
 
     @include on-tablet {
       grid-column: span 12;
-      padding: 0 24px;
       margin: 32px 0 24px;
     }
 

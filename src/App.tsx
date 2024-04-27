@@ -1,6 +1,7 @@
 import './App.scss';
-import { HomePage } from './Components/HomePage';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { Layout } from './Components/Layout';
+import { HomePage } from './Components/HomePage';
 import { Phones } from './Components/Phones';
 import { ItemCard } from './Components/ItemCard';
 import { Favorites } from './Components/Favorites';
@@ -10,11 +11,13 @@ export const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/phones" element={<Phones />} />
-        <Route path="/cart" element={<ShoppingCart />} />
-        <Route path="/item-card" element={<ItemCard />} />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route element={<Layout />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/phones" element={<Phones />} />
+          <Route path="/cart" element={<ShoppingCart />} />
+          <Route path="/item-card" element={<ItemCard />} />
+          <Route path="/favorites" element={<Favorites />} />
+        </Route>
       </Routes>
     </Router>
   );

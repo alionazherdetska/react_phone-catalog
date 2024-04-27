@@ -1,22 +1,19 @@
 import React from 'react';
 import ProductCard from '../ProductCard/ProductCard';
-import { Footer } from '../Footer';
 import { Slider } from '../Slider';
-import { Header } from '../Header';
 
 import black_slider from '../../assets/icons/slider_black.svg';
 import phone_category from './../../assets/icons/category-phones.png';
 import home_slider from './../../assets/icons/dots_home-page_left.svg';
 import tablet_category from './../../assets/icons/category-tablets.png';
 import home_banner_phone from './../../assets/icons/homePage_banner.jpg';
-import home_banner_bigScreen from './../../assets/icons/banner_bigScreen.svg';
+import banner_desktop from './../../assets/icons/banner_desktop.svg';
+import banner_tablet from './../../assets/icons/banner_tablet.svg';
 import accessory_category from './../../assets/icons/category-accessories.png';
 
 const HomePage: React.FC = () => {
   return (
     <div className="home">
-      <Header />
-
       <div className="home__bottom">
         <h1 className="home__bottom--title">Welcome to Nice Gadgets store!</h1>
         <div className="home__bottom__slider">
@@ -31,8 +28,13 @@ const HomePage: React.FC = () => {
               alt="Home Page Banner"
             />
             <img
-              src={home_banner_bigScreen}
-              className="home__bottom--img--bigScreen"
+              src={banner_tablet}
+              className="home__bottom--img--tablet"
+              alt="Home Page Banner"
+            />
+            <img
+              src={banner_desktop}
+              className="home__bottom--img--desktop"
               alt="Home Page Banner"
             />
           </a>
@@ -128,8 +130,6 @@ const HomePage: React.FC = () => {
           </ul>
         </div>
       </>
-
-      <Footer />
     </div>
   );
 };
