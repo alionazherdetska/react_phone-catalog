@@ -1,6 +1,4 @@
 import React from 'react';
-import { Header } from '../Header';
-import { Footer } from '../Footer';
 
 import minus from '../../assets/icons/minus.svg';
 import plus from '../../assets/icons/plus.svg';
@@ -11,8 +9,6 @@ import black_slider from '../../assets/icons/slider_black.svg';
 const ShoppingCart: React.FC = () => {
   return (
     <div className="shopping-cart">
-      <Header />
-
       <section className="shopping-cart__top">
         <div className="shopping-cart__top--search-params">
           <div className="favorites__top--search-params__icons">
@@ -68,8 +64,6 @@ const ShoppingCart: React.FC = () => {
           <button>Checkout</button>
         </div>
       </article>
-
-      <Footer />
     </div>
   );
 };
