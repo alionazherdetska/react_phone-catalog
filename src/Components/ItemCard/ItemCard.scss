@@ -2,18 +2,24 @@
 
 .item-card {
   display: grid;
-  grid-template-rows: auto 1fr auto;
   grid-template-columns: repeat(4, 1fr);
   width: inherit;
   background: #fafbfc;
+  margin: 0 16px;
 
   @include on-tablet {
     grid-template-columns: repeat(12, 1fr);
+    margin: 0 24px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(12, 1fr);
+    margin: 0 32px;
   }
 
   &__top {
     grid-column: span 4;
-    margin: 24px 16px 0;
+    margin: 24px 0 0;
     width: inherit;
     display: flex;
     flex-direction: column;
@@ -22,7 +28,7 @@
 
     @include on-tablet {
       grid-column: span 12;
-      margin: 24px 24px 0;
+      margin: 24px 0 0;
     }
 
     & h1 {
@@ -94,7 +100,7 @@
 
         &--exact {
           margin: 0;
-          padding: 0 16px 0 0;
+          padding: 0;
           color: #89939a;
           font-family: inherit;
           font-size: 12px;
@@ -121,7 +127,7 @@
 
   &__main {
     grid-column: span 4;
-    margin: 0 16px;
+    margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -130,7 +136,7 @@
     @include on-tablet {
       grid-column: span 12;
       flex-direction: row;
-      margin: 0 24px;
+      margin: 0;
     }
 
     &__imgs {
@@ -142,7 +148,7 @@
         flex-direction: row;
         align-items: start;
         height: 100%;
-        justify-content: center;
+        justify-content: space-between;
       }
 
       &__front-img {
@@ -175,6 +181,7 @@
         align-items: center;
         justify-content: space-between;
         margin-bottom: 40px;
+        gap: 24px;
 
         @include on-tablet {
           order: 1;
@@ -186,10 +193,15 @@
         & img {
           padding: 4.5px;
           height: 40px;
-          width: 42px;
+          width: auto;
           border-radius: 4px;
           border: 0.6px solid #e2e6e9;
           cursor: pointer;
+
+          &:nth-child(2) {
+            padding: 0 11.5px;
+          }
+
           &.is-active {
             border: 1px solid #838181;
           }
@@ -293,18 +305,22 @@
           padding-bottom: 24px;
 
           & button {
-            width: 60px;
+            width: 65px;
             height: 32px;
             flex-shrink: 0;
             border-radius: 4px;
             border: 1px solid #b4bdc3;
             text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-family: inherit;
             font-size: 14px;
             font-style: normal;
             font-weight: 500;
             line-height: 21px;
           }
+
           &-active {
             background-color: #0f0f11;
             color: #fff;
@@ -350,7 +366,7 @@
 
   &__about {
     grid-column: span 4;
-    margin: 0 16px;
+    margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -358,7 +374,7 @@
 
     @include on-tablet {
       grid-column: span 12;
-      margin: 0 24px;
+      margin: 0;
     }
 
     &--properties {
@@ -477,14 +493,58 @@
     }
   }
 
-  &__product-card {
-    grid-column: 1 / 4;
-    height: auto;
-    margin: 8px 0 0 16px;
+  &__scroll {
+    grid-column: span 4;
+    padding: 0;
+    overflow-x: scroll;
 
     @include on-tablet {
-      margin: 8px 0 0 24px;
-      grid-column: 1 / 5;
+      grid-column: span 12;
+      justify-content: space-between;
+    }
+
+    &__content {
+      padding: 0;
+      margin: 0;
+      gap: 16px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+
+      @include on-tablet {
+        grid-template-columns: repeat(12, 1fr);
+      }
+
+      @include on-wide-tablet {
+        gap: 36px;
+        grid-template-columns: repeat(12, 1fr);
+      }
+
+      @include on-desktop {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      & li {
+        list-style: none;
+        width: $phone-product-card-width;
+
+        @include on-tablet {
+          width: $tablet-product-card-width;
+        }
+
+        @include on-wide-tablet {
+          width: $wide-tablet-product-card-width;
+        }
+
+        @include on-desktop {
+          width: 100%;
+          &:nth-child(1),
+          &:nth-child(2),
+          &:nth-child(3),
+          &:nth-child(4) {
+            grid-column: span 1;
+          }
+        }
+      }
     }
   }
 }

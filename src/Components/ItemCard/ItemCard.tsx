@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 
-import { Header } from '../Header';
-import { Footer } from '../Footer';
 import { Slider } from '../Slider';
 import { ProductCard } from '../ProductCard';
 
@@ -29,8 +27,6 @@ const ItemCard: React.FC = () => {
 
   return (
     <div className="item-card">
-      <Header />
-
       <section className="item-card__top">
         <div className="item-card__top--search-params">
           <div className="item-card__top--search-params__icons">
@@ -278,10 +274,22 @@ const ItemCard: React.FC = () => {
         </div>
       </div>
 
-      <div className="item-card__product-card">
-        <ProductCard />
+      <div className="item-card__scroll">
+        <ul className="item-card__scroll__content">
+          <li>
+            <ProductCard />
+          </li>
+          <li>
+            <ProductCard />
+          </li>
+          <li>
+            <ProductCard />
+          </li>
+          <li>
+            <ProductCard />
+          </li>
+        </ul>
       </div>
-      <Footer />
     </div>
   );
 };
