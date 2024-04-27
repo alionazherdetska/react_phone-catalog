@@ -6,8 +6,8 @@
   }
 }
 
-@mixin page-specific-styles($page) {
-  @if $page == 'Phones' {
+@mixin on-wide-tablet {
+  @media (min-width: $wide-tablet-min-width) {
     @content;
   }
 }
