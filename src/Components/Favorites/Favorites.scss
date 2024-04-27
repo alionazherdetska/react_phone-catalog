@@ -1,16 +1,19 @@
 .favorites {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  padding: 0 16px;
   width: 100%;
   background: #fafbfc;
 
   @include on-tablet {
-    grid-template-columns: repeat(12, 1fr);
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    padding: 0 32px;
   }
 
   &__top {
     grid-column: span 4;
-    margin: 24px 16px 0;
+    margin: 24px 0 0;
     width: inherit;
     display: flex;
     flex-direction: column;
@@ -19,7 +22,11 @@
 
     @include on-tablet {
       grid-column: span 12;
-      margin: 24px 24px 0;
+    }
+
+    @include on-desktop {
+      grid-column: span 12;
+      margin: 32px 0 0;
     }
 
     & h1 {
@@ -66,6 +73,7 @@
         color: #89939a;
         font-family: inherit;
         font-size: 12px;
+        line-height: 13px;
         font-style: normal;
         font-weight: 600;
       }
@@ -83,22 +91,25 @@
     }
   }
   &__product-card {
-    grid-column: span 4;
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 40px;
     height: auto;
-    margin: 0 16px;
+    margin: 0;
+
+    & li {
+      list-style: none;
+    }
 
     @include on-tablet {
-      align-items: center;
-      justify-content: space-between;
-      grid-column: span 12;
-      flex-direction: row;
-      gap: 16px;
-      /* stylelint-disable-next-line declaration-block-no-redundant-longhand-properties */
-      flex-wrap: wrap;
-      margin: 0 24px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include on-wide-tablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 }

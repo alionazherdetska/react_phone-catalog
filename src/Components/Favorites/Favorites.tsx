@@ -1,6 +1,4 @@
 import React from 'react';
-import { Header } from '../Header';
-import { Footer } from '../Footer';
 import { ProductCard } from '../ProductCard';
 import gray_slider from '../../assets/icons/slider_gray.svg';
 import home_icon from '../../assets/icons/home.svg';
@@ -8,8 +6,6 @@ import home_icon from '../../assets/icons/home.svg';
 const Favorites: React.FC = () => {
   return (
     <div className="favorites">
-      <Header />
-
       <section className="favorites__top">
         <div className="favorites__top--search-params">
           <div className="favorites__top--search-params__icons">
@@ -32,11 +28,19 @@ const Favorites: React.FC = () => {
       </section>
 
       <div className="favorites__product-card">
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        <li>
+          <ProductCard />
+        </li>
+        <li>
+          <ProductCard />
+        </li>
+        <li>
+          <ProductCard />
+        </li>
+        <li>
+          <ProductCard />
+        </li>
       </div>
-      <Footer />
     </div>
   );
 };
