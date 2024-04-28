@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import header_logo from '../../assets/icons/nice_gadgets_logo.png';
 import close from '../../assets/icons/Icons_Close.png';
+import like from '../../assets/icons/heart.svg';
+import cart from '../../assets/icons/shopping-cart.svg';
 
 const AsideMenu: React.FC = () => {
   const [isClosed, setIsClosed] = useState(false);
@@ -10,7 +12,7 @@ const AsideMenu: React.FC = () => {
   };
 
   return (
-    <>
+    <div className="aside-menu">
       <header className="aside-menu__header">
         <a href="#" className="aside-menu__header__logo">
           <img src={header_logo} alt="Nice Gadgets Logo" />
@@ -21,35 +23,32 @@ const AsideMenu: React.FC = () => {
         </a>
       </header>
 
-      {/* <nav class="nav menu__nav">
-        <ul class="nav__list">
-          <li class="nav__item">
-            <a class="nav__link" href="#about-us">About us</a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link" href="#">Home</a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link" href="#work">Work</a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link" href="#services">Services</a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link" href="#contact-us">Contact us</a>
-          </li>
-        </ul>
-      </nav> */}
-
       <nav className="aside-menu__nav">
         <ul className="aside-menu__nav__list">
-          <li>Home</li>
-          <li>Phones</li>
-          <li>Tablets</li>
-          <li>Accessories</li>
+          <a className="aside-menu__nav__list__link" href="#">
+            Home
+          </a>
+          <a className="aside-menu__nav__list__link" href="#about-us">
+            Phones
+          </a>
+          <a className="aside-menu__nav__list__link" href="#about-us">
+            Tablets
+          </a>
+          <a className="aside-menu__nav__list__link" href="#about-us">
+            Accessories
+          </a>
         </ul>
       </nav>
-    </>
+
+      <div className="aside-menu__bottom">
+        <a href="#" className="aside-menu__bottom__like">
+          <img src={like} alt="Favorite" />
+        </a>
+        <a href="#" className="aside-menu__bottom__cart">
+          <img src={cart} alt="Shopping cart" />
+        </a>
+      </div>
+    </div>
   );
 };
 
