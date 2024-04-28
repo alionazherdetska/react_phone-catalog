@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.19165703.css",
-    "main.js": "./static/js/main.6241f6be.js",
+    "main.css": "./static/css/main.89f83c96.css",
+    "main.js": "./static/js/main.3e7e5d52.js",
     "static/media/category-tablets.png": "./static/media/category-tablets.51782e18205a1ca01ce8.png",
     "static/media/banner_desktop.svg": "./static/media/banner_desktop.a35bac029327b238a0dfe561e5d02005.svg",
     "static/media/banner_tablet.svg": "./static/media/banner_tablet.040597686ddd0b164dce794126f6aabf.svg",
@@ -18,6 +18,7 @@
     "static/media/iphone11pro_5.png": "./static/media/iphone11pro_5.283fcdef0e56434f9dab.png",
     "static/media/iphone_14.png": "./static/media/iphone_14.3075f9596dd9cd1ed460.png",
     "static/media/heart.svg": "./static/media/heart.c45ac92a293eae3c5863d291242a513b.svg",
+    "static/media/shopping-cart.svg": "./static/media/shopping-cart.35ac84eeaf7eb8fbbb1adc65cd5af429.svg",
     "static/media/home.svg": "./static/media/home.3b19e0360589e60c1936abc495a0fd43.svg",
     "static/media/close.svg": "./static/media/close.da9389a3881623d2428ef675ea4f51f4.svg",
     "static/media/menu.svg": "./static/media/menu.73ddde2c093f9fb313b993eaba038f9a.svg",
@@ -31,11 +32,11 @@
     "static/media/light_gray.svg": "./static/media/light_gray.417890723ed368284233c0037441140d.svg",
     "static/media/slate_gray.svg": "./static/media/slate_gray.b4522a65dce449667fc9392299df16be.svg",
     "static/media/terracota.svg": "./static/media/terracota.27c6b2816acf978f14a3ffb4d8b5d653.svg",
-    "main.19165703.css.map": "./static/css/main.19165703.css.map",
-    "main.6241f6be.js.map": "./static/js/main.6241f6be.js.map"
+    "main.89f83c96.css.map": "./static/css/main.89f83c96.css.map",
+    "main.3e7e5d52.js.map": "./static/js/main.3e7e5d52.js.map"
   },
   "entrypoints": [
-    "static/css/main.19165703.css",
-    "static/js/main.6241f6be.js"
+    "static/css/main.89f83c96.css",
+    "static/js/main.3e7e5d52.js"
   ]
 }
