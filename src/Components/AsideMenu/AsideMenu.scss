@@ -12,11 +12,6 @@
     background: #fff;
     box-shadow: 0 1px 0 0 #e2e6e9;
 
-    @include on-tablet {
-      grid-column: span 12;
-      padding: 13px 24px;
-    }
-
     &__close,
     &__logo {
       margin: 0;
@@ -33,6 +28,10 @@
       padding: 16px;
       box-shadow: -1px 0 0 0 rgb(226, 230, 233);
       background: rgb(255, 255, 255);
+      border-bottom: 2px solid transparent;
+      &:hover {
+        border-bottom: 2px solid rgb(49, 50, 55);
+      }
     }
   }
 

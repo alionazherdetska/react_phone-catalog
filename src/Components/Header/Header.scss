@@ -1,16 +1,16 @@
 .header {
   grid-column: span 4;
   width: 100%;
-  padding: 13px 16px;
+  padding: 14px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: #fff;
-  box-shadow: 0 1px 0 0 #e2e6e9;
+  border-bottom: 1px solid #e2e6e9;
 
   @include on-tablet {
     grid-column: span 12;
-    padding: 13px 24px;
+    padding: 0 0 0 24px;
   }
 
   &--menu,
@@ -22,6 +22,119 @@
     & img,
     .header--logo img {
       display: block;
+    }
+  }
+
+  &--menu {
+    @include on-tablet {
+      display: none;
+    }
+
+    @include on-desktop {
+      display: none;
+    }
+
+    @include on-big-screen {
+      display: none;
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &__list {
+        margin: 0;
+        display: flex;
+        gap: 32px;
+        align-items: center;
+        justify-content: center;
+
+        @include on-desktop {
+          gap: 64px;
+        }
+
+        &__link {
+          margin: 0;
+          text-decoration: none;
+          color: #89939a;
+          flex-direction: column;
+          justify-content: center;
+          position: relative;
+
+          font-family: inherit;
+          font-size: 12px;
+          line-height: 12px;
+          font-weight: 700;
+          letter-spacing: 4%;
+          text-transform: uppercase;
+
+          &:hover {
+            color: #313237;
+            cursor: pointer;
+
+            &::after {
+              content: '';
+              position: absolute;
+              bottom: -18px;
+              left: 0;
+              width: 100%;
+              height: 2px;
+              background-color: rgb(49, 50, 55);
+
+              @include on-desktop {
+                bottom: -26px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__end {
+    display: none;
+
+    @include on-tablet {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__like,
+    &__cart {
+      width: 48px;
+      height: 49px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-left: 1px solid #e2e6e9;
+      position: relative;
+
+      &:hover {
+        color: #313237;
+        cursor: pointer;
+      }
+
+      @include on-desktop {
+        width: 64px;
+        height: 64px;
+      }
+
+      &:hover::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: rgb(49, 50, 55);
+      }
     }
   }
 }
