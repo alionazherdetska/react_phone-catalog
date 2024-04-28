@@ -5,7 +5,7 @@ import home_icon from '../../assets/icons/home.svg';
 
 const Favorites: React.FC = () => {
   return (
-    <div className="favorites">
+    <div className="favorites" id="#favorites">
       <section className="favorites__top">
         <div className="favorites__top--search-params">
           <div className="favorites__top--search-params__icons">

@@ -6,7 +6,7 @@ import black_slider from '../../assets/icons/slider_black.svg';
 
 const Phones: React.FC = () => {
   return (
-    <div className="phones">
+    <div className="phones" id="#phones">
       <section className="phones__top">
         <div className="phones__top--search-params">
           <div className="phones__top--search-params__icons">

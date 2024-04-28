@@ -8,7 +8,7 @@ import black_slider from '../../assets/icons/slider_black.svg';
 
 const ShoppingCart: React.FC = () => {
   return (
-    <div className="shopping-cart">
+    <div className="shopping-cart" id="#cart">
       <section className="shopping-cart__top">
         <div className="shopping-cart__top--search-params">
           <div className="favorites__top--search-params__icons">
