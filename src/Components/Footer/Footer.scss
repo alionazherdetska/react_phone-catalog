@@ -1,3 +1,5 @@
+@import '/src/styles/utils/variables';
+
 .footer {
   grid-column: span 4;
   margin: 56px 0 0;
@@ -6,20 +8,20 @@
   justify-content: start;
   align-items: flex-start;
   gap: 32px;
-  box-shadow: 0 -1px 0 0 #e2e6e9;
-  padding: 32px 16px;
+  box-shadow: 0 -1px 0 0 $shadow;
+  padding: 32px $padding-inline-phone;
 
   @include on-tablet {
     gap: 0;
     grid-column: span 12;
-    padding: 32px 24px;
+    padding: 32px $padding-inline-tablet;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
   }
 
   @include on-desktop {
-    padding: 32px;
+    padding: $padding-inline-desktop;
   }
 
   &__img {
@@ -35,7 +37,7 @@
     padding: 0;
     list-style: none;
 
-    color: #89939a;
+    color: $gray-light;
     font-family: inherit;
     font-size: 12px;
     font-style: normal;
@@ -66,7 +68,7 @@
     align-items: center;
     gap: 16px;
 
-    color: #89939a;
+    color: $gray-light;
 
     font-family: inherit;
     font-size: 12px;
@@ -80,7 +82,7 @@
 
     &__layout {
       border-radius: 48px;
-      border: 1px solid #b4bdc3;
+      border: 1px solid $border-color;
       width: 30px;
       height: 30px;
 

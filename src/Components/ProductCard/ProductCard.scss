@@ -1,4 +1,5 @@
 @import '/src/styles/utils/mixins';
+@import '/src/styles/utils/variables';
 
 .product__card {
   display: flex;
@@ -6,8 +7,8 @@
   margin: 0;
 
   border-radius: 8px;
-  border: 1px solid #e2e6e9;
-  background: #fff;
+  border: 1px solid $shadow;
+  background: $white;
   justify-content: space-between;
   width: inherit;
   height: inherit;
@@ -24,7 +25,7 @@
     &--name {
       width: inherit;
       margin: 24px 0 8px;
-      color: #0f0f11;
+      color: $main-text-color;
       font-family: inherit;
       font-size: 14px;
       font-style: normal;
@@ -51,14 +52,14 @@
       position: absolute;
       content: '';
       height: 1px;
-      background-color: #e2e6e9;
+      background-color: $shadow;
       bottom: -8px;
       left: 0;
       right: 0;
     }
 
     &--price {
-      color: #0f0f11;
+      color: $main-text-color;
       font-family: inherit;
       font-size: 22px;
       font-style: normal;
@@ -89,7 +90,7 @@
       & p {
         margin: 0;
         padding: 0;
-        color: #89939a;
+        color: $gray-light;
         font-family: inherit;
         font-size: 12px;
         font-style: normal;
@@ -98,7 +99,7 @@
       }
 
       & span {
-        color: #0f0f11;
+        color: $main-text-color;
         text-align: right;
         font-family: inherit;
         font-size: 12px;

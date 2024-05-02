@@ -29,13 +29,13 @@
   padding: 0;
   margin: 0;
   border-radius: 8px;
-  background: #f86800;
+  background: $button-color;
   display: flex;
   justify-content: center;
   align-items: center;
   flex: 1 0 0;
 
-  color: #fff;
+  color: $white;
   text-align: center;
   font-family: inherit;
   font-size: 14px;
@@ -52,7 +52,7 @@
   padding: 0;
   margin: 0;
   border-radius: 48px;
-  border: 1px solid #b4bdc3;
+  border: 1px solid $border-color;
 }
 
 @mixin properties {
@@ -66,7 +66,7 @@
 @mixin p {
   margin: 0;
   padding: 0;
-  color: #89939a;
+  color: $gray-light;
   font-family: inherit;
   font-size: 12px;
   font-style: normal;
@@ -75,7 +75,7 @@
 }
 
 @mixin span {
-  color: #0f0f11;
+  color: $main-text-color;
   text-align: right;
   font-family: inherit;
   font-size: 12px;

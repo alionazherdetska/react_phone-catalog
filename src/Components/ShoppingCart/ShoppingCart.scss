@@ -1,10 +1,11 @@
 @import '/src/styles/utils/mixins';
+@import '/src/styles/utils/variables';
 
 .shopping-cart {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   width: 100%;
-  background: #fafbfc;
+  background: $main-background-color;
 
   @include on-tablet {
     grid-template-columns: repeat(12, 1fr);
@@ -12,7 +13,7 @@
 
   &__top {
     grid-column: span 4;
-    margin: 24px 16px 0;
+    margin: 24px $padding-inline-phone 0;
     width: inherit;
     display: flex;
     flex-direction: column;
@@ -21,12 +22,12 @@
 
     @include on-tablet {
       grid-column: span 12;
-      margin: 24px 24px 0;
+      margin: 24px $padding-inline-tablet 0;
     }
 
     & h1 {
       margin: 24px 0 32px;
-      color: #0f0f11;
+      color: $main-text-color;
       font-family: inherit;
       font-size: 32px;
       font-style: normal;
@@ -51,7 +52,7 @@
         margin: 0;
         display: flex;
         padding: 0;
-        color: #89939a;
+        color: $gray-light;
         font-family: inherit;
         font-size: 12px;
         line-height: 14px;
@@ -72,7 +73,7 @@
   }
 
   &__element {
-    margin: 0 16px;
+    margin: 0 $padding-inline-phone;
     grid-column: span 4;
     padding: 16px;
     border-radius: 16px;
@@ -81,8 +82,8 @@
     align-items: flex-start;
     gap: 16px;
 
-    border: 1px solid #e2e6e9;
-    background: #fff;
+    border: 1px solid $shadow;
+    background: $white;
 
     @include on-tablet {
       grid-column: span 12;
@@ -90,7 +91,7 @@
       align-items: center;
       padding: 24px;
       justify-content: space-between;
-      margin: 32px 24px 0;
+      margin: 32px $padding-inline-tablet 0;
     }
 
     @include on-desktop {
@@ -115,7 +116,7 @@
 
       &__name {
         width: 100%;
-        color: #0f0f11;
+        color: $main-text-color;
         font-family: inherit;
         font-size: 14px;
         font-style: normal;
@@ -164,12 +165,12 @@
           width: 32px;
           height: 32px;
           border-radius: 48px;
-          border: 1px solid #b4bdc3;
+          border: 1px solid $border-color;
         }
       }
 
       &__price {
-        color: #0f0f11;
+        color: $main-text-color;
         font-family: inherit;
         font-size: 22px;
         font-style: normal;
@@ -180,7 +181,7 @@
   }
 
   &__total {
-    margin: 32px 16px 0;
+    margin: 32px $padding-inline-phone 0;
     grid-column: span 4;
     padding: 16px;
     border-radius: 16px;
@@ -189,12 +190,12 @@
     align-items: flex-start;
     gap: 16px;
 
-    border: 1px solid #e2e6e9;
-    background: #fff;
+    border: 1px solid $shadow;
+    background: $white;
 
     @include on-tablet {
       grid-column: span 12;
-      margin: 32px 24px 0;
+      margin: 32px $padding-inline-tablet 0;
     }
 
     @include on-desktop {
@@ -204,13 +205,13 @@
     &__top {
       width: 100%;
       padding-bottom: 16px;
-      border-bottom: 1px solid #e2e6e9;
+      border-bottom: 1px solid $shadow;
 
       & h3 {
         margin: 0;
         display: flex;
         justify-content: center;
-        color: #0f0f11;
+        color: $main-text-color;
         text-align: center;
         font-family: inherit;
         font-size: 32px;
@@ -223,7 +224,7 @@
       & p {
         display: flex;
         justify-content: center;
-        color: #89939a;
+        color: $gray-light;
         margin: 0;
         text-align: center;
         font-family: inherit;

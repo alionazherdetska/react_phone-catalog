@@ -28,12 +28,15 @@ const AsideMenu: React.FC = () => {
           <a className="aside-menu__nav__list__link" href="#">
             Home
           </a>
+
           <a className="aside-menu__nav__list__link" href="#phones">
             Phones
           </a>
+
           <a className="aside-menu__nav__list__link" href="#about-us">
             Tablets
           </a>
+
           <a className="aside-menu__nav__list__link" href="#about-us">
             Accessories
           </a>
@@ -44,6 +47,7 @@ const AsideMenu: React.FC = () => {
         <a href="#favorites" className="aside-menu__bottom__like">
           <img src={like} alt="Favorite" />
         </a>
+
         <a href="#cart" className="aside-menu__bottom__cart">
           <img src={cart} alt="Shopping cart" />
         </a>

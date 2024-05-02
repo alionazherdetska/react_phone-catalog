@@ -1,17 +1,20 @@
+@import '/src/styles/utils/variables';
+
 .phones {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   width: inherit;
-  margin: 0 16px;
-  background-color: #fafbfc;
+  margin: 0;
+  padding: 0 $padding-inline-phone;
+  background-color: $main-background-color;
 
   @include on-tablet {
     grid-template-columns: repeat(12, 1fr);
-    margin: 0 24px;
+    padding: 0 $padding-inline-desktop;
   }
 
   @include on-tablet {
-    margin: 0 32px;
+    padding: 0 $padding-inline-desktop;
   }
 
   &__top {
@@ -30,7 +33,7 @@
 
     & h1 {
       margin: 24px 0 8px;
-      color: #0f0f11;
+      color: $main-text-color;
       font-family: inherit;
       font-size: 32px;
       font-weight: 800;
@@ -47,7 +50,7 @@
 
     & p {
       margin: 0 0 32px;
-      color: #89939a;
+      color: $gray-light;
       font-family: inherit;
       font-size: 14px;
       font-style: normal;
@@ -68,7 +71,7 @@
       &__name {
         margin: 0;
         padding: 0;
-        color: #89939a;
+        color: $gray-light;
         font-family: inherit;
         font-size: 12px;
         font-style: normal;
@@ -111,7 +114,7 @@
     }
 
     & label {
-      color: #89939a;
+      color: $gray-light;
       font-family: inherit;
       font-size: 12px;
       font-style: normal;
@@ -149,7 +152,7 @@
         line-height: 21px;
         background-color: transparent;
         border: none;
-        border: 1px solid #b4bdc3;
+        border: 1px solid $border-color;
         border-radius: 8px;
       }
     }
@@ -210,7 +213,7 @@
       width: 32px;
       height: 32px;
       border-radius: 48px;
-      border: 1px solid #e2e6e9;
+      border: 1px solid $shadow;
     }
 
     &--pages {
@@ -229,7 +232,7 @@
         width: 32px;
         height: 32px;
         border-radius: 48px;
-        border: 1px solid #e2e6e9;
+        border: 1px solid $shadow;
       }
     }
   }

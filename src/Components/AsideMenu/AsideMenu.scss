@@ -1,3 +1,5 @@
+@import '/src/styles/utils/variables';
+
 .aside-menu {
   height: 100vh;
   display: grid;
@@ -9,8 +11,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #fff;
-    box-shadow: 0 1px 0 0 #e2e6e9;
+    background: $white;
+    box-shadow: 0 1px 0 0 $shadow;
 
     &__close,
     &__logo {
@@ -25,12 +27,12 @@
     }
 
     &__close {
-      padding: 16px;
-      box-shadow: -1px 0 0 0 rgb(226, 230, 233);
-      background: rgb(255, 255, 255);
+      padding: $padding-inline-phone;
+      box-shadow: -1px 0 0 0 $shadow;
+      background: $white;
       border-bottom: 2px solid transparent;
       &:hover {
-        border-bottom: 2px solid rgb(49, 50, 55);
+        border-bottom: 2px solid $gray-dark;
       }
     }
   }
@@ -55,7 +57,7 @@
         margin: 0;
         text-decoration: none;
         padding: 8px 0 6px;
-        color: #89939a;
+        color: $gray-light;
         border-bottom: 2px solid transparent;
 
         font-family: inherit;
@@ -66,9 +68,9 @@
         text-transform: uppercase;
 
         &:hover {
-          color: #313237;
+          color: $gray-dark;
           cursor: pointer;
-          border-bottom: 2px solid rgb(49, 50, 55);
+          border-bottom: 2px solid $gray-dark;
         }
       }
     }
@@ -77,8 +79,8 @@
     width: 100%;
     display: flex;
     align-items: center;
-    background: #fff;
-    box-shadow: 0 -1px 0 0 #e2e6e9;
+    background: $white;
+    box-shadow: 0 -1px 0 0 $shadow;
 
     &__like,
     &__cart {
@@ -87,11 +89,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: -1px 0 0 0 rgb(226, 230, 233);
+      box-shadow: -1px 0 0 0 $shadow;
       border-bottom: 2px solid transparent;
 
       &:hover {
-        border-bottom: 2px solid rgb(49, 50, 55);
+        border-bottom: 2px solid $gray-dark;
       }
     }
   }
