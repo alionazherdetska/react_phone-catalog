@@ -82,65 +82,96 @@
       grid-column: span 12;
     }
 
-    &--img {
+    &__slider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       @include on-tablet {
-        display: flex;
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 16px;
         align-items: center;
         justify-content: center;
       }
 
-      &--banner {
-        width: 100vw;
-        aspect-ratio: 1/1;
-
-        @include on-tablet {
-          display: none;
-        }
+      @include on-wide-tablet {
+        grid-template-columns: repeat(18, 1fr);
       }
 
-      &--tablet {
-        display: none;
+      @include on-desktop {
+        grid-template-columns: repeat(24, 1fr);
+      }
 
+      &__img {
         @include on-tablet {
-          display: flex;
-          width: 100%;
+          grid-column: 2/12;
+          display: grid;
+          grid-template-columns: repeat(12, 1fr);
+          align-items: center;
+          justify-content: center;
+        }
+
+        @include on-wide-tablet {
+          grid-column: 2/18;
         }
 
         @include on-desktop {
+          grid-column: 2/24;
+        }
+
+        &--banner {
+          width: 100vw;
+          aspect-ratio: 1/1;
+
+          @include on-tablet {
+            display: none;
+          }
+        }
+
+        &--tablet {
           display: none;
+
+          @include on-tablet {
+            display: flex;
+            width: 100%;
+            grid-column: span 12;
+          }
+
+          // @include on-desktop {
+          //   display: none;
+          // }
+        }
+
+        &--desktop {
+          display: none;
+
+          @include on-tablet {
+            display: none;
+          }
+
+          @include on-desktop {
+            display: flex;
+            width: 100%;
+          }
         }
       }
-
-      &--desktop {
-        display: none;
-
-        @include on-tablet {
-          display: none;
-        }
-
-        @include on-desktop {
-          display: flex;
-          width: 100%;
-        }
-      }
-    }
-
-    &__slider {
-      display: flex;
-      gap: 19px;
-      align-items: center;
-      justify-content: center;
 
       &-left {
         display: none;
 
         @include on-tablet {
           display: flex;
-          width: 32px;
+          grid-column: 1/2;
           height: 100%;
           border-radius: 20px;
           border: 1px solid $border-color;
           transform: rotate(180deg);
+        }
+
+        @include on-wide-tablet {
+          border-radius: 35px;
         }
       }
 
@@ -149,10 +180,19 @@
 
         @include on-tablet {
           display: flex;
-          width: 32px;
+          grid-column: 12/13;
           height: 100%;
           border-radius: 20px;
           border: 1px solid $border-color;
+        }
+
+        @include on-wide-tablet {
+          border-radius: 35px;
+          grid-column: 18/19;
+        }
+
+        @include on-desktop {
+          grid-column: 24/25;
         }
       }
     }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ProductCard from '../ProductCard/ProductCard';
 import { Slider } from '../Slider';
 
@@ -7,39 +7,81 @@ import phone_category from './../../assets/icons/category-phones.png';
 import home_slider from './../../assets/icons/dots_home-page_left.svg';
 import tablet_category from './../../assets/icons/category-tablets.png';
 import home_banner_phone from './../../assets/icons/homePage_banner.jpg';
-import banner_desktop from './../../assets/icons/banner_desktop.svg';
-import banner_tablet from './../../assets/icons/banner_tablet.svg';
+import banner_tablet1 from './../../assets/icons/banner_tablet1.png';
+import banner_tablet2 from './../../assets/icons/banner_tablet2.png';
+import banner_tablet3 from './../../assets/icons/banner_tablet3.png';
 import accessory_category from './../../assets/icons/category-accessories.png';
 
 const HomePage: React.FC = () => {
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+
+  const moveSlide = (direction: 'left' | 'right') => {
+    setCurrentIndex(prevIndex => {
+      let newIndex = prevIndex;
+      const totalAmountOfSlides = 3;
+      console.log("setCurrentIndex", prevIndex, direction)
+      switch (direction) {
+        case 'left':
+          newIndex = prevIndex === 0 ? totalAmountOfSlides - 1 : prevIndex - 1;
+          break;
+        case 'right':
+          newIndex = prevIndex === 2 ? 0 : prevIndex + 1;
+          break;
+        default:
+          break;
+      }
+
+      return newIndex;
+    });
+  };
+
   return (
     <div className="home">
       <div className="home__bottom">
         <h1 className="home__bottom--title">Welcome to Nice Gadgets store!</h1>
         <div className="home__bottom__slider">
           <li className="home__bottom__slider-left">
-            <img src={black_slider} alt="Slider to the left" />
+            <img
+              src={black_slider}
+              onClick={() => moveSlide('left')}
+              alt="Slider to the left"
+            />
           </li>
 
-          <a className="home_bottom--img" href="#">
+          <a className="home__bottom__slider__img" href="#">
             <img
               src={home_banner_phone}
-              className="home__bottom--img--banner"
+              className="home__bottom__slider__img--banner"
               alt="Home Page Banner"
             />
-            <img
-              src={banner_tablet}
-              className="home__bottom--img--tablet"
-              alt="Home Page Banner"
-            />
-            <img
-              src={banner_desktop}
-              className="home__bottom--img--desktop"
-              alt="Home Page Banner"
-            />
+            {currentIndex === 0 && (
+              <img
+                src={banner_tablet1}
+                className="home__bottom__slider__img--tablet"
+                alt="Home Page Banner"
+              />
+            )}
+            {currentIndex === 1 && (
+              <img
+                src={banner_tablet2}
+                className="home__bottom__slider__img--tablet"
+                alt="Home Page Banner"
+              />
+            )}
+            {currentIndex === 2 && (
+              <img
+                src={banner_tablet3}
+                className="home__bottom__slider__img--tablet"
+                alt="Home Page Banner"
+              />
+            )}
           </a>
           <li className="home__bottom__slider-right">
-            <img src={black_slider} alt="Slider to the right" />
+            <img
+              onClick={() => moveSlide('right')}
+              src={black_slider}
+              alt="Slider to the right"
+            />
           </li>
         </div>
         <img className="home__bottom--slider" src={home_slider} alt="Slider" />
