@@ -1,33 +1,48 @@
 import React from 'react';
 import heart_icon from '../../assets/icons/heart.svg';
-import product_card_img from '../../assets/icons/category-phones.png';
 
-const ProductCard: React.FC = () => {
+interface ProductCardProps {
+  productName: string;
+  price: number;
+  discountPrice: number;
+  screen: string;
+  capacity: string;
+  ram: string;
+  productImg: string;
+}
+
+const ProductCard: React.FC<ProductCardProps> = ({
+  productName,
+  price,
+  productImg,
+  // discountPrice,
+  screen,
+  capacity,
+  ram,
+}) => {
   return (
     <article className="product__card">
       <section className="product__card--top">
-        <img className="product__card--top--img" src={product_card_img} />
-        <h3 className="product__card--top--name">
-          Apple iPhone 14 Pro 128GB Silver (MQ023)
-        </h3>
-        <span className="product__card--top--price">$999</span>
+        <img className="product__card--top--img" src={productImg} />
+        <h3 className="product__card--top--name">{productName}</h3>
+        <span className="product__card--top--price">${price}</span>
       </section>
 
       <section className="product__card--bottom">
         <div className="product__card--bottom--properties">
           <div className="product__card--bottom--properties--specific">
             <p>Screen</p>
-            <span>6.1” OLED</span>
+            <span>{screen}</span>
           </div>
 
           <div className="product__card--bottom--properties--specific">
             <p>Capacity</p>
-            <span>128 GB</span>
+            <span>{capacity}</span>
           </div>
 
           <div className="product__card--bottom--properties--specific">
             <p>RAM</p>
-            <span>6 GB</span>
+            <span>{ram}</span>
           </div>
         </div>
 

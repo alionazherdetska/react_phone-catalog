@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProductCard } from '../ProductCard';
+// import { ProductCard } from '../ProductCard';
 import gray_slider from '../../assets/icons/slider_gray.svg';
 import home_icon from '../../assets/icons/home.svg';
 
@@ -27,7 +27,7 @@ const Favorites: React.FC = () => {
         <p>5 items</p>
       </section>
 
-      <div className="favorites__product-card">
+      {/* <div className="favorites__product-card">
         <li>
           <ProductCard />
         </li>
@@ -40,7 +40,7 @@ const Favorites: React.FC = () => {
         <li>
           <ProductCard />
         </li>
-      </div>
+      </div> */}
     </div>
   );
 };

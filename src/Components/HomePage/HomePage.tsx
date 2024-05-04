@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import ProductCard from '../ProductCard/ProductCard';
+import classNames from 'classnames';
+// import ProductCard from '../ProductCard/ProductCard';
 import { Slider } from '../Slider';
 
 import black_slider from '../../assets/icons/slider_black.svg';
 import phone_category from './../../assets/icons/category-phones.png';
-import home_slider from './../../assets/icons/dots_home-page_left.svg';
 import tablet_category from './../../assets/icons/category-tablets.png';
-import home_banner_phone from './../../assets/icons/homePage_banner.jpg';
+import phone_banner1 from './../../assets/icons/phone_banner1.jpg';
+import phone_banner2 from './../../assets/icons/phone_banner2.png';
+import phone_banner3 from './../../assets/icons/phone_banner3.png';
 import banner_tablet1 from './../../assets/icons/banner_tablet1.png';
 import banner_tablet2 from './../../assets/icons/banner_tablet2.png';
 import banner_tablet3 from './../../assets/icons/banner_tablet3.png';
@@ -14,12 +16,17 @@ import accessory_category from './../../assets/icons/category-accessories.png';
 
 const HomePage: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [homeBanner, setHomeBanner] = useState(phone_banner1);
+
+  const changeImage = (photo: File) => {
+    setHomeBanner(photo);
+  };
 
   const moveSlide = (direction: 'left' | 'right') => {
     setCurrentIndex(prevIndex => {
       let newIndex = prevIndex;
       const totalAmountOfSlides = 3;
-      console.log("setCurrentIndex", prevIndex, direction)
+
       switch (direction) {
         case 'left':
           newIndex = prevIndex === 0 ? totalAmountOfSlides - 1 : prevIndex - 1;
@@ -50,25 +57,23 @@ const HomePage: React.FC = () => {
 
           <a className="home__bottom__slider__img" href="#">
             <img
-              src={home_banner_phone}
+              src={homeBanner}
               className="home__bottom__slider__img--banner"
               alt="Home Page Banner"
             />
-            {currentIndex === 0 && (
+            {currentIndex === 0 ? (
               <img
                 src={banner_tablet1}
                 className="home__bottom__slider__img--tablet"
                 alt="Home Page Banner"
               />
-            )}
-            {currentIndex === 1 && (
+            ) : currentIndex === 1 ? (
               <img
                 src={banner_tablet2}
                 className="home__bottom__slider__img--tablet"
                 alt="Home Page Banner"
               />
-            )}
-            {currentIndex === 2 && (
+            ) : (
               <img
                 src={banner_tablet3}
                 className="home__bottom__slider__img--tablet"
@@ -84,7 +89,26 @@ const HomePage: React.FC = () => {
             />
           </li>
         </div>
-        <img className="home__bottom--slider" src={home_slider} alt="Slider" />
+        <div className="home__bottom--slider">
+          <div
+            onClick={() => changeImage(phone_banner1)}
+            className={classNames('home__bottom--slider__left', {
+              'home__bottom--slider__is-active': homeBanner === phone_banner1,
+            })}
+          ></div>
+          <div
+            onClick={() => changeImage(phone_banner2)}
+            className={classNames('home__bottom--slider__left', {
+              'home__bottom--slider__is-active': homeBanner === phone_banner2,
+            })}
+          ></div>
+          <div
+            onClick={() => changeImage(phone_banner3)}
+            className={classNames('home__bottom--slider__left', {
+              'home__bottom--slider__is-active': homeBanner === phone_banner3,
+            })}
+          ></div>
+        </div>
       </div>
 
       <>
@@ -93,7 +117,7 @@ const HomePage: React.FC = () => {
           <Slider />
         </section>
         <div className="home__product-card__scroll">
-          <ul className="home__product-card__scroll__content">
+          {/* <ul className="home__product-card__scroll__content">
             <li>
               <ProductCard />
             </li>
@@ -106,7 +130,7 @@ const HomePage: React.FC = () => {
             <li>
               <ProductCard />
             </li>
-          </ul>
+          </ul> */}
         </div>
 
         <section className="home__categories">
@@ -156,7 +180,7 @@ const HomePage: React.FC = () => {
           <Slider />
         </section>
         <div className="home__product-card__scroll">
-          <ul className="home__product-card__scroll__content">
+          {/* <ul className="home__product-card__scroll__content">
             <li>
               <ProductCard />
             </li>
@@ -169,7 +193,7 @@ const HomePage: React.FC = () => {
             <li>
               <ProductCard />
             </li>
-          </ul>
+          </ul> */}
         </div>
       </>
     </div>

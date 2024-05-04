@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 
 import { Slider } from '../Slider';
-import { ProductCard } from '../ProductCard';
+// import { ProductCard } from '../ProductCard';
 
 import home_icon from '../../assets/icons/home.svg';
 import heart_icon from '../../assets/icons/heart.svg';
@@ -275,7 +275,7 @@ const ItemCard: React.FC = () => {
       </div>
 
       <div className="item-card__scroll">
-        <ul className="item-card__scroll__content">
+        {/* <ul className="item-card__scroll__content">
           <li>
             <ProductCard />
           </li>
@@ -288,7 +288,7 @@ const ItemCard: React.FC = () => {
           <li>
             <ProductCard />
           </li>
-        </ul>
+        </ul> */}
       </div>
     </div>
   );
