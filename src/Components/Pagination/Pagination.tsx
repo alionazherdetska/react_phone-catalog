@@ -1,5 +1,6 @@
 import gray_slider from '../../assets/icons/slider_gray.svg';
 import black_slider from '../../assets/icons/slider_black.svg';
+import { Link } from 'react-router-dom';
 
 interface PaginationProps {
   totalItems: number;
@@ -27,33 +28,33 @@ const Pagination: React.FC<PaginationProps> = ({
   return (
     <ul className="phones--slider">
       <li className="phones--slider--layout">
-        <a
+        <Link
           onClick={() => handlePageClick(currentPage - 1)}
           aria-disabled={currentPage === 1 ? 'true' : 'false'}
-          href="#prev"
-        ></a>
+          to={`/${currentPage - 1}`}
+        ></Link>
         <img src={gray_slider} alt="Slider to the left" />
       </li>
       <ul className="phones--slider--pages">
         {pageNumbers.map(page => (
           <li key={page}>
-            <a
+            <Link
               className="page-link"
-              href={`#${page}`}
+              to={`/${page}`}
               onClick={() => handlePageClick(page)}
             >
               {page}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
 
       <li className="phones--slider--layout">
-        <a
+        <Link
           onClick={() => handlePageClick(currentPage + 1)}
           aria-disabled={currentPage === 1 ? 'true' : 'false'}
-          href="#next"
-        ></a>
+          to={`/${currentPage + 1}`}
+        ></Link>
         <img src={black_slider} alt="Slider to the left" />
       </li>
     </ul>
