@@ -1,0 +1,54 @@
+@import '/src/styles/utils/variables';
+
+.phones {
+  &--slider {
+    grid-column: span 4;
+    width: inherit;
+    margin: 0 0 8px;
+    padding: 24px 0 0;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+
+    @include on-tablet {
+      grid-column: span 12;
+      padding: 40px 0 0;
+    }
+
+    @include on-desktop {
+      padding-bottom: 16px;
+    }
+
+    &--layout {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 48px;
+      border: 1px solid $shadow;
+    }
+
+    &--pages {
+      width: inherit;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      gap: 8px;
+      justify-content: space-between;
+
+      li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 48px;
+        border: 1px solid $shadow;
+      }
+    }
+  }
+}
