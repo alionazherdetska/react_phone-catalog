@@ -7,7 +7,7 @@
     margin: 0 0 8px;
     padding: 24px 0 0;
     display: flex;
-    gap: 14px;
+    gap: 16px;
     justify-content: center;
     align-items: center;
     list-style: none;
@@ -15,7 +15,6 @@
     @include on-tablet {
       grid-column: span 12;
       padding: 40px 0 0;
-      gap: 16px;
     }
 
     @include on-desktop {
@@ -26,9 +25,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 27px;
-      height: 27px;
-      border-radius: 42px;
+      width: 32px;
+      height: 32px;
+      border-radius: 48px;
       border: 1px solid $shadow;
       cursor: pointer;
       background: none;
@@ -37,39 +36,58 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 27px;
-        height: 27px;
-        border-radius: 42px;
-        border: 1px solid black;
-        cursor: pointer;
-        background: none;
-
-        @include on-tablet {
-          width: 32px;
-          height: 32px;
-          border-radius: 48px;
-        }
-      }
-
-      @include on-tablet {
         width: 32px;
         height: 32px;
         border-radius: 48px;
+        border: 1px solid black;
+        cursor: pointer;
+        background: none;
+      }
+
+      &--prev,
+      &--next {
+        width: 32px;
+        height: 32px;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      &--prev {
+        background-image: url(../../assets/icons/slider_gray_left.svg);
+
+        &:hover {
+          border: 1px solid black;
+          cursor: pointer;
+        }
+
+        &:active {
+          background-image: url(../../assets/icons/slider_black_left.svg);
+        }
+      }
+
+      &--next {
+        background-image: url(../../assets/icons/slider_gray_right.svg);
+
+        &:hover {
+          border: 1px solid black;
+          cursor: pointer;
+        }
+
+        &:active {
+          background-image: url(../../assets/icons/slider_black_right.svg);
+        }
       }
     }
 
     &--pages {
       width: inherit;
+      max-width: 350px;
       margin: 0;
       padding: 0;
       list-style: none;
       display: flex;
-      gap: 6px;
+      gap: 8px;
       justify-content: space-between;
-
-      @include on-tablet {
-        gap: 8px;
-      }
     }
   }
 }

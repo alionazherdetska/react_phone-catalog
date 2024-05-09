@@ -1,6 +1,6 @@
 import React from 'react';
 import footer_logo from '../../assets/icons/nice_gadgets_logo.png';
-import slider_black from '../../assets/icons/slider_black.svg';
+import gray_slider_right from '../../assets/icons/slider_gray_left.svg';
 
 const Footer: React.FC = () => {
   return (
@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
         <div className="footer__back--to--top__layout">
           <img
             className="footer__back--to--top__layout--slider"
-            src={slider_black}
+            src={gray_slider_right}
             alt="Slider to the top"
           />
         </div>

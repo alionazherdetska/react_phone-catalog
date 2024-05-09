@@ -1,5 +1,3 @@
-import gray_slider from '../../assets/icons/slider_gray.svg';
-import black_slider from '../../assets/icons/slider_black.svg';
 import { useEffect, useState } from 'react';
 
 interface PaginationProps {
@@ -8,6 +6,7 @@ interface PaginationProps {
   currentPage?: number;
   onPageChange: (page: number) => void;
 }
+
 const Pagination: React.FC<PaginationProps> = ({
   totalItems,
   perPage,
@@ -19,9 +18,7 @@ const Pagination: React.FC<PaginationProps> = ({
 
   useEffect(() => {
     setTotalPages(Math.ceil(totalItems / perPage));
-    const isMobileDevice = window.matchMedia(
-      '(max-width: $tablet-min-width)',
-    ).matches;
+    const isMobileDevice = window.matchMedia('(max-width: 768px)').matches;
 
     setIsMobile(isMobileDevice);
   }, [totalItems, perPage]);
@@ -31,7 +28,7 @@ const Pagination: React.FC<PaginationProps> = ({
   };
 
   const generatePageNumbers = () => {
-    const range = isMobile ? 0 : 2;
+    const range = 2;
     const start = Math.max(1, currentPage - range);
     const end = Math.min(totalPages, start + 2 * range - 1);
 
@@ -39,7 +36,7 @@ const Pagination: React.FC<PaginationProps> = ({
 
     if (start > 1) {
       pageNumbers.push(1);
-      if (start > 2) {
+      if (start > 2 && !isMobile) {
         pageNumbers.push('...');
       }
     }
@@ -49,7 +46,7 @@ const Pagination: React.FC<PaginationProps> = ({
     }
 
     if (end < totalPages) {
-      if (end < totalPages - 1) {
+      if (end < totalPages - 1 && !isMobile) {
         pageNumbers.push('...');
       }
 
@@ -62,13 +59,13 @@ const Pagination: React.FC<PaginationProps> = ({
   return (
     <ul className="pagination--slider">
       <button
-        className="pagination--slider--layout"
-        onClick={() => handlePageClick(currentPage - 1)}
+        className="pagination--slider--layout pagination--slider--layout--prev"
+        onClick={() => {
+          handlePageClick(currentPage - 1);
+        }}
         disabled={currentPage === 1}
         aria-label="Previous Page"
-      >
-        <img src={gray_slider} alt="Slider to the left" />
-      </button>
+      ></button>
       <ul className="pagination--slider--pages">
         {generatePageNumbers().map((page, index) => (
           <button
@@ -89,13 +86,13 @@ const Pagination: React.FC<PaginationProps> = ({
         ))}
       </ul>
       <button
-        className="pagination--slider--layout"
-        onClick={() => handlePageClick(currentPage + 1)}
+        className="pagination--slider--layout pagination--slider--layout--next"
+        onClick={() => {
+          handlePageClick(currentPage + 1);
+        }}
         disabled={currentPage === totalPages}
         aria-label="Next Page"
-      >
-        <img src={black_slider} alt="Slider to the right" />
-      </button>
+      ></button>
     </ul>
   );
 };

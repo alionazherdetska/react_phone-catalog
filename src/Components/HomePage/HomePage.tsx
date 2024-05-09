@@ -3,7 +3,7 @@ import classNames from 'classnames';
 // import ProductCard from '../ProductCard/ProductCard';
 import { Slider } from '../Slider';
 
-import black_slider from '../../assets/icons/slider_black.svg';
+import gray_slider_right from '../../assets/icons/slider_gray_left.svg';
 import phone_category from './../../assets/icons/category-phones.png';
 import tablet_category from './../../assets/icons/category-tablets.png';
 import phone_banner1 from './../../assets/icons/phone_banner1.jpg';
@@ -49,7 +49,7 @@ const HomePage: React.FC = () => {
         <div className="home__bottom__slider">
           <li className="home__bottom__slider-left">
             <img
-              src={black_slider}
+              src={gray_slider_right}
               onClick={() => moveSlide('left')}
               alt="Slider to the left"
             />
@@ -84,7 +84,7 @@ const HomePage: React.FC = () => {
           <li className="home__bottom__slider-right">
             <img
               onClick={() => moveSlide('right')}
-              src={black_slider}
+              src={gray_slider_right}
               alt="Slider to the right"
             />
           </li>

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { ProductCard } from '../ProductCard';
 import home_icon from '../../assets/icons/home.svg';
-import gray_slider from '../../assets/icons/slider_gray.svg';
-import black_slider from '../../assets/icons/slider_black.svg';
+import gray_slider_left from '../../assets/icons/slider_gray_left.svg';
+import gray_slider_right from '../../assets/icons/slider_gray_left.svg';
 import { getAllProducts } from '../../services/fetchClients';
 import Product from '../../types/types';
 
@@ -31,7 +31,7 @@ const Tablets: React.FC = () => {
             />
 
             <img
-              src={gray_slider}
+              src={gray_slider_left}
               className="phones__top--search-params__icons-slider"
               alt="Slider"
             />
@@ -76,7 +76,7 @@ const Tablets: React.FC = () => {
 
       <ul className="phones--slider">
         <li className="phones--slider--layout">
-          <img src={gray_slider} alt="Slider to the left" />
+          <img src={gray_slider_left} alt="Slider to the left" />
         </li>
         <ul className="phones--slider--pages">
           <li>1</li>
@@ -86,7 +86,7 @@ const Tablets: React.FC = () => {
         </ul>
 
         <li className="phones--slider--layout">
-          <img src={black_slider} alt="Slider to the right" />
+          <img src={gray_slider_right} alt="Slider to the right" />
         </li>
       </ul>
     </div>

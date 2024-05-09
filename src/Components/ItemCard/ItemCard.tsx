@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 
 import { Slider } from '../Slider';
-// import { ProductCard } from '../ProductCard';
 
 import home_icon from '../../assets/icons/home.svg';
 import heart_icon from '../../assets/icons/heart.svg';
-import gray_slider from '../../assets/icons/slider_gray.svg';
-import black_slider from '../../assets/icons/slider_black.svg';
+import gray_slider_right from '../../assets/icons/slider_gray_right.svg';
+import gray_slider_left from '../../assets/icons/slider_gray_left.svg';
+import black_slider_left from '../../assets/icons/slider_black_left.svg';
 import banner_photo from '../../assets/layout/iphone11pro_1.png';
 import small_photo_2 from '../../assets/layout/iphone11pro_2.png';
 import small_photo_3 from '../../assets/layout/iphone11pro_3.png';
@@ -36,7 +36,7 @@ const ItemCard: React.FC = () => {
               alt="Home"
             />
             <img
-              src={gray_slider}
+              src={gray_slider_left}
               className="item-card__top--search-params__icons-slider"
               alt="Slider"
             />
@@ -44,7 +44,7 @@ const ItemCard: React.FC = () => {
 
           <h4 className="item-card__top--search-params__name">Phones</h4>
           <img
-            src={gray_slider}
+            src={gray_slider_right}
             className="item-card__top--search-params__icons-slider"
             alt="Slider"
           />
@@ -55,7 +55,7 @@ const ItemCard: React.FC = () => {
 
         <div className="item-card__top--search-params__back">
           <img
-            src={black_slider}
+            src={black_slider_left}
             className="phones__top--search-params__icons-slider"
             alt="Slider"
           />

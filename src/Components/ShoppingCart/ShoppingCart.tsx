@@ -4,7 +4,7 @@ import minus from '../../assets/icons/minus.svg';
 import plus from '../../assets/icons/plus.svg';
 import close from '../../assets/icons/close.svg';
 import iphone_14Pro from '../../assets/layout/iphone_14.png';
-import black_slider from '../../assets/icons/slider_black.svg';
+import gray_slider_right from '../../assets/icons/slider_gray_right.svg';
 
 const ShoppingCart: React.FC = () => {
   return (
@@ -13,7 +13,7 @@ const ShoppingCart: React.FC = () => {
         <div className="shopping-cart__top--search-params">
           <div className="favorites__top--search-params__icons">
             <img
-              src={black_slider}
+              src={gray_slider_right}
               className="shopping-cart__top--search-params__icons-slider"
               alt="Slider"
             />

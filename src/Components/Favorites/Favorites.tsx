@@ -1,6 +1,6 @@
 import React from 'react';
 // import { ProductCard } from '../ProductCard';
-import gray_slider from '../../assets/icons/slider_gray.svg';
+import gray_slider_left from '../../assets/icons/slider_gray_left.svg';
 import home_icon from '../../assets/icons/home.svg';
 
 const Favorites: React.FC = () => {
@@ -15,7 +15,7 @@ const Favorites: React.FC = () => {
               alt="Home"
             />
             <img
-              src={gray_slider}
+              src={gray_slider_left}
               className="favorites__top--search-params__icons-slider"
               alt="Slider"
             />
