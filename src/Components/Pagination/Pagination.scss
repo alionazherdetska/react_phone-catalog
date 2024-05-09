@@ -1,6 +1,6 @@
 @import '/src/styles/utils/variables';
 
-.phones {
+.pagination {
   &--slider {
     grid-column: span 4;
     width: inherit;
@@ -29,6 +29,20 @@
       height: 32px;
       border-radius: 48px;
       border: 1px solid $shadow;
+      cursor: pointer;
+      background: none;
+
+      &--active {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 48px;
+        border: 1px solid black;
+        cursor: pointer;
+        background: none;
+      }
     }
 
     &--pages {
@@ -39,16 +53,6 @@
       display: flex;
       gap: 8px;
       justify-content: space-between;
-
-      li {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 32px;
-        height: 32px;
-        border-radius: 48px;
-        border: 1px solid $shadow;
-      }
     }
   }
 }
