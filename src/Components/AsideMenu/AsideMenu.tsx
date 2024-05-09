@@ -33,11 +33,11 @@ const AsideMenu: React.FC = () => {
             Phones
           </a>
 
-          <a className="aside-menu__nav__list__link" href="#about-us">
+          <a className="aside-menu__nav__list__link" href="#tablets">
             Tablets
           </a>
 
-          <a className="aside-menu__nav__list__link" href="#about-us">
+          <a className="aside-menu__nav__list__link" href="#accessories">
             Accessories
           </a>
         </ul>

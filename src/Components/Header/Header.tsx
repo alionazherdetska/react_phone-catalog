@@ -27,10 +27,10 @@ const Header: React.FC = () => {
             <a className="header__nav__list__link" href="#phones">
               Phones
             </a>
-            <a className="header__nav__list__link" href="#about-us">
+            <a className="header__nav__list__link" href="#tablets">
               Tablets
             </a>
-            <a className="header__nav__list__link" href="#about-us">
+            <a className="header__nav__list__link" href="#accessories">
               Accessories
             </a>
           </ul>

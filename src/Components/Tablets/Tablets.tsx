@@ -2,16 +2,36 @@ import React, { useEffect, useState } from 'react';
 import { ProductCard } from '../ProductCard';
 import home_icon from '../../assets/icons/home.svg';
 import gray_slider_left from '../../assets/icons/slider_gray_left.svg';
-import gray_slider_right from '../../assets/icons/slider_gray_left.svg';
 import { getAllProducts } from '../../services/fetchClients';
 import Product from '../../types/types';
+import { Pagination } from '../Pagination';
 
 const Tablets: React.FC = () => {
   const [tablets, setTablets] = useState<Product[]>([]);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [itemsPerPage, setItemsPerPage] = useState<number>(4);
+  const [totalItems, setTotalItems] = useState<number>(0);
+  const [tabletsToRender, setTabletsToRender] = useState<Product[]>([]);
+
+  const perPageOptions = [4, 8, 16];
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  const handleItemsPerPageChange = (
+    e: React.ChangeEvent<HTMLSelectElement>,
+  ) => {
+    const selectedPerPage = Number(e.target.value);
+
+    setItemsPerPage(selectedPerPage);
+    setCurrentPage(1);
+  };
 
   function getTablets() {
     getAllProducts('tablets').then((receivedTablets: Product[]) => {
       setTablets(receivedTablets);
+      setTotalItems(receivedTablets.length);
     });
   }
 
@@ -19,47 +39,66 @@ const Tablets: React.FC = () => {
     getTablets();
   }, []);
 
+  useEffect(() => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
+
+    const tabletsToRenderSubset = tablets.slice(startIndex, endIndex);
+
+    setTabletsToRender(tabletsToRenderSubset);
+  }, [currentPage, itemsPerPage, tablets, totalItems]);
+
   return (
-    <div className="phones" id="#phones">
-      <section className="phones__top">
-        <div className="phones__top--search-params">
-          <div className="phones__top--search-params__icons">
+    <div className="tablets" id="#tablets">
+      <section className="tablets__top">
+        <div className="tablets__top--search-params">
+          <div className="tablets__top--search-params__icons">
             <img
               src={home_icon}
-              className="phones__top--search-params__icons-home"
+              className="tablets__top--search-params__icons-home"
               alt="Home"
             />
-
             <img
               src={gray_slider_left}
-              className="phones__top--search-params__icons-slider"
+              className="tablets__top--search-params__icons-slider"
               alt="Slider"
             />
           </div>
-
-          <h4 className="phones__top--search-params__name">Tablets</h4>
+          <h4 className="tablets__top--search-params__name">tablets</h4>
         </div>
-        <h1>Tablets</h1>
+        <h1>Mobile tablets</h1>
         <p>95 models</p>
       </section>
 
-      <section className="phones__main">
-        <div className="phones__main__sorting-by">
+      <section className="tablets__main">
+        <div className="tablets__main__sorting-by">
           <label htmlFor="sortingBy">Sort by</label>
           <select id="sortingBy">
-            <option className="phones__main__sorting-by__option">Newest</option>
+            <option className="tablets__main__sorting-by__option">All</option>
           </select>
         </div>
 
-        <div className="phones__main__amount">
+        <div className="tablets__main__amount">
           <label htmlFor="perPage">Items on page</label>
-          <select id="perPage">
-            <option>16</option>
+          <select
+            value={itemsPerPage}
+            onChange={handleItemsPerPageChange}
+            id="perPage"
+          >
+            {perPageOptions.map(option => (
+              <option
+                key={option}
+                className="tablets__main__sorting-by__option"
+              >
+                {option}
+              </option>
+            ))}
           </select>
         </div>
       </section>
-      <div className="phones__product-card">
-        {tablets.map((tablet, index) => (
+
+      <div className="tablets__product-card">
+        {tabletsToRender.map((tablet, index) => (
           <li key={index}>
             <ProductCard
               productImg={tablet.images[0]}
@@ -74,21 +113,12 @@ const Tablets: React.FC = () => {
         ))}
       </div>
 
-      <ul className="phones--slider">
-        <li className="phones--slider--layout">
-          <img src={gray_slider_left} alt="Slider to the left" />
-        </li>
-        <ul className="phones--slider--pages">
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-        </ul>
-
-        <li className="phones--slider--layout">
-          <img src={gray_slider_right} alt="Slider to the right" />
-        </li>
-      </ul>
+      <Pagination
+        totalItems={totalItems}
+        perPage={itemsPerPage}
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 };

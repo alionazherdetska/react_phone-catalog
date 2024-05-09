@@ -1,6 +1,6 @@
 @import '/src/styles/utils/variables';
 
-.phones {
+.accessories {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   width: inherit;
@@ -158,82 +158,31 @@
     }
   }
 
-    &__product-card {
-      grid-column: span 4;
-      display: grid;
-      gap: 40px;
-      height: auto;
-      margin: 0;
-
-      @include on-tablet {
-        grid-column: span 12;
-      }
-
-      & li {
-        list-style: none;
-      }
-
-      @include on-tablet {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      @include on-wide-tablet {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      @include on-desktop {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-
-  &--slider {
+  &__product-card {
     grid-column: span 4;
-    width: inherit;
-    margin: 0 0 8px;
-    padding: 24px 0 0;
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
+    display: grid;
+    gap: 40px;
+    height: auto;
+    margin: 0;
 
     @include on-tablet {
       grid-column: span 12;
-      padding: 40px 0 0;
+    }
+
+    & li {
+      list-style: none;
+    }
+
+    @include on-tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include on-wide-tablet {
+      grid-template-columns: repeat(3, 1fr);
     }
 
     @include on-desktop {
-      padding-bottom: 16px;
-    }
-
-    &--layout {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 32px;
-      height: 32px;
-      border-radius: 48px;
-      border: 1px solid $shadow;
-    }
-
-    &--pages {
-      width: inherit;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      display: flex;
-      gap: 8px;
-      justify-content: space-between;
-
-      li {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 32px;
-        height: 32px;
-        border-radius: 48px;
-        border: 1px solid $shadow;
-      }
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 }
