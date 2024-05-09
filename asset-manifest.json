@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.e7ea59d2.css",
-    "main.js": "./static/js/main.21daf792.js",
+    "main.css": "./static/css/main.4c25752b.css",
+    "main.js": "./static/js/main.558ad554.js",
     "static/media/category-tablets.png": "./static/media/category-tablets.51782e18205a1ca01ce8.png",
     "static/media/banner_tablet2.png": "./static/media/banner_tablet2.92cb79ee6b10686e74b0.png",
     "static/media/iphone11pro_1.png": "./static/media/iphone11pro_1.046182dd957cf36861c8.png",
@@ -26,19 +26,21 @@
     "static/media/close.svg": "./static/media/close.da9389a3881623d2428ef675ea4f51f4.svg",
     "static/media/menu.svg": "./static/media/menu.73ddde2c093f9fb313b993eaba038f9a.svg",
     "static/media/plus.svg": "./static/media/plus.5840abd28029a21f0fb5e04bda8a334f.svg",
-    "static/media/slider_black.svg": "./static/media/slider_black.59b4a1187aa1b0c9d3148cdace39a924.svg",
-    "static/media/slider_gray.svg": "./static/media/slider_gray.d191884d8d5611ac5f3ae84e69c0fbf9.svg",
+    "static/media/slider_black_right.svg": "./static/media/slider_black_right.59b4a1187aa1b0c9d314.svg",
+    "static/media/slider_gray_right.svg": "./static/media/slider_gray_right.bffea67dc7a37c45929c54995bc1d2a9.svg",
+    "static/media/slider_black_left.svg": "./static/media/slider_black_left.de831dc674aa3730695589b3a0d44401.svg",
+    "static/media/slider_gray_left.svg": "./static/media/slider_gray_left.d191884d8d5611ac5f3ae84e69c0fbf9.svg",
     "static/media/minus.svg": "./static/media/minus.e021256f41036632d339c2684235dbfb.svg",
     "index.html": "./index.html",
     "static/media/dark_gray.svg": "./static/media/dark_gray.b7473e5b2e674392ecf070b0df9d841a.svg",
     "static/media/light_gray.svg": "./static/media/light_gray.417890723ed368284233c0037441140d.svg",
     "static/media/slate_gray.svg": "./static/media/slate_gray.b4522a65dce449667fc9392299df16be.svg",
     "static/media/terracota.svg": "./static/media/terracota.27c6b2816acf978f14a3ffb4d8b5d653.svg",
-    "main.e7ea59d2.css.map": "./static/css/main.e7ea59d2.css.map",
-    "main.21daf792.js.map": "./static/js/main.21daf792.js.map"
+    "main.4c25752b.css.map": "./static/css/main.4c25752b.css.map",
+    "main.558ad554.js.map": "./static/js/main.558ad554.js.map"
   },
   "entrypoints": [
-    "static/css/main.e7ea59d2.css",
-    "static/js/main.21daf792.js"
+    "static/css/main.4c25752b.css",
+    "static/js/main.558ad554.js"
   ]
 }
