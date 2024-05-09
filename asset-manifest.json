@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.ce33ad0d.css",
-    "main.js": "./static/js/main.67ea4094.js",
+    "main.css": "./static/css/main.211f7f62.css",
+    "main.js": "./static/js/main.67df010d.js",
     "static/media/category-tablets.png": "./static/media/category-tablets.51782e18205a1ca01ce8.png",
     "static/media/banner_tablet2.png": "./static/media/banner_tablet2.92cb79ee6b10686e74b0.png",
     "static/media/iphone11pro_1.png": "./static/media/iphone11pro_1.046182dd957cf36861c8.png",
@@ -36,11 +36,11 @@
     "static/media/light_gray.svg": "./static/media/light_gray.417890723ed368284233c0037441140d.svg",
     "static/media/slate_gray.svg": "./static/media/slate_gray.b4522a65dce449667fc9392299df16be.svg",
     "static/media/terracota.svg": "./static/media/terracota.27c6b2816acf978f14a3ffb4d8b5d653.svg",
-    "main.ce33ad0d.css.map": "./static/css/main.ce33ad0d.css.map",
-    "main.67ea4094.js.map": "./static/js/main.67ea4094.js.map"
+    "main.211f7f62.css.map": "./static/css/main.211f7f62.css.map",
+    "main.67df010d.js.map": "./static/js/main.67df010d.js.map"
   },
   "entrypoints": [
-    "static/css/main.ce33ad0d.css",
-    "static/js/main.67ea4094.js"
+    "static/css/main.211f7f62.css",
+    "static/js/main.67df010d.js"
   ]
 }
