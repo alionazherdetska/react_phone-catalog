@@ -88,7 +88,10 @@ const Accessories: React.FC = () => {
             id="perPage"
           >
             {perPageOptions.map(option => (
-              <option key={option} className="accessories__main__sorting-by__option">
+              <option
+                key={option}
+                className="accessories__main__sorting-by__option"
+              >
                 {option}
               </option>
             ))}
