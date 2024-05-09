@@ -64,9 +64,9 @@ const Tablets: React.FC = () => {
               alt="Slider"
             />
           </div>
-          <h4 className="tablets__top--search-params__name">tablets</h4>
+          <h4 className="tablets__top--search-params__name">Tablets</h4>
         </div>
-        <h1>Mobile tablets</h1>
+        <h1>Tablets</h1>
         <p>95 models</p>
       </section>
 
