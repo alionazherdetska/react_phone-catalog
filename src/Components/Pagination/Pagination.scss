@@ -7,7 +7,7 @@
     margin: 0 0 8px;
     padding: 24px 0 0;
     display: flex;
-    gap: 16px;
+    gap: 14px;
     justify-content: center;
     align-items: center;
     list-style: none;
@@ -15,6 +15,7 @@
     @include on-tablet {
       grid-column: span 12;
       padding: 40px 0 0;
+      gap: 16px;
     }
 
     @include on-desktop {
@@ -25,9 +26,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 32px;
-      height: 32px;
-      border-radius: 48px;
+      width: 27px;
+      height: 27px;
+      border-radius: 42px;
       border: 1px solid $shadow;
       cursor: pointer;
       background: none;
@@ -36,12 +37,24 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 32px;
-        height: 32px;
-        border-radius: 48px;
+        width: 27px;
+        height: 27px;
+        border-radius: 42px;
         border: 1px solid black;
         cursor: pointer;
         background: none;
+
+        @include on-tablet {
+          width: 32px;
+          height: 32px;
+          border-radius: 48px;
+        }
+      }
+
+      @include on-tablet {
+        width: 32px;
+        height: 32px;
+        border-radius: 48px;
       }
     }
 
@@ -51,8 +64,12 @@
       padding: 0;
       list-style: none;
       display: flex;
-      gap: 8px;
+      gap: 6px;
       justify-content: space-between;
+
+      @include on-tablet {
+        gap: 8px;
+      }
     }
   }
 }

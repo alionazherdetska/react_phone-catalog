@@ -14,10 +14,16 @@ const Pagination: React.FC<PaginationProps> = ({
   currentPage = 1,
   onPageChange,
 }) => {
+  const [isMobile, setIsMobile] = useState(false);
   const [totalPages, setTotalPages] = useState(Math.ceil(totalItems / perPage));
 
   useEffect(() => {
     setTotalPages(Math.ceil(totalItems / perPage));
+    const isMobileDevice = window.matchMedia(
+      '(max-width: $tablet-min-width)',
+    ).matches;
+
+    setIsMobile(isMobileDevice);
   }, [totalItems, perPage]);
 
   const handlePageClick = (page: number) => {
@@ -25,14 +31,29 @@ const Pagination: React.FC<PaginationProps> = ({
   };
 
   const generatePageNumbers = () => {
-    const range = 4;
+    const range = isMobile ? 0 : 2;
     const start = Math.max(1, currentPage - range);
-    const end = Math.min(totalPages, currentPage + range);
+    const end = Math.min(totalPages, start + 2 * range - 1);
 
-    const pageNumbers: number[] = [];
+    const pageNumbers: (number | string)[] = [];
+
+    if (start > 1) {
+      pageNumbers.push(1);
+      if (start > 2) {
+        pageNumbers.push('...');
+      }
+    }
 
     for (let i = start; i <= end; i++) {
       pageNumbers.push(i);
+    }
+
+    if (end < totalPages) {
+      if (end < totalPages - 1) {
+        pageNumbers.push('...');
+      }
+
+      pageNumbers.push(totalPages);
     }
 
     return pageNumbers;
@@ -49,15 +70,19 @@ const Pagination: React.FC<PaginationProps> = ({
         <img src={gray_slider} alt="Slider to the left" />
       </button>
       <ul className="pagination--slider--pages">
-        {generatePageNumbers().map(page => (
+        {generatePageNumbers().map((page, index) => (
           <button
-            key={page}
+            key={index}
             className={
-              currentPage === page
+              page === currentPage
                 ? 'pagination--slider--layout--active'
                 : 'pagination--slider--layout'
             }
-            onClick={() => handlePageClick(page)}
+            onClick={() => {
+              if (typeof page === 'number') {
+                handlePageClick(page);
+              }
+            }}
           >
             {page}
           </button>
