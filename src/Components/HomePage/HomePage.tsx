@@ -3,7 +3,7 @@ import classNames from 'classnames';
 // import ProductCard from '../ProductCard/ProductCard';
 import { Slider } from '../Slider';
 
-import gray_slider_right from '../../assets/icons/slider_gray_left.svg';
+import gray_slider_right from '../../assets/icons/slider_gray_right.svg';
 import phone_category from './../../assets/icons/category-phones.png';
 import tablet_category from './../../assets/icons/category-tablets.png';
 import phone_banner1 from './../../assets/icons/phone_banner1.jpg';

@@ -1,6 +1,8 @@
-import Product from '../types/types';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+import { GeneralTypeOfProduct, Product } from "../types/types";
+
 // const BASE_URL = '/react_phone-catalog/api';
 const BASE_URL = '/api';
 
@@ -50,4 +52,8 @@ export const client = {
 
 export const getAllProducts = (category: string) => {
   return client.get<Product[]>(`/${category}.json`);
+};
+
+export const getCompleteListOfProducts = (category: string) => {
+  return client.get<GeneralTypeOfProduct[]>(`/${category}.json`);
 };

@@ -21,7 +21,7 @@ const Favorites: React.FC = () => {
             />
           </div>
 
-          <h4 className="favorites__top--search-params__name">Phones</h4>
+          <h4 className="favorites__top--search-params__name">Favorites</h4>
         </div>
         <h1>Favourites</h1>
         <p>5 items</p>
