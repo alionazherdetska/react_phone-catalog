@@ -1,7 +1,6 @@
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { GeneralTypeOfProduct, Product } from "../types/types";
+import { GeneralTypeOfProduct, Product } from '../types/types';
 
 // const BASE_URL = '/react_phone-catalog/api';
 const BASE_URL = '/api';

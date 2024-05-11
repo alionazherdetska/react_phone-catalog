@@ -33,19 +33,6 @@ const Phones: React.FC = () => {
     setCurrentPage(1);
   };
 
-  function getListOfAllProducts() {
-    getCompleteListOfProducts('products').then(
-      (receivedListOfProducts: GeneralTypeOfProduct[]) => {
-        const receivedPhones = receivedListOfProducts.filter(
-          product => product.category === 'phones',
-        );
-
-        setPhones(receivedPhones);
-        setTotalItems(receivedPhones.length);
-      },
-    );
-  }
-
   function sortProducts(
     products: GeneralTypeOfProduct[],
     sortingField: SortingField,
@@ -66,19 +53,25 @@ const Phones: React.FC = () => {
   }
 
   useEffect(() => {
-    if (sortingOption) {
-      const sortedList = [...phones];
+    getCompleteListOfProducts('products').then(
+      (receivedListOfProducts: GeneralTypeOfProduct[]) => {
+        const receivedPhones = receivedListOfProducts.filter(
+          product => product.category === 'phones',
+        );
 
-      sortProducts(sortedList, sortingOption);
-      setPhones(sortedList);
-    }
+        const sortedList = [...receivedPhones];
+
+        sortProducts(sortedList, sortingOption);
+
+        setPhones(sortedList);
+        setTotalItems(sortedList.length);
+      },
+    );
   }, [sortingOption]);
 
   useEffect(() => {
-    getListOfAllProducts();
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
-
     const phonesToRenderSubset = phones.slice(startIndex, endIndex);
 
     setPhonesToRender(phonesToRenderSubset);
