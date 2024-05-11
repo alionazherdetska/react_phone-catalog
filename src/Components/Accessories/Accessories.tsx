@@ -2,16 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { ProductCard } from '../ProductCard';
 import home_icon from '../../assets/icons/home.svg';
 import gray_slider_left from '../../assets/icons/slider_gray_left.svg';
-import { getAllProducts } from '../../services/fetchClients';
+import { getCompleteListOfProducts } from '../../services/fetchClients';
 import { Pagination } from '../Pagination';
-import { Product } from '../../types/types';
+import { ProductType } from '../../types/types';
+
+type SortingField = 'Alphabetically' | 'Cheapest' | 'Newest';
 
 const Accessories: React.FC = () => {
-  const [accessories, setAccesories] = useState<Product[]>([]);
+  const [accessories, setAccessories] = useState<ProductType[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemsPerPage, setItemsPerPage] = useState<number>(4);
   const [totalItems, setTotalItems] = useState<number>(0);
-  const [accessoriesToRender, setAccessoriesToRender] = useState<Product[]>([]);
+  const [sortingOption, setSortingOption] =
+    useState<SortingField>('Alphabetically');
+  const [accessoriesToRender, setAccessoriesToRender] = useState<ProductType[]>(
+    [],
+  );
 
   const perPageOptions = [4, 8, 16];
 
@@ -28,21 +34,40 @@ const Accessories: React.FC = () => {
     setCurrentPage(1);
   };
 
-  function getAccessories() {
-    getAllProducts('accessories').then((receivedAccessories: Product[]) => {
-      setAccesories(receivedAccessories);
-      setTotalItems(receivedAccessories.length);
-    });
+  function sortProducts(products: ProductType[], sortingField: SortingField) {
+    switch (sortingField) {
+      case 'Newest':
+        products.sort((product1, product2) => product2.year - product1.year);
+        break;
+      case 'Cheapest':
+        products.sort((product1, product2) => product1.price - product2.price);
+        break;
+      default:
+        products.sort((product1, product2) =>
+          product1.name.localeCompare(product2.name),
+        );
+        break;
+    }
   }
 
   useEffect(() => {
-    getAccessories();
-  }, []);
+    getCompleteListOfProducts('products').then(
+      (receivedListOfProducts: ProductType[]) => {
+        const receivedaccessories = receivedListOfProducts.filter(
+          product => product.category === 'accessories',
+        );
+
+        sortProducts(receivedaccessories, sortingOption);
+
+        setAccessories(receivedaccessories);
+        setTotalItems(receivedaccessories.length);
+      },
+    );
+  }, [sortingOption]);
 
   useEffect(() => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
-
     const accessoriesToRenderSubset = accessories.slice(startIndex, endIndex);
 
     setAccessoriesToRender(accessoriesToRenderSubset);
@@ -64,18 +89,27 @@ const Accessories: React.FC = () => {
               alt="Slider"
             />
           </div>
-          <h4 className="accessories__top--search-params__name">Accessories</h4>
+          <h4 className="accessories__top--search-params__name">accessories</h4>
         </div>
         <h1>Accessories</h1>
-        <p>95 models</p>
+        <p>{totalItems} models</p>
       </section>
 
       <section className="accessories__main">
         <div className="accessories__main__sorting-by">
           <label htmlFor="sortingBy">Sort by</label>
-          <select id="sortingBy">
+          <select
+            id="sortingBy"
+            onChange={e => setSortingOption(e.target.value as SortingField)}
+          >
             <option className="accessories__main__sorting-by__option">
-              All
+              Alphabetically
+            </option>
+            <option className="accessories__main__sorting-by__option">
+              Newest
+            </option>
+            <option className="accessories__main__sorting-by__option">
+              Cheapest
             </option>
           </select>
         </div>
@@ -103,10 +137,10 @@ const Accessories: React.FC = () => {
         {accessoriesToRender.map((accessory, index) => (
           <li key={index}>
             <ProductCard
-              productImg={accessory.images[0]}
+              productImg={accessory.image}
               productName={accessory.name}
-              price={accessory.priceRegular}
-              discountPrice={accessory.priceDiscount}
+              price={accessory.fullPrice}
+              discountPrice={accessory.price}
               screen={accessory.screen}
               capacity={accessory.capacity}
               ram={accessory.ram}

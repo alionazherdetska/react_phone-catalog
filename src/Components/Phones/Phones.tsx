@@ -4,19 +4,18 @@ import home_icon from '../../assets/icons/home.svg';
 import gray_slider_left from '../../assets/icons/slider_gray_left.svg';
 import { getCompleteListOfProducts } from '../../services/fetchClients';
 import { Pagination } from '../Pagination';
-import { GeneralTypeOfProduct } from '../../types/types';
+import { ProductType } from '../../types/types';
 
-type SortingField = 'age' | 'name' | 'price';
+type SortingField = 'Alphabetically' | 'Cheapest' | 'Newest';
 
 const Phones: React.FC = () => {
-  const [phones, setPhones] = useState<GeneralTypeOfProduct[]>([]);
+  const [phones, setPhones] = useState<ProductType[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemsPerPage, setItemsPerPage] = useState<number>(4);
   const [totalItems, setTotalItems] = useState<number>(0);
-  const [sortingOption, setSortingOption] = useState<SortingField>('name');
-  const [phonesToRender, setPhonesToRender] = useState<GeneralTypeOfProduct[]>(
-    [],
-  );
+  const [sortingOption, setSortingOption] =
+    useState<SortingField>('Alphabetically');
+  const [phonesToRender, setPhonesToRender] = useState<ProductType[]>([]);
 
   const perPageOptions = [4, 8, 16];
 
@@ -33,15 +32,12 @@ const Phones: React.FC = () => {
     setCurrentPage(1);
   };
 
-  function sortProducts(
-    products: GeneralTypeOfProduct[],
-    sortingField: SortingField,
-  ) {
+  function sortProducts(products: ProductType[], sortingField: SortingField) {
     switch (sortingField) {
-      case 'age':
-        products.sort((product1, product2) => product1.year - product2.year);
+      case 'Newest':
+        products.sort((product1, product2) => product2.year - product1.year);
         break;
-      case 'price':
+      case 'Cheapest':
         products.sort((product1, product2) => product1.price - product2.price);
         break;
       default:
@@ -54,17 +50,15 @@ const Phones: React.FC = () => {
 
   useEffect(() => {
     getCompleteListOfProducts('products').then(
-      (receivedListOfProducts: GeneralTypeOfProduct[]) => {
+      (receivedListOfProducts: ProductType[]) => {
         const receivedPhones = receivedListOfProducts.filter(
           product => product.category === 'phones',
         );
 
-        const sortedList = [...receivedPhones];
+        sortProducts(receivedPhones, sortingOption);
 
-        sortProducts(sortedList, sortingOption);
-
-        setPhones(sortedList);
-        setTotalItems(sortedList.length);
+        setPhones(receivedPhones);
+        setTotalItems(receivedPhones.length);
       },
     );
   }, [sortingOption]);

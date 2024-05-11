@@ -13,9 +13,9 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({
   productName,
-  price,
+  // price,
   productImg,
-  // discountPrice,
+  discountPrice,
   screen,
   capacity,
   ram,
@@ -25,7 +25,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
       <section className="product__card--top">
         <img className="product__card--top--img" src={productImg} />
         <h3 className="product__card--top--name">{productName}</h3>
-        <span className="product__card--top--price">${price}</span>
+        <span className="product__card--top--price">${discountPrice}</span>
       </section>
 
       <section className="product__card--bottom">

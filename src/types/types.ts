@@ -23,7 +23,7 @@ export type Product = {
   cell: string[];
 };
 
-export type GeneralTypeOfProduct = {
+export type ProductType = {
   id: number;
   category: string;
   itemId: string;

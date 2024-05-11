@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
-// import ProductCard from '../ProductCard/ProductCard';
 import { Slider } from '../Slider';
 
 import gray_slider_right from '../../assets/icons/slider_gray_right.svg';
@@ -13,10 +12,16 @@ import banner_tablet1 from './../../assets/icons/banner_tablet1.png';
 import banner_tablet2 from './../../assets/icons/banner_tablet2.png';
 import banner_tablet3 from './../../assets/icons/banner_tablet3.png';
 import accessory_category from './../../assets/icons/category-accessories.png';
+import { ProductType } from '../../types/types';
+import { getCompleteListOfProducts } from '../../services/fetchClients';
+import { ProductCard } from '../ProductCard';
 
 const HomePage: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [homeBanner, setHomeBanner] = useState(phone_banner1);
+  const [sliceStart, setSliceStart] = useState<number>(0);
+  const [sliceEnd, setSliceEnd] = useState<number>(4);
+  const [listOfProducts, setListOfProducts] = useState<ProductType[]>([]);
 
   const changeImage = (photo: File) => {
     setHomeBanner(photo);
@@ -40,6 +45,24 @@ const HomePage: React.FC = () => {
 
       return newIndex;
     });
+  };
+
+  useEffect(() => {
+    getCompleteListOfProducts('products').then(
+      (receivedListOfProducts: ProductType[]) => {
+        setListOfProducts(receivedListOfProducts);
+      },
+    );
+  }, []);
+
+  const handleLeftSliceChange = () => {
+    setSliceStart(prevStart => prevStart - 1);
+    setSliceEnd(prevEnd => prevEnd - 1);
+  };
+
+  const handleRightSliceChange = () => {
+    setSliceStart(prevStart => prevStart + 1);
+    setSliceEnd(prevEnd => prevEnd + 1);
   };
 
   return (
@@ -114,23 +137,29 @@ const HomePage: React.FC = () => {
       <>
         <section className="home__new__models">
           <h2 className="home__new__models--title">Brand new models</h2>
-          <Slider />
+          <Slider
+            handleLeftSlide={handleLeftSliceChange}
+            handleRightSlide={handleRightSliceChange}
+          />
         </section>
         <div className="home__product-card__scroll">
-          {/* <ul className="home__product-card__scroll__content">
-            <li>
-              <ProductCard />
-            </li>
-            <li>
-              <ProductCard />
-            </li>
-            <li>
-              <ProductCard />
-            </li>
-            <li>
-              <ProductCard />
-            </li>
-          </ul> */}
+          <ul className="home__product-card__scroll__content">
+            {listOfProducts
+              .sort((product1, product2) => product1.year - product2.year)
+              .slice(sliceStart, sliceEnd)
+              .map((product, index) => (
+                <ProductCard
+                  key={index}
+                  productImg={product.image}
+                  productName={product.name}
+                  price={product.fullPrice}
+                  discountPrice={product.price}
+                  screen={product.screen}
+                  capacity={product.capacity}
+                  ram={product.ram}
+                />
+              ))}
+          </ul>
         </div>
 
         <section className="home__categories">
@@ -177,23 +206,29 @@ const HomePage: React.FC = () => {
 
         <section className="home__hot--prices">
           <h2 className="home__hot--prices--title">Hot prices</h2>
-          <Slider />
+          <Slider
+            handleLeftSlide={handleLeftSliceChange}
+            handleRightSlide={handleRightSliceChange}
+          />
         </section>
         <div className="home__product-card__scroll">
-          {/* <ul className="home__product-card__scroll__content">
-            <li>
-              <ProductCard />
-            </li>
-            <li>
-              <ProductCard />
-            </li>
-            <li>
-              <ProductCard />
-            </li>
-            <li>
-              <ProductCard />
-            </li>
-          </ul> */}
+          <ul className="home__product-card__scroll__content">
+            {listOfProducts
+              .sort((product1, product2) => product1.price - product2.price)
+              .slice(sliceStart, sliceEnd)
+              .map((product, index) => (
+                <ProductCard
+                  key={index}
+                  productImg={product.image}
+                  productName={product.name}
+                  price={product.fullPrice}
+                  discountPrice={product.price}
+                  screen={product.screen}
+                  capacity={product.capacity}
+                  ram={product.ram}
+                />
+              ))}
+          </ul>
         </div>
       </>
     </div>

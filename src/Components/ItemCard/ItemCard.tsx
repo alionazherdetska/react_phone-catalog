@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 
-import { Slider } from '../Slider';
+// import { Slider } from '../Slider';
 
 import home_icon from '../../assets/icons/home.svg';
 import heart_icon from '../../assets/icons/heart.svg';
@@ -270,7 +270,7 @@ const ItemCard: React.FC = () => {
 
         <div className="item-card__about__suggestions">
           <h2>You may also like</h2>
-          <Slider />
+          {/* <Slider /> */}
         </div>
       </div>
 
