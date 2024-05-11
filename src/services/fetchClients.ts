@@ -2,8 +2,8 @@
 
 import { GeneralTypeOfProduct, Product } from '../types/types';
 
-// const BASE_URL = '/react_phone-catalog/api';
-const BASE_URL = '/api';
+const BASE_URL = '/react_phone-catalog/api';
+// const BASE_URL = '/api';
 
 // returns a promise resolved after a given delay
 function wait(delay: number) {
