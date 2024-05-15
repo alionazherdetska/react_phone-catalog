@@ -3,6 +3,7 @@
 .footer {
   grid-column: span 4;
   margin: 56px 0 0;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -14,14 +15,14 @@
   @include on-tablet {
     gap: 0;
     grid-column: span 12;
-    padding: 32px $padding-inline-tablet;
+    padding: 0 $padding-inline-tablet;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
   }
 
   @include on-desktop {
-    padding: $padding-inline-desktop;
+    padding: 0 $padding-inline-desktop;
   }
 
   &__img {
@@ -32,6 +33,7 @@
   &__links {
     display: flex;
     flex-direction: column;
+    height: 100%;
     gap: 16px;
     margin: 0;
     padding: 0;
@@ -58,6 +60,19 @@
     @include on-desktop {
       gap: 107px;
     }
+
+    &__li {
+      height: 100%;
+      padding: 0;
+
+      @include on-tablet {
+        padding: 32px 0;
+      }
+      &:hover {
+        color: $gray-dark;
+        cursor: pointer;
+      }
+    }
   }
 
   &__back--to--top {
@@ -67,6 +82,7 @@
     justify-content: center;
     align-items: center;
     gap: 16px;
+    cursor: pointer;
 
     color: $gray-light;
 
@@ -80,11 +96,25 @@
       width: auto;
     }
 
+    &:hover {
+      color: $gray-dark;
+    }
+
     &__layout {
       border-radius: 48px;
+      background-image: url(../../assets/icons/slider_gray_left.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      cursor: pointer;
       border: 1px solid $border-color;
       width: 30px;
       height: 30px;
+      transform: rotate(90deg);
+
+      &:hover {
+        border: 1px solid black;
+        background-image: url(../../assets/icons/slider_black_left.svg);
+      }
 
       display: flex;
       justify-content: center;

@@ -391,6 +391,10 @@
       &--specific {
         display: flex;
         justify-content: space-between;
+
+        &__cell {
+          display: flex;
+        }
       }
 
       & p {

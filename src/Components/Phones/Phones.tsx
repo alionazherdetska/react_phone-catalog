@@ -130,6 +130,7 @@ const Phones: React.FC = () => {
         {phonesToRender.map((phone, index) => (
           <li key={index}>
             <ProductCard
+              itemId={phone.itemId}
               productImg={phone.image}
               productName={phone.name}
               price={phone.fullPrice}

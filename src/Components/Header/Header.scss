@@ -3,7 +3,7 @@
 .header {
   grid-column: span 4;
   width: 100%;
-  padding: 14px $padding-inline-phone;
+  padding: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,8 +27,7 @@
 
     &__like,
     &__cart {
-      width: 48px;
-      height: 49px;
+      padding: 16px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -61,7 +60,7 @@
       }
     }
   }
-  
+
   &--menu,
   &--logo {
     margin: 0;
@@ -74,7 +73,23 @@
     }
   }
 
+  &--logo {
+    padding-left: 16px;
+  }
+
   &--menu {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid $shadow;
+    position: relative;
+    padding: 16px;
+    border-bottom: 2px solid transparent;
+    &:hover {
+      border-bottom: 2px solid $gray-dark;
+    }
+
     @include on-tablet {
       display: none;
     }

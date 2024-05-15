@@ -89,7 +89,7 @@ const Accessories: React.FC = () => {
               alt="Slider"
             />
           </div>
-          <h4 className="accessories__top--search-params__name">accessories</h4>
+          <h4 className="accessories__top--search-params__name">Accessories</h4>
         </div>
         <h1>Accessories</h1>
         <p>{totalItems} models</p>
@@ -137,6 +137,7 @@ const Accessories: React.FC = () => {
         {accessoriesToRender.map((accessory, index) => (
           <li key={index}>
             <ProductCard
+              itemId={accessory.itemId}
               productImg={accessory.image}
               productName={accessory.name}
               price={accessory.fullPrice}

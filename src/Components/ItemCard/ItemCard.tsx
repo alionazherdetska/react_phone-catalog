@@ -1,28 +1,108 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
-
-// import { Slider } from '../Slider';
 
 import home_icon from '../../assets/icons/home.svg';
 import heart_icon from '../../assets/icons/heart.svg';
 import gray_slider_right from '../../assets/icons/slider_gray_right.svg';
 import gray_slider_left from '../../assets/icons/slider_gray_left.svg';
 import black_slider_left from '../../assets/icons/slider_black_left.svg';
-import banner_photo from '../../assets/layout/iphone11pro_1.png';
-import small_photo_2 from '../../assets/layout/iphone11pro_2.png';
-import small_photo_3 from '../../assets/layout/iphone11pro_3.png';
-import small_photo_4 from '../../assets/layout/iphone11pro_4.png';
-import small_photo_5 from '../../assets/layout/iphone11pro_5.png';
-import terracota from '../../assets/layout/colors/terracota.svg';
-import slate_gray from '../../assets/layout/colors/slate_gray.svg';
-import dark_gray from '../../assets/layout/colors/dark_gray.svg';
-import light_gray from '../../assets/layout/colors/light_gray.svg';
+
+import { useParams } from 'react-router-dom';
+import { Product, ProductType } from '../../types/types';
+import { getCertainProduct } from '../../services/fetchClients';
+import { getCompleteListOfProducts } from '../../services/fetchClients';
+import { getColorImage } from '../../services/colorImports';
+import { ProductCard } from '../ProductCard';
+import { Slider } from '../Slider';
 
 const ItemCard: React.FC = () => {
-  const [bannerPhoto, setBannerPhoto] = useState(banner_photo);
+  const [item, setItem] = useState<Product | null>(null);
+  const [bannerPhoto, setBannerPhoto] = useState(item?.images[0]);
+  const [singleProductId, setSingleProductId] = useState<string>('');
+  const [activeCapacity, setActiveCapacity] = useState<string | null>(null);
+  const [listOfProducts, setListOfProducts] = useState<ProductType[]>([]);
+  const [sliceStart, setSliceStart] = useState<number>(0);
+  const [sliceEnd, setSliceEnd] = useState<number>(4);
+  const { itemId } = useParams<{ itemId: string }>();
 
-  const handleImageChange = (newBannerPhoto: File) => {
+  const generateRandomId = () => {
+    const randomNumber = Math.floor(Math.random() * 1000000);
+
+    return randomNumber.toString();
+  };
+
+  useEffect(() => {
+    const randomId = generateRandomId();
+
+    setSingleProductId(randomId);
+  }, []);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const phonesProducts: Product[] = await getCertainProduct('phones');
+        const phonesItem = phonesProducts.find(
+          product => product.id === itemId,
+        );
+
+        if (phonesItem) {
+          setItem(phonesItem);
+          setBannerPhoto(phonesItem.images[0]);
+
+          return;
+        }
+
+        const accessoriesProducts: Product[] =
+          await getCertainProduct('accessories');
+        const accessoriesItem = accessoriesProducts.find(
+          product => product.id === itemId,
+        );
+
+        if (accessoriesItem) {
+          setItem(accessoriesItem);
+          setBannerPhoto(accessoriesItem.images[0]);
+
+          return;
+        }
+
+        const tabletsProducts: Product[] = await getCertainProduct('tablets');
+        const tabletsItem = tabletsProducts.find(
+          product => product.id === itemId,
+        );
+
+        if (tabletsItem) {
+          setItem(tabletsItem);
+          setBannerPhoto(tabletsItem.images[0]);
+        }
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error('Error fetching products:', error);
+      }
+    };
+
+    fetchProducts();
+  }, [itemId]);
+
+  useEffect(() => {
+    getCompleteListOfProducts('products').then(
+      (receivedListOfProducts: ProductType[]) => {
+        setListOfProducts(receivedListOfProducts);
+      },
+    );
+  }, []);
+
+  const handleImageChange = (newBannerPhoto: string) => {
     setBannerPhoto(newBannerPhoto);
+  };
+
+  const handleLeftSliceChange = () => {
+    setSliceStart(prevStart => prevStart - 1);
+    setSliceEnd(prevEnd => prevEnd - 1);
+  };
+
+  const handleRightSliceChange = () => {
+    setSliceStart(prevStart => prevStart + 1);
+    setSliceEnd(prevEnd => prevEnd + 1);
   };
 
   return (
@@ -42,14 +122,16 @@ const ItemCard: React.FC = () => {
             />
           </div>
 
-          <h4 className="item-card__top--search-params__name">Phones</h4>
+          <h4 className="item-card__top--search-params__name">
+            {item?.category}
+          </h4>
           <img
             src={gray_slider_right}
             className="item-card__top--search-params__icons-slider"
             alt="Slider"
           />
           <h4 className="item-card__top--search-params__name--exact">
-            Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
+            {item?.name}
           </h4>
         </div>
 
@@ -61,94 +143,71 @@ const ItemCard: React.FC = () => {
           />
           <h4 className="item-card__top--search-params__back__name">Back</h4>
         </div>
-        <h1>Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)</h1>
+        <h1>{item?.name}</h1>
       </section>
 
       <main className="item-card__main">
         <div className="item-card__main__imgs">
           <div className="item-card__main__imgs__front-img">
-            <img src={bannerPhoto} alt="Iphone" />
+            <img src={bannerPhoto} alt={`${item?.category} image`} />
           </div>
 
           <div className="item-card__main__imgs__bottom-imgs">
-            <img
-              src={banner_photo}
-              className={classNames({
-                'is-active': bannerPhoto === banner_photo,
-              })}
-              onClick={() => handleImageChange(banner_photo)}
-              alt="Iphone"
-            />
-
-            <img
-              src={small_photo_2}
-              className={classNames({
-                'is-active': bannerPhoto === small_photo_2,
-              })}
-              onClick={() => handleImageChange(small_photo_2)}
-              alt="Iphone"
-            />
-
-            <img
-              src={small_photo_3}
-              className={classNames({
-                'is-active': bannerPhoto === small_photo_3,
-              })}
-              onClick={() => handleImageChange(small_photo_3)}
-              alt="Iphone"
-            />
-
-            <img
-              className={classNames({
-                'is-active': bannerPhoto === small_photo_4,
-              })}
-              onClick={() => handleImageChange(small_photo_4)}
-              src={small_photo_4}
-              alt="Iphone"
-            />
-
-            <img
-              className={classNames({
-                'is-active': bannerPhoto === small_photo_5,
-              })}
-              onClick={() => handleImageChange(small_photo_5)}
-              src={small_photo_5}
-              alt="Iphone"
-            />
+            {item?.images.map((image, index) => (
+              <img
+                key={index}
+                src={image}
+                className={classNames({
+                  'is-active': bannerPhoto === image,
+                })}
+                onClick={() => handleImageChange(image)}
+                alt={`Image ${index}`}
+              />
+            ))}
           </div>
         </div>
 
         <div className="item-card__main__info">
           <div className="item-card__main__info__colors-label">
             <p>Available colors</p>
-            <p>ID: 802390</p>
+            <p>ID: {singleProductId}</p>
           </div>
           <div className="item-card__main__info__actual-colors">
-            <img src={terracota} alt="Terracota color" />
-            <img src={slate_gray} alt="Slate gray color" />
-            <img src={dark_gray} alt="Dark gray color" />
-            <img src={light_gray} alt="Light gray color" />
+            {item?.colorsAvailable.map((color, index) => (
+              <img
+                key={index}
+                src={getColorImage(color)}
+                alt={`${color} color`}
+              />
+            ))}
           </div>
 
           <div className="item-card__main__info__capacity">
             <p>Select capacity</p>
           </div>
           <div className="item-card__main__info__capacity-options">
-            <button className="item-card__main__info__capacity-options-active">
-              64 GB
-            </button>
-            <button className="item-card__main__info__capacity-options-passive">
-              256 GB
-            </button>
-            <button className="item-card__main__info__capacity-options-passive">
-              512 GB
-            </button>
+            {item?.capacityAvailable.map((capacity, index) => (
+              <button
+                key={index}
+                className={classNames({
+                  'item-card__main__info__capacity-options-active':
+                    capacity === activeCapacity,
+                  'item-card__main__info__capacity-options-passive':
+                    capacity !== activeCapacity,
+                })}
+                onClick={() => setActiveCapacity(capacity)}
+              >
+                {capacity}
+              </button>
+            ))}
           </div>
 
           <div className="item-card__main__info__price">
-            <span className="item-card__main__info__price--discount">$799</span>
+            <span className="item-card__main__info__price--discount">
+              ${item?.priceDiscount}
+            </span>
             <span className="item-card__main__info__price--original">
-              $1199
+              ${item?.priceRegular}
             </span>
           </div>
 
@@ -164,22 +223,22 @@ const ItemCard: React.FC = () => {
           <div className="item-card__main__info--properties">
             <div className="item-card__main__info--properties--specific">
               <p>Screen</p>
-              <span>6.5” OLED</span>
+              <span>{item?.screen}</span>
             </div>
 
             <div className="item-card__main__info--properties--specific">
               <p>Resolution</p>
-              <span>2688x1242</span>
+              <span>{item?.resolution}</span>
             </div>
 
             <div className="item-card__main__info--properties--specific">
               <p>Processor</p>
-              <span>Apple A12 Bionic</span>
+              <span>{item?.processor}</span>
             </div>
 
             <div className="item-card__main__info--properties--specific">
               <p>RAM</p>
-              <span>3 GB</span>
+              <span>{item?.ram}</span>
             </div>
           </div>
         </div>
@@ -188,39 +247,12 @@ const ItemCard: React.FC = () => {
       <div className="item-card__about">
         <div className="item-card__about__general">
           <h2>About</h2>
-          <h3>And then there was Pro</h3>
-          <p>
-            A transformative triple‑camera system that adds tons of capability
-            without complexity.
-          </p>
-          <br></br>
-          <p>
-            An unprecedented leap in battery life. And a mind‑blowing chip that
-            doubles down on machine learning and pushes the boundaries of what a
-            smartphone can do. Welcome to the first iPhone powerful enough to be
-            called Pro.
-          </p>
-          <h3>Camera</h3>
-          <p>
-            Meet the first triple‑camera system to combine cutting‑edge
-            technology with the legendary simplicity of iPhone. Capture up to
-            four times more scene. Get beautiful images in drastically lower
-            light. Shoot the highest‑quality video in a smartphone — then edit
-            with the same tools you love for photos. You’ve never shot with
-            anything like it.
-          </p>
-          <h3>
-            Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it.
-            Love it.
-          </h3>
-          <p>
-            iPhone 11 Pro lets you capture videos that are beautifully true to
-            life, with greater detail and smoother motion. Epic processing power
-            means it can shoot 4K video with extended dynamic range and
-            cinematic video stabilization — all at 60 fps. You get more creative
-            control, too, with four times more scene and powerful new editing
-            tools to play with.
-          </p>
+          <h3>{item?.description[0].title}</h3>
+          <p>{item?.description[0].text}</p>
+          <h3>{item?.description[1].title}</h3>
+          <p>{item?.description[1].text}</p>
+          <h3>{item?.description[2].title}</h3>
+          <p>{item?.description[2].text}</p>
         </div>
 
         <div className="item-card__about__tec-specs">
@@ -228,67 +260,81 @@ const ItemCard: React.FC = () => {
           <div className="item-card__about--properties">
             <div className="item-card__about--properties--specific">
               <p>Screen</p>
-              <span>6.5” OLED</span>
+              <span>{item?.screen}</span>
             </div>
 
             <div className="item-card__about--properties--specific">
               <p>Resolution</p>
-              <span>2688x1242</span>
+              <span>{item?.resolution}</span>
             </div>
 
             <div className="item-card__about--properties--specific">
               <p>Processor</p>
-              <span>Apple A12 Bionic</span>
+              <span>{item?.processor}</span>
             </div>
 
             <div className="item-card__about--properties--specific">
               <p>RAM</p>
-              <span>3 GB</span>
+              <span>{item?.ram}</span>
             </div>
 
             <div className="item-card__about--properties--specific">
               <p>Built in memory</p>
-              <span>64 GB</span>
+              <span>{item?.capacity}</span>
             </div>
 
             <div className="item-card__about--properties--specific">
               <p>Camera</p>
-              <span>12 Mp + 12 Mp + 12 Mp (Triple)</span>
+              <span>{item?.camera}</span>
             </div>
 
             <div className="item-card__about--properties--specific">
               <p>Zoom</p>
-              <span>Optical, 2x</span>
+              <span>{item?.zoom}</span>
             </div>
 
             <div className="item-card__about--properties--specific">
               <p>Cell</p>
-              <span>GSM, LTE, UMTS</span>
+              <div className="item-card__about--properties--specific__cell">
+                {item?.cell.map((cell, index) => (
+                  <span key={index}>
+                    {index !== 0 && ', '}
+                    {cell}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
 
         <div className="item-card__about__suggestions">
           <h2>You may also like</h2>
-          {/* <Slider /> */}
+          <Slider
+            handleLeftSlide={handleLeftSliceChange}
+            handleRightSlide={handleRightSliceChange}
+          />
         </div>
       </div>
 
       <div className="item-card__scroll">
-        {/* <ul className="item-card__scroll__content">
-          <li>
-            <ProductCard />
-          </li>
-          <li>
-            <ProductCard />
-          </li>
-          <li>
-            <ProductCard />
-          </li>
-          <li>
-            <ProductCard />
-          </li>
-        </ul> */}
+        <ul className="item-card__scroll__content">
+          {listOfProducts
+            .sort((product1, product2) => product1.year - product2.year)
+            .slice(sliceStart, sliceEnd)
+            .map((product, index) => (
+              <ProductCard
+                key={index}
+                productImg={product.image}
+                productName={product.name}
+                itemId={product.itemId}
+                price={product.fullPrice}
+                discountPrice={product.price}
+                screen={product.screen}
+                capacity={product.capacity}
+                ram={product.ram}
+              />
+            ))}
+        </ul>
       </div>
     </div>
   );

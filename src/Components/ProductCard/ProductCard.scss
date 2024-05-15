@@ -2,6 +2,7 @@
 @import '/src/styles/utils/variables';
 
 .product__card {
+  text-decoration: none;
   display: flex;
   flex-direction: column;
   margin: 0;

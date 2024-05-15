@@ -1,5 +1,6 @@
 import React from 'react';
 import heart_icon from '../../assets/icons/heart.svg';
+import { Link } from 'react-router-dom';
 
 interface ProductCardProps {
   productName: string;
@@ -8,12 +9,14 @@ interface ProductCardProps {
   screen: string;
   capacity: string;
   ram: string;
+  itemId: string;
   productImg: string;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
   productName,
   // price,
+  itemId,
   productImg,
   discountPrice,
   screen,
@@ -21,7 +24,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   ram,
 }) => {
   return (
-    <article className="product__card">
+    <Link to={`/item-card/${itemId}`} className="product__card">
       <section className="product__card--top">
         <img className="product__card--top--img" src={productImg} />
         <h3 className="product__card--top--name">{productName}</h3>
@@ -56,7 +59,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           </button>
         </div>
       </section>
-    </article>
+    </Link>
   );
 };
 

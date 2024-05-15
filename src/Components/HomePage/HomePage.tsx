@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { Slider } from '../Slider';
 
-import gray_slider_right from '../../assets/icons/slider_gray_right.svg';
 import phone_category from './../../assets/icons/category-phones.png';
 import tablet_category from './../../assets/icons/category-tablets.png';
 import phone_banner1 from './../../assets/icons/phone_banner1.jpg';
@@ -70,14 +69,10 @@ const HomePage: React.FC = () => {
       <div className="home__bottom">
         <h1 className="home__bottom--title">Welcome to Nice Gadgets store!</h1>
         <div className="home__bottom__slider">
-          <li className="home__bottom__slider-left">
-            <img
-              src={gray_slider_right}
-              onClick={() => moveSlide('left')}
-              alt="Slider to the left"
-            />
-          </li>
-
+          <li
+            className="home__bottom__slider-left"
+            onClick={() => moveSlide('left')}
+          ></li>
           <a className="home__bottom__slider__img" href="#">
             <img
               src={homeBanner}
@@ -104,13 +99,10 @@ const HomePage: React.FC = () => {
               />
             )}
           </a>
-          <li className="home__bottom__slider-right">
-            <img
-              onClick={() => moveSlide('right')}
-              src={gray_slider_right}
-              alt="Slider to the right"
-            />
-          </li>
+          <li
+            className="home__bottom__slider-right"
+            onClick={() => moveSlide('right')}
+          ></li>
         </div>
         <div className="home__bottom--slider">
           <div
@@ -152,6 +144,7 @@ const HomePage: React.FC = () => {
                   key={index}
                   productImg={product.image}
                   productName={product.name}
+                  itemId={product.itemId}
                   price={product.fullPrice}
                   discountPrice={product.price}
                   screen={product.screen}
@@ -219,6 +212,7 @@ const HomePage: React.FC = () => {
               .map((product, index) => (
                 <ProductCard
                   key={index}
+                  itemId={product.itemId}
                   productImg={product.image}
                   productName={product.name}
                   price={product.fullPrice}

@@ -87,7 +87,7 @@ const Tablets: React.FC = () => {
               alt="Slider"
             />
           </div>
-          <h4 className="tablets__top--search-params__name">tablets</h4>
+          <h4 className="tablets__top--search-params__name">Tablets</h4>
         </div>
         <h1>Tablets</h1>
         <p>{totalItems} models</p>
@@ -103,7 +103,9 @@ const Tablets: React.FC = () => {
             <option className="tablets__main__sorting-by__option">
               Alphabetically
             </option>
-            <option className="tablets__main__sorting-by__option">Newest</option>
+            <option className="tablets__main__sorting-by__option">
+              Newest
+            </option>
             <option className="tablets__main__sorting-by__option">
               Cheapest
             </option>
@@ -118,7 +120,10 @@ const Tablets: React.FC = () => {
             id="perPage"
           >
             {perPageOptions.map(option => (
-              <option key={option} className="tablets__main__sorting-by__option">
+              <option
+                key={option}
+                className="tablets__main__sorting-by__option"
+              >
                 {option}
               </option>
             ))}
@@ -130,6 +135,7 @@ const Tablets: React.FC = () => {
         {tabletsToRender.map((tablet, index) => (
           <li key={index}>
             <ProductCard
+              itemId={tablet.itemId}
               productImg={tablet.image}
               productName={tablet.name}
               price={tablet.fullPrice}

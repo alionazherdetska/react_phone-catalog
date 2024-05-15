@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { ProductType } from '../types/types';
+import { Product, ProductType } from '../types/types';
 
-const BASE_URL = '/react_phone-catalog/api';
-// const BASE_URL = '/api';
+// const BASE_URL = '/react_phone-catalog/api';
+const BASE_URL = '/api';
 
 // returns a promise resolved after a given delay
 function wait(delay: number) {
@@ -49,9 +49,9 @@ export const client = {
   delete: <T>(url: string) => request<T>(url, 'DELETE'),
 };
 
-// export const getAllProducts = (category: string) => {
-//   return client.get<Product[]>(`/${category}.json`);
-// };
+export const getCertainProduct = (category: string) => {
+  return client.get<Product[]>(`/${category}.json`);
+};
 
 export const getCompleteListOfProducts = (category: string) => {
   return client.get<ProductType[]>(`/${category}.json`);

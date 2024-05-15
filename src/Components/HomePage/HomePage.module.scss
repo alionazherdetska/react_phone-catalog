@@ -159,13 +159,20 @@
         display: none;
 
         @include on-tablet {
+          background-image: url(../../assets/icons/slider_gray_left.svg);
+          background-repeat: no-repeat;
+          background-position: center;
           cursor: pointer;
           display: flex;
           grid-column: 1/2;
           height: 100%;
           border-radius: 20px;
           border: 1px solid $border-color;
-          transform: rotate(180deg);
+
+          &:hover {
+            background-image: url(../../assets/icons/slider_black_left.svg);
+            border: 1px solid black;
+          }
         }
 
         @include on-wide-tablet {
@@ -183,6 +190,14 @@
           height: 100%;
           border-radius: 20px;
           border: 1px solid $border-color;
+          background-image: url(../../assets/icons/slider_gray_right.svg);
+          background-repeat: no-repeat;
+          background-position: center;
+
+          &:hover {
+            background-image: url(../../assets/icons/slider_black_right.svg);
+            border: 1px solid black;
+          }
         }
 
         @include on-wide-tablet {
