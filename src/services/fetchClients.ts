@@ -56,3 +56,7 @@ export const getCertainProduct = (category: string) => {
 export const getCompleteListOfProducts = (category: string) => {
   return client.get<ProductType[]>(`/${category}.json`);
 };
+
+export const updateJson = (category: string, data: any) => {
+  return client.patch<Product[]>(`/${category}.json`, data);
+};

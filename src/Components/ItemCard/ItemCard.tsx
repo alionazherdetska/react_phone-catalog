@@ -5,7 +5,6 @@ import home_icon from '../../assets/icons/home.svg';
 import heart_icon from '../../assets/icons/heart.svg';
 import gray_slider_right from '../../assets/icons/slider_gray_right.svg';
 import gray_slider_left from '../../assets/icons/slider_gray_left.svg';
-import black_slider_left from '../../assets/icons/slider_black_left.svg';
 
 import { useParams } from 'react-router-dom';
 import { Product, ProductType } from '../../types/types';
@@ -86,7 +85,11 @@ const ItemCard: React.FC = () => {
   useEffect(() => {
     getCompleteListOfProducts('products').then(
       (receivedListOfProducts: ProductType[]) => {
-        setListOfProducts(receivedListOfProducts);
+        setListOfProducts(
+          receivedListOfProducts.sort(
+            (product1, product2) => product2.year - product1.year,
+          ),
+        );
       },
     );
   }, []);
@@ -137,7 +140,7 @@ const ItemCard: React.FC = () => {
 
         <div className="item-card__top--search-params__back">
           <img
-            src={black_slider_left}
+            src={gray_slider_right}
             className="phones__top--search-params__icons-slider"
             alt="Slider"
           />

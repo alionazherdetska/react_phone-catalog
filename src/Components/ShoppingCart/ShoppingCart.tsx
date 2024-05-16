@@ -1,12 +1,29 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import minus from '../../assets/icons/minus.svg';
 import plus from '../../assets/icons/plus.svg';
 import close from '../../assets/icons/close.svg';
-import iphone_14Pro from '../../assets/layout/iphone_14.png';
 import gray_slider_right from '../../assets/icons/slider_gray_right.svg';
+import { getCompleteListOfProducts } from '../../services/fetchClients';
+import { ProductType } from '../../types/types';
+import { FavoritesCartContext } from '../../services/favoritesCartContext';
 
 const ShoppingCart: React.FC = () => {
+  const { cartItems } = useContext(FavoritesCartContext);
+  const [listOfCartItems, setListOfCartItems] = useState<ProductType[]>([]);
+
+  useEffect(() => {
+    getCompleteListOfProducts('products').then(
+      (receivedListOfProducts: ProductType[]) => {
+        setListOfCartItems(
+          receivedListOfProducts.filter(product =>
+            cartItems.includes(product.itemId.toString()),
+          ),
+        );
+      },
+    );
+  }, [cartItems]);
+
   return (
     <div className="shopping-cart" id="#cart">
       <section className="shopping-cart__top">
@@ -24,35 +41,35 @@ const ShoppingCart: React.FC = () => {
         <h1>Cart</h1>
       </section>
 
-      <article className="shopping-cart__element">
-        <div className="shopping-cart__element__top">
-          <div className="shopping-cart__element__top__close">
-            <img src={close} alt="Closing icon" />
-          </div>
-
-          <div className="shopping-cart__element__top__img">
-            <img src={iphone_14Pro} alt="Iphone 14 Pro" />
-          </div>
-
-          <div className="shopping-cart__element__top__name">
-            Apple iPhone 14 Pro 128GB Silver (MQ023)
-          </div>
-        </div>
-
-        <div className="shopping-cart__element__bottom">
-          <div className="shopping-cart__element__bottom__counter">
-            <div className="shopping-cart__element__bottom__counter__img">
-              <img src={minus} alt="Minus" />
+      {listOfCartItems.map(cartItem => (
+        <article className="shopping-cart__element" key={cartItem.id}>
+          <div className="shopping-cart__element__top">
+            <div className="shopping-cart__element__top__close">
+              <img src={close} alt="Closing icon" />
             </div>
-
-            <p>1</p>
-            <div className="shopping-cart__element__bottom__counter__img">
-              <img src={plus} alt="Plus" />
+            <div className="shopping-cart__element__top__img">
+              <img src={cartItem.image} alt={cartItem.name} />
+            </div>
+            <div className="shopping-cart__element__top__name">
+              {cartItem.name}
             </div>
           </div>
-          <div className="shopping-cart__element__bottom__price">$999</div>
-        </div>
-      </article>
+          <div className="shopping-cart__element__bottom">
+            <div className="shopping-cart__element__bottom__counter">
+              <div className="shopping-cart__element__bottom__counter__img">
+                <img src={minus} alt="Minus" />
+              </div>
+              <p>1</p>
+              <div className="shopping-cart__element__bottom__counter__img">
+                <img src={plus} alt="Plus" />
+              </div>
+            </div>
+            <div className="shopping-cart__element__bottom__price">
+              ${cartItem.price}
+            </div>
+          </div>
+        </article>
+      ))}
 
       <article className="shopping-cart__total">
         <div className="shopping-cart__total__top">

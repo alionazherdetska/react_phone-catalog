@@ -53,6 +53,10 @@
   margin: 0;
   border-radius: 48px;
   border: 1px solid $border-color;
+
+  &:hover {
+    border: 1px solid rgb(15, 15, 17);
+  }
 }
 
 @mixin properties {

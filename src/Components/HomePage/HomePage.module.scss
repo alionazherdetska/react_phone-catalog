@@ -4,16 +4,16 @@
   background-color: $main-background-color;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  padding: 0 16px;
+  padding: 0 16px 56px;
 
   @include on-tablet {
     grid-template-columns: repeat(12, 1fr);
-    padding: 0 24px;
+    padding: 0 24px 56px;
   }
 
   @include on-desktop {
     grid-template-columns: repeat(12, 1fr);
-    padding: 0 32px;
+    padding: 0 32px 56px;
   }
 
   &__product-card__scroll {

@@ -5,16 +5,12 @@
   grid-template-columns: repeat(4, 1fr);
   width: inherit;
   margin: 0;
-  padding: 0 $padding-inline-phone;
+  padding: 0 $padding-inline-phone 56px $padding-inline-phone;
   background-color: $main-background-color;
 
   @include on-tablet {
     grid-template-columns: repeat(12, 1fr);
-    padding: 0 $padding-inline-desktop;
-  }
-
-  @include on-tablet {
-    padding: 0 $padding-inline-desktop;
+    padding: 0 $padding-inline-desktop 56px $padding-inline-desktop;
   }
 
   &__top {

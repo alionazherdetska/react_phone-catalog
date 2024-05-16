@@ -7,16 +7,16 @@
   width: inherit;
   background: $main-background-color;
   margin: 0;
-  padding: 0 $padding-inline-phone;
+  padding: 0 $padding-inline-phone 56px $padding-inline-phone;
 
   @include on-tablet {
     grid-template-columns: repeat(12, 1fr);
-    padding: 0 $padding-inline-tablet;
+    padding: 0 $padding-inline-tablet 56px $padding-inline-tablet;
   }
 
   @include on-desktop {
     grid-template-columns: repeat(12, 1fr);
-    padding: 0 $padding-inline-desktop;
+    padding: 0 $padding-inline-desktop 56px $padding-inline-desktop;
   }
 
   &__top {
@@ -415,6 +415,9 @@
     }
 
     &__general {
+      @include on-desktop {
+        width: 100%;
+      }
       h2 {
         margin: 0;
         width: 100%;

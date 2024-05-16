@@ -1,16 +1,16 @@
 @import '/src/styles/utils/variables';
 
 .favorites {
-  padding: 0 $padding-inline-phone;
+  padding: 0 $padding-inline-phone 56px $padding-inline-phone;
   width: 100%;
   background: $main-background-color;
 
   @include on-tablet {
-    padding: 0 $padding-inline-tablet;
+    padding: 0 $padding-inline-tablet 56px $padding-inline-tablet;
   }
 
   @include on-desktop {
-    padding: 0 $padding-inline-desktop;
+    padding: 0 $padding-inline-desktop 56px $padding-inline-desktop;
   }
 
   &__top {
@@ -92,11 +92,17 @@
       }
     }
   }
+
   &__product-card {
+    grid-column: span 4;
     display: grid;
     gap: 40px;
     height: auto;
     margin: 0;
+
+    @include on-tablet {
+      grid-column: span 12;
+    }
 
     & li {
       list-style: none;

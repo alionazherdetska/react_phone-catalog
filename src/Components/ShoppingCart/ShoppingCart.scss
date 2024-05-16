@@ -6,6 +6,7 @@
   grid-template-columns: repeat(4, 1fr);
   width: 100%;
   background: $main-background-color;
+  padding: 0 0 56px;
 
   @include on-tablet {
     grid-template-columns: repeat(12, 1fr);
@@ -73,7 +74,6 @@
   }
 
   &__element {
-    margin: 0 $padding-inline-phone;
     grid-column: span 4;
     padding: 16px;
     border-radius: 16px;
@@ -81,6 +81,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
+    margin: 16px $padding-inline-phone 0;
 
     border: 1px solid $shadow;
     background: $white;
@@ -129,12 +130,12 @@
       &__img {
         & img {
           height: 58px;
-          width: 99px;
+          width: 55px;
           aspect-ratio: 1/1;
 
           @include on-tablet {
-            height: 90px;
-            width: 140px;
+            height: 95px;
+            width: 76px;
           }
         }
       }
