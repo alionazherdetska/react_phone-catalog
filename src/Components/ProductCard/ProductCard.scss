@@ -122,32 +122,40 @@
     }
   }
 
-    &--actions {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      padding: 0 32px 32px;
-      gap: 8px;
-      justify-content: space-between;
+  &--actions {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 32px 32px;
+    gap: 8px;
+    justify-content: space-between;
 
-      &--add {
-        height: 40px;
-        cursor: pointer;
+    &--add {
+      height: 40px;
+      cursor: pointer;
 
-        @include button-style;
+      @include button-style;
 
-        &:hover {
-          box-shadow: 0 3px 13px 0 rgba(17, 23, 36, 0.4);
-        }
+      &--active {
+        box-sizing: border-box;
+        border: 1px solid rgb(226, 230, 233);
+        border-radius: 8px;
+        background-color: transparent;
+        color: rgb(248, 104, 0);
       }
+    }
 
-      &--like {
-        @include like-button-style;
+    &--like {
+      @include like-button-style;
 
-        cursor: pointer;
+      cursor: pointer;
 
-        width: 40px;
-        height: 40px;
+      width: 40px;
+      height: 40px;
+
+      &--active {
+        border: 1px solid rgb(226, 230, 233);
       }
     }
   }
+}

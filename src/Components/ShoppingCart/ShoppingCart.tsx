@@ -41,35 +41,37 @@ const ShoppingCart: React.FC = () => {
         <h1>Cart</h1>
       </section>
 
-      {listOfCartItems.map(cartItem => (
-        <article className="shopping-cart__element" key={cartItem.id}>
-          <div className="shopping-cart__element__top">
-            <div className="shopping-cart__element__top__close">
-              <img src={close} alt="Closing icon" />
-            </div>
-            <div className="shopping-cart__element__top__img">
-              <img src={cartItem.image} alt={cartItem.name} />
-            </div>
-            <div className="shopping-cart__element__top__name">
-              {cartItem.name}
-            </div>
-          </div>
-          <div className="shopping-cart__element__bottom">
-            <div className="shopping-cart__element__bottom__counter">
-              <div className="shopping-cart__element__bottom__counter__img">
-                <img src={minus} alt="Minus" />
+      <ul className="shopping-cart__left">
+        {listOfCartItems.map(cartItem => (
+          <article className="shopping-cart__left__element" key={cartItem.id}>
+            <div className="shopping-cart__left__element__top">
+              <div className="shopping-cart__left__element__top__close">
+                <img src={close} alt="Closing icon" />
               </div>
-              <p>1</p>
-              <div className="shopping-cart__element__bottom__counter__img">
-                <img src={plus} alt="Plus" />
+              <div className="shopping-cart__left__element__top__img">
+                <img src={cartItem.image} alt={cartItem.name} />
+              </div>
+              <div className="shopping-cart__left__element__top__name">
+                {cartItem.name}
               </div>
             </div>
-            <div className="shopping-cart__element__bottom__price">
-              ${cartItem.price}
+            <div className="shopping-cart__left__bottom">
+              <div className="shopping-cart__left__bottom__counter">
+                <div className="shopping-cart__left__bottom__counter__img">
+                  <img src={minus} alt="Minus" />
+                </div>
+                <p>1</p>
+                <div className="shopping-cart__left__bottom__counter__img">
+                  <img src={plus} alt="Plus" />
+                </div>
+              </div>
+              <div className="shopping-cart__left__bottom__price">
+                ${cartItem.price}
+              </div>
             </div>
-          </div>
-        </article>
-      ))}
+          </article>
+        ))}
+      </ul>
 
       <article className="shopping-cart__total">
         <div className="shopping-cart__total__top">

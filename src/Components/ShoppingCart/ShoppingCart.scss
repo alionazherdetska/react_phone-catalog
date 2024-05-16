@@ -73,69 +73,79 @@
     }
   }
 
-  &__element {
+  &__left {
     grid-column: span 4;
-    padding: 16px;
-    border-radius: 16px;
+    gap: 16px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
     margin: 16px $padding-inline-phone 0;
-
-    border: 1px solid $shadow;
-    background: $white;
+    padding: 0;
 
     @include on-tablet {
-      grid-column: span 12;
-      flex-direction: row;
-      align-items: center;
-      padding: 24px;
-      justify-content: space-between;
       margin: 32px $padding-inline-tablet 0;
+      grid-column: span 12;
     }
+
 
     @include on-desktop {
       grid-column: span 8;
     }
 
-    &__top {
+    &__element {
+      width: 100%;
+      padding: 16px;
+      border-radius: 16px;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 16px;
+      flex-direction: column;
+      align-items: flex-start;
+
+      border: 1px solid $shadow;
+      background: $white;
 
       @include on-tablet {
-        gap: 24px;
+        flex-direction: row;
+        align-items: center;
+        padding: 24px;
+        justify-content: space-between;
       }
 
-      &__close {
+      &__top {
         display: flex;
         justify-content: center;
         align-items: center;
-      }
+        gap: 16px;
 
-      &__name {
-        width: 100%;
-        color: $main-text-color;
-        font-family: inherit;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 21px;
-        display: flex;
-        flex-grow: 1;
-      }
+        @include on-tablet {
+          gap: 24px;
+        }
 
-      &__img {
-        & img {
-          height: 58px;
-          width: 55px;
-          aspect-ratio: 1/1;
+        &__close {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
 
-          @include on-tablet {
-            height: 95px;
-            width: 76px;
+        &__name {
+          width: 100%;
+          color: $main-text-color;
+          font-family: inherit;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 21px;
+          display: flex;
+          flex-grow: 1;
+        }
+
+        &__img {
+          & img {
+            height: 72px;
+            width: 65px;
+
+            @include on-tablet {
+              height: 80px;
+              width: 72px;
+            }
           }
         }
       }
@@ -190,6 +200,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
+    height: fit-content;
 
     border: 1px solid $shadow;
     background: $white;

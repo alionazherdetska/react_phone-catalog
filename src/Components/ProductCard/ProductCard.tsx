@@ -1,5 +1,8 @@
 import React, { useContext, useState } from 'react';
+import classNames from 'classnames';
+
 import heart_icon from '../../assets/icons/heart.svg';
+import heart_blue from '../../assets/icons/heart_blue.svg';
 import { Link } from 'react-router-dom';
 import { FavoritesCartContext } from '../../services/favoritesCartContext';
 
@@ -87,15 +90,22 @@ const ProductCard: React.FC<ProductCardProps> = ({
       </Link>
 
       <div className="product__card--actions">
-        <button onClick={toggleAdding} className="product__card--actions--add">
-          Add to cart
+        <button
+          onClick={toggleAdding}
+          className={classNames('product__card--actions--add', {
+            'product__card--actions--add--active': isAddedToCart,
+          })}
+        >
+          {isAddedToCart ? 'Selected' : 'Add to cart'}
         </button>
 
         <button
           onClick={toggleFavorite}
-          className="product__card--actions--like"
+          className={classNames('product__card--actions--like', {
+            'product__card--actions--like--active': isFavorited,
+          })}
         >
-          <img src={heart_icon} />
+          <img src={isFavorited ? heart_blue : heart_icon} />
         </button>
       </div>
     </article>
