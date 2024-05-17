@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.76c41cde.css",
-    "main.js": "./static/js/main.415b7344.js",
+    "main.css": "./static/css/main.8fb17cc8.css",
+    "main.js": "./static/js/main.2e702cae.js",
     "static/media/category-tablets.png": "./static/media/category-tablets.51782e18205a1ca01ce8.png",
     "static/media/banner_tablet2.png": "./static/media/banner_tablet2.92cb79ee6b10686e74b0.png",
     "static/media/banner_tablet3.png": "./static/media/banner_tablet3.f4d67f82f3c4c611b065.png",
@@ -27,6 +27,26 @@
     "static/media/slider_gray_left.svg": "./static/media/slider_gray_left.d191884d8d5611ac5f3ae84e69c0fbf9.svg",
     "static/media/minus.svg": "./static/media/minus.e021256f41036632d339c2684235dbfb.svg",
     "index.html": "./index.html",
+    "static/media/green_active.svg": "./static/media/green_active.dc000482aa9041e56abbd5f81f91ed11.svg",
+    "static/media/coral_active.svg": "./static/media/coral_active.003e1921761b15b3dcd20526623740ff.svg",
+    "static/media/gold_active.svg": "./static/media/gold_active.47d13879d184bc136d179dc75c2107a0.svg",
+    "static/media/graphite_active.svg": "./static/media/graphite_active.ac8ba3f5f9b406503f431518a91e9f7d.svg",
+    "static/media/midnight_active.svg": "./static/media/midnight_active.5057053d89eb1e17edbc0347207e1bed.svg",
+    "static/media/midnightgreen_active.svg": "./static/media/midnightgreen_active.286cf30c84d016de8d75c0255a429b02.svg",
+    "static/media/rosegold_active.svg": "./static/media/rosegold_active.65ce5d309642a503ad047ab8a652ddcc.svg",
+    "static/media/sierrablue_active.svg": "./static/media/sierrablue_active.1846313829644205662a63e489a9a37d.svg",
+    "static/media/silver_active.svg": "./static/media/silver_active.a1d4b070e605a8eda0456bc7f81bbe14.svg",
+    "static/media/sky-blue_active.svg": "./static/media/sky-blue_active.0391c66ef1f511c77b9469aea116722f.svg",
+    "static/media/spaceblack_active.svg": "./static/media/spaceblack_active.20a79aad10c9defa509af39ce5b15f3c.svg",
+    "static/media/spacegray_active.svg": "./static/media/spacegray_active.9e3dd6a1f4dea96da5713b980df40f4a.svg",
+    "static/media/starlight_active.svg": "./static/media/starlight_active.baac1041a4fbad52e45ef914fb834b64.svg",
+    "static/media/purple_active.svg": "./static/media/purple_active.a7e44bf3e7f2fc9f01fae1304cec936a.svg",
+    "static/media/yellow_active.svg": "./static/media/yellow_active.c2f456024a323195db6f4c77fdeb9abb.svg",
+    "static/media/black_active.svg": "./static/media/black_active.2a7b34430cfb0813efd60823f7487732.svg",
+    "static/media/white_active.svg": "./static/media/white_active.6ba9208c138746fceda8031039bd94f1.svg",
+    "static/media/blue_active.svg": "./static/media/blue_active.7b7a2e6c2f6085051716b7618e964efb.svg",
+    "static/media/pink_active.svg": "./static/media/pink_active.7318f2e67bbf2302a5f3ca818e5de8be.svg",
+    "static/media/red_active.svg": "./static/media/red_active.b78cc82610bd88e113b0b940baac85bb.svg",
     "static/media/green.svg": "./static/media/green.3f06b7cdf6cca448491d4cedb05e6a8a.svg",
     "static/media/coral.svg": "./static/media/coral.138bcb1ee78650ec19eba822ed3512da.svg",
     "static/media/gold.svg": "./static/media/gold.31da74915cf6bc62080d1631e897d4a4.svg",
@@ -47,11 +67,11 @@
     "static/media/blue.svg": "./static/media/blue.5486e6a6c3af7297a180e9dd6c9d72f1.svg",
     "static/media/pink.svg": "./static/media/pink.58093f7383208f5a927e84e55fd54009.svg",
     "static/media/red.svg": "./static/media/red.876dacaeb793a41a044004f944f7e45e.svg",
-    "main.76c41cde.css.map": "./static/css/main.76c41cde.css.map",
-    "main.415b7344.js.map": "./static/js/main.415b7344.js.map"
+    "main.8fb17cc8.css.map": "./static/css/main.8fb17cc8.css.map",
+    "main.2e702cae.js.map": "./static/js/main.2e702cae.js.map"
   },
   "entrypoints": [
-    "static/css/main.76c41cde.css",
-    "static/js/main.415b7344.js"
+    "static/css/main.8fb17cc8.css",
+    "static/js/main.2e702cae.js"
   ]
 }
