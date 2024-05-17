@@ -79,12 +79,15 @@
         font-style: normal;
         font-weight: 600;
       }
-
       &__icons {
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 8px;
+
+        & a {
+          text-decoration: none;
+        }
 
         &-slider {
           transform: rotate(180deg);

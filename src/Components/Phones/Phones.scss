@@ -61,7 +61,7 @@
     &--search-params {
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-end;
       gap: 8px;
 
       &__name {
@@ -70,6 +70,7 @@
         color: $gray-light;
         font-family: inherit;
         font-size: 12px;
+        line-height: 12px;
         font-style: normal;
         font-weight: 600;
       }
@@ -79,6 +80,7 @@
         justify-content: center;
         align-items: center;
         gap: 8px;
+        text-decoration: none;
 
         &-slider {
           transform: rotate(180deg);

@@ -5,6 +5,7 @@ import gray_slider_left from '../../assets/icons/slider_gray_left.svg';
 import { getCompleteListOfProducts } from '../../services/fetchClients';
 import { Pagination } from '../Pagination';
 import { ProductType } from '../../types/types';
+import { Link } from 'react-router-dom';
 
 type SortingField = 'Alphabetically' | 'Cheapest' | 'Newest';
 
@@ -77,18 +78,18 @@ const Accessories: React.FC = () => {
     <div className="accessories" id="#accessories">
       <section className="accessories__top">
         <div className="accessories__top--search-params">
-          <div className="accessories__top--search-params__icons">
+          <Link to="/" className="accessories__top--search-params__icons">
             <img
               src={home_icon}
               className="accessories__top--search-params__icons-home"
               alt="Home"
             />
-            <img
-              src={gray_slider_left}
-              className="accessories__top--search-params__icons-slider"
-              alt="Slider"
-            />
-          </div>
+          </Link>
+          <img
+            src={gray_slider_left}
+            className="accessories__top--search-params__icons-slider"
+            alt="Slider"
+          />
           <h4 className="accessories__top--search-params__name">Accessories</h4>
         </div>
         <h1>Accessories</h1>

@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 
 import home_icon from '../../assets/icons/home.svg';
+import heart_blue from '../../assets/icons/heart_blue.svg';
 import heart_icon from '../../assets/icons/heart.svg';
 import gray_slider_right from '../../assets/icons/slider_gray_right.svg';
 import gray_slider_left from '../../assets/icons/slider_gray_left.svg';
 
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Product, ProductType } from '../../types/types';
 import { getCertainProduct } from '../../services/fetchClients';
 import { getCompleteListOfProducts } from '../../services/fetchClients';
 import { getColorImage } from '../../services/colorImports';
 import { ProductCard } from '../ProductCard';
 import { Slider } from '../Slider';
+import { FavoritesCartContext } from '../../services/favoritesCartContext';
 
 const ItemCard: React.FC = () => {
   const [item, setItem] = useState<Product | null>(null);
@@ -23,6 +25,34 @@ const ItemCard: React.FC = () => {
   const [sliceStart, setSliceStart] = useState<number>(0);
   const [sliceEnd, setSliceEnd] = useState<number>(4);
   const { itemId } = useParams<{ itemId: string }>();
+  const {
+    favorites,
+    addToFavorites,
+    removeFromFavorites,
+    cartItems,
+    addToCart,
+    removeFromCart,
+  } = useContext(FavoritesCartContext);
+
+  const toggleFavorite = (id: string | undefined) => {
+    if (id) {
+      if (favorites.includes(id)) {
+        removeFromFavorites(id);
+      } else {
+        addToFavorites(id);
+      }
+    }
+  };
+
+  const toggleAdding = (id: string | undefined) => {
+    if (id) {
+      if (cartItems.includes(id)) {
+        removeFromCart(id);
+      } else {
+        addToCart(id);
+      }
+    }
+  };
 
   const generateRandomId = () => {
     const randomNumber = Math.floor(Math.random() * 1000000);
@@ -112,24 +142,24 @@ const ItemCard: React.FC = () => {
     <div className="item-card">
       <section className="item-card__top">
         <div className="item-card__top--search-params">
-          <div className="item-card__top--search-params__icons">
+          <Link to="/" className="item-card__top--search-params__icons">
             <img
               src={home_icon}
               className="item-card__top--search-params__icons-home"
               alt="Home"
             />
-            <img
-              src={gray_slider_left}
-              className="item-card__top--search-params__icons-slider"
-              alt="Slider"
-            />
-          </div>
+          </Link>
+          <img
+            src={gray_slider_left}
+            className="item-card__top--search-params__icons-slider"
+            alt="Slider"
+          />
 
           <h4 className="item-card__top--search-params__name">
             {item?.category}
           </h4>
           <img
-            src={gray_slider_right}
+            src={gray_slider_left}
             className="item-card__top--search-params__icons-slider"
             alt="Slider"
           />
@@ -215,11 +245,40 @@ const ItemCard: React.FC = () => {
           </div>
 
           <div className="item-card__main__info--bottom">
-            <button className="item-card__main__info--bottom--add">
-              Add to cart
+            <button
+              onClick={() => {
+                if (item?.id) {
+                  toggleAdding(item.id);
+                }
+              }}
+              className={classNames('item-card__main__info--bottom--add', {
+                'item-card__main__info--bottom--add__active':
+                  item?.id && cartItems.includes(item.id),
+              })}
+            >
+              {item?.id && cartItems.includes(item.id)
+                ? 'Selected'
+                : 'Add to cart'}
             </button>
-            <button className="item-card__main__info--bottom--like">
-              <img src={heart_icon} />
+
+            <button
+              onClick={() => {
+                if (item?.id) {
+                  toggleFavorite(item.id);
+                }
+              }}
+              className={classNames('item-card__main__info--bottom--like', {
+                'item-card__main__info--bottom--like--active':
+                  item?.id && favorites.includes(item.id),
+              })}
+            >
+              <img
+                src={
+                  item?.id && favorites.includes(item.id)
+                    ? heart_blue
+                    : heart_icon
+                }
+              />
             </button>
           </div>
 

@@ -5,6 +5,7 @@ import gray_slider_left from '../../assets/icons/slider_gray_left.svg';
 import { getCompleteListOfProducts } from '../../services/fetchClients';
 import { Pagination } from '../Pagination';
 import { ProductType } from '../../types/types';
+import { Link } from 'react-router-dom';
 
 type SortingField = 'Alphabetically' | 'Cheapest' | 'Newest';
 
@@ -75,18 +76,18 @@ const Tablets: React.FC = () => {
     <div className="tablets" id="#tablets">
       <section className="tablets__top">
         <div className="tablets__top--search-params">
-          <div className="tablets__top--search-params__icons">
+          <Link to="/" className="tablets__top--search-params__icons">
             <img
               src={home_icon}
               className="tablets__top--search-params__icons-home"
               alt="Home"
             />
-            <img
-              src={gray_slider_left}
-              className="tablets__top--search-params__icons-slider"
-              alt="Slider"
-            />
-          </div>
+          </Link>
+          <img
+            src={gray_slider_left}
+            className="tablets__top--search-params__icons-slider"
+            alt="Slider"
+          />
           <h4 className="tablets__top--search-params__name">Tablets</h4>
         </div>
         <h1>Tablets</h1>

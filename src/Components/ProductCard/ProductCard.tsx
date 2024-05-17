@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 
 import heart_icon from '../../assets/icons/heart.svg';
@@ -35,10 +35,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
     addToCart,
     removeFromCart,
   } = useContext(FavoritesCartContext);
-  const [isFavorited, setIsFavorited] = useState(favorites.includes(itemId));
-  const [isAddedToCart, setIsAddedToCart] = useState(
-    cartItems.includes(itemId),
-  );
+  const isFavorited = favorites.includes(itemId);
+  const isAddedToCart = cartItems.includes(itemId);
 
   const toggleFavorite = () => {
     if (isFavorited) {
@@ -46,8 +44,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
     } else {
       addToFavorites(itemId);
     }
-
-    setIsFavorited(!isFavorited);
   };
 
   const toggleAdding = () => {
@@ -56,8 +52,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
     } else {
       addToCart(itemId);
     }
-
-    setIsAddedToCart(!isAddedToCart);
   };
 
   return (
