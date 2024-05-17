@@ -15,7 +15,7 @@
 
   &__top {
     grid-column: span 4;
-    margin: 24px 0 0;
+    padding: 24px 0 0;
     width: inherit;
     display: flex;
     flex-direction: column;
@@ -28,7 +28,7 @@
 
     @include on-desktop {
       grid-column: span 12;
-      margin: 32px 0 0;
+      padding: 32px 0 0;
     }
 
     & h1 {

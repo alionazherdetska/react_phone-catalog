@@ -286,15 +286,19 @@ const ItemCard: React.FC = () => {
               <span>{item?.capacity}</span>
             </div>
 
-            <div className="item-card__about--properties--specific">
-              <p>Camera</p>
-              <span>{item?.camera}</span>
-            </div>
+            {item?.camera && item.camera !== '' && (
+              <div className="item-card__about--properties--specific">
+                <p>Camera</p>
+                <span>{item.camera}</span>
+              </div>
+            )}
 
-            <div className="item-card__about--properties--specific">
-              <p>Zoom</p>
-              <span>{item?.zoom}</span>
-            </div>
+            {item?.zoom && item.zoom !== '' && (
+              <div className="item-card__about--properties--specific">
+                <p>Zoom</p>
+                <span>{item.zoom}</span>
+              </div>
+            )}
 
             <div className="item-card__about--properties--specific">
               <p>Cell</p>
