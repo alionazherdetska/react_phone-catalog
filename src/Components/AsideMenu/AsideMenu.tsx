@@ -18,11 +18,7 @@ const AsideMenu: React.FC = () => {
           <img src={header_logo} alt="Nice Gadgets Logo" />
         </a>
 
-        <a
-          href="#"
-          className="aside-menu__header__close"
-          onClick={toggleClose}
-        >
+        <a href="#" className="aside-menu__header__close" onClick={toggleClose}>
           <img src={close} alt="Menu" />
         </a>
       </header>
