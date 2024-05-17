@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 
@@ -25,6 +26,8 @@ const ItemCard: React.FC = () => {
   const [sliceStart, setSliceStart] = useState<number>(0);
   const [sliceEnd, setSliceEnd] = useState<number>(4);
   const { itemId } = useParams<{ itemId: string }>();
+  const [activeColor, setActiveColor] = useState<string | null>(null);
+
   const {
     favorites,
     addToFavorites,
@@ -138,6 +141,43 @@ const ItemCard: React.FC = () => {
     setSliceEnd(prevEnd => prevEnd + 1);
   };
 
+  const handleColorChange = async (color: string) => {
+    setActiveColor(color);
+
+    // Replace the last part of the itemId with the new color
+    let newProductId = itemId;
+
+    // If the color is "rose gold" or "space gray", remove the space and hyphenate
+    if (color === 'rose gold' || color === 'space gray') {
+      newProductId = itemId?.replace(/-[^-]+$/, `-${color.replace(' ', '-')}`);
+    } else {
+      // For other colors, replace the last part with the new color
+      newProductId = itemId?.replace(/-[^-]+$/, `-${color}`);
+    }
+
+    try {
+      if (item?.category) {
+        // Fetch products from the same category
+        const products: Product[] = await getCertainProduct(item.category);
+        // Find the product with the new product ID
+        const newProduct = products.find(
+          product => product.id === newProductId,
+        );
+
+        if (newProduct) {
+          // Set the new product details
+          setItem(newProduct);
+          setBannerPhoto(newProduct.images[0]);
+          setActiveCapacity(newProduct.capacityAvailable[0]);
+        } else {
+          console.error('Product not found for the selected color.');
+        }
+      }
+    } catch (error) {
+      console.error('Error fetching product for the selected color:', error);
+    }
+  };
+
   return (
     <div className="item-card">
       <section className="item-card__top">
@@ -209,8 +249,12 @@ const ItemCard: React.FC = () => {
             {item?.colorsAvailable.map((color, index) => (
               <img
                 key={index}
-                src={getColorImage(color)}
+                src={getColorImage(color, activeColor === color)}
                 alt={`${color} color`}
+                className={classNames({
+                  'is-active': activeColor === color,
+                })}
+                onClick={() => handleColorChange(color)}
               />
             ))}
           </div>
