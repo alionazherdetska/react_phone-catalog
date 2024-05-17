@@ -12,47 +12,48 @@ const AsideMenu: React.FC = () => {
   };
 
   return (
-    <div className="aside-menu">
-      <header className="aside-menu__header">
-        <a href="#" className="aside-menu__header__logo">
-          <img src={header_logo} alt="Nice Gadgets Logo" />
-        </a>
-
-        <a href="#" className="aside-menu__header__close" onClick={toggleClose}>
-          <img src={close} alt="Menu" />
-        </a>
-      </header>
-
-      <nav className="aside-menu__nav">
-        <ul className="aside-menu__nav__list">
-          <a className="aside-menu__nav__list__link" href="#">
-            Home
+    <>
+      <div className="aside-menu">
+        <header className="aside-menu__header">
+          <a href="#" className="aside-menu__header__logo">
+            <img src={header_logo} alt="Nice Gadgets Logo" />
           </a>
 
-          <a className="aside-menu__nav__list__link" href="#phones">
-            Phones
+          <a href="#" className="aside-menu__header__close" onClick={toggleClose}>
+            <img src={close} alt="Menu" />
+          </a>
+        </header>
+
+        <nav className="aside-menu__nav">
+          <ul className="aside-menu__nav__list">
+            <a className="aside-menu__nav__list__link" href="#">
+              Home
+            </a>
+
+            <a className="aside-menu__nav__list__link" href="#phones">
+              Phones
+            </a>
+
+            <a className="aside-menu__nav__list__link" href="#tablets">
+              Tablets
+            </a>
+
+            <a className="aside-menu__nav__list__link" href="#accessories">
+              Accessories
+            </a>
+          </ul>
+        </nav>
+        <div className="aside-menu__bottom">
+          <a href="#favorites" className="aside-menu__bottom__like">
+            <img src={like} alt="Favorite" />
           </a>
 
-          <a className="aside-menu__nav__list__link" href="#tablets">
-            Tablets
+          <a href="#cart" className="aside-menu__bottom__cart">
+            <img src={cart} alt="Shopping cart" />
           </a>
-
-          <a className="aside-menu__nav__list__link" href="#accessories">
-            Accessories
-          </a>
-        </ul>
-      </nav>
-
-      <div className="aside-menu__bottom">
-        <a href="#favorites" className="aside-menu__bottom__like">
-          <img src={like} alt="Favorite" />
-        </a>
-
-        <a href="#cart" className="aside-menu__bottom__cart">
-          <img src={cart} alt="Shopping cart" />
-        </a>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

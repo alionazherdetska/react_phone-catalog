@@ -3,7 +3,7 @@
 .aside-menu {
   height: 100vh;
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto 1fr auto;
   box-sizing: border-box;
 
   &__bottom {
