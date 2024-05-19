@@ -148,7 +148,18 @@ const ItemCard: React.FC = () => {
     let newProductId = itemId;
 
     // If the color is "rose gold" or "space gray", remove the space and hyphenate
-    if (color === 'rose gold' || color === 'space gray') {
+    if (itemId?.includes('rose-gold')) {
+      newProductId = itemId?.replace('rose-gold', `${color.replace(' ', '-')}`);
+    } else if (itemId?.includes('space-gray')) {
+      newProductId = itemId?.replace(
+        'space-gray',
+        `${color.replace(' ', '-')}`,
+      );
+    } else if (
+      color === 'rose gold' ||
+      color === 'space gray' ||
+      color === 'sky blue'
+    ) {
       newProductId = itemId?.replace(/-[^-]+$/, `-${color.replace(' ', '-')}`);
     } else {
       // For other colors, replace the last part with the new color
