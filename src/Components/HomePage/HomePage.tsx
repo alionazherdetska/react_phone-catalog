@@ -41,6 +41,7 @@ const HomePage: React.FC = () => {
       }
 
       setHomeBanner(banners[newIndex]);
+
       return newIndex;
     });
   };
