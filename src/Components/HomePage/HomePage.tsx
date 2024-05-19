@@ -26,6 +26,8 @@ const HomePage: React.FC = () => {
 
   const touchStartX = useRef<number>(0);
   const touchEndX = useRef<number>(0);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const isUserInteracting = useRef<boolean>(false);
 
   const changeImage = (photo: string) => {
     setHomeBanner(photo);
@@ -43,16 +45,31 @@ const HomePage: React.FC = () => {
       }
 
       setHomeBanner(banners[newIndex]);
+
       return newIndex;
     });
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      moveSlide('right');
-    }, 4000);
+  const startAutoSlide = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
 
-    return () => clearInterval(interval);
+    intervalRef.current = setInterval(() => {
+      if (!isUserInteracting.current) {
+        moveSlide('right');
+      }
+    }, 5000);
+  };
+
+  useEffect(() => {
+    startAutoSlide();
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -74,6 +91,10 @@ const HomePage: React.FC = () => {
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
+    isUserInteracting.current = true;
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
     touchStartX.current = e.targetTouches[0].clientX;
   };
 
@@ -82,11 +103,25 @@ const HomePage: React.FC = () => {
   };
 
   const handleTouchEnd = () => {
+    isUserInteracting.current = false;
     if (touchStartX.current - touchEndX.current > 50) {
       moveSlide('right');
     } else if (touchStartX.current - touchEndX.current < -50) {
       moveSlide('left');
     }
+    startAutoSlide();
+  };
+
+  const handleMouseEnter = () => {
+    isUserInteracting.current = true;
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    isUserInteracting.current = false;
+    startAutoSlide();
   };
 
   return (
@@ -98,6 +133,8 @@ const HomePage: React.FC = () => {
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
           {windowWidth > 638 && (
             <li
