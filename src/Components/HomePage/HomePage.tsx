@@ -98,9 +98,9 @@ const HomePage: React.FC = () => {
   };
 
   const handleTouchEnd = () => {
-    if (touchStartX.current - touchEndX.current > 40) {
+    if (touchStartX.current - touchEndX.current > 50) {
       moveSlide('right');
-    } else if (touchStartX.current - touchEndX.current < -40) {
+    } else if (touchStartX.current - touchEndX.current < -50) {
       moveSlide('left');
     }
   };
@@ -110,9 +110,9 @@ const HomePage: React.FC = () => {
       <div className="home__bottom">
         <h1 className="home__bottom--title">Welcome to Nice Gadgets store!</h1>
         <div
+          onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
-          onTouchStart={handleTouchStart}
           className="home__bottom__slider"
         >
           <li
