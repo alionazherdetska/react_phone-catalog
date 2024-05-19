@@ -115,10 +115,10 @@ const HomePage: React.FC = () => {
           onTouchEnd={handleTouchEnd}
           className="home__bottom__slider"
         >
-          <li
+          {/* <li
             className="home__bottom__slider-left"
             onClick={() => moveSlide('left')}
-          ></li>
+          ></li> */}
           <a className="home__bottom__slider__img" href="#">
             <img
               src={homeBanner}
@@ -145,10 +145,10 @@ const HomePage: React.FC = () => {
               />
             )}
           </a>
-          <li
+          {/* <li
             className="home__bottom__slider-right"
             onClick={() => moveSlide('right')}
-          ></li>
+          ></li> */}
         </div>
         <div className="home__bottom--slider">
           <div
