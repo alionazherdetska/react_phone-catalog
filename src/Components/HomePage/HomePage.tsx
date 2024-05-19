@@ -95,6 +95,7 @@ const HomePage: React.FC = () => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
     }
+
     touchStartX.current = e.targetTouches[0].clientX;
   };
 
@@ -109,6 +110,7 @@ const HomePage: React.FC = () => {
     } else if (touchStartX.current - touchEndX.current < -50) {
       moveSlide('left');
     }
+
     startAutoSlide();
   };
 

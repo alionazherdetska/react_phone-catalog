@@ -4,9 +4,14 @@
 .shopping-cart {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  width: 100%;
   background: $main-background-color;
   padding: 0 0 56px;
+
+  &__active {
+    &__top {
+      display: none;
+    }
+  }
 
   @include on-tablet {
     grid-template-columns: repeat(12, 1fr);
@@ -102,6 +107,10 @@
       border: 1px solid $shadow;
       background: $white;
 
+      &__active {
+        display: none;
+      }
+
       @include on-tablet {
         flex-direction: row;
         align-items: center;
@@ -120,6 +129,8 @@
         }
 
         &__close {
+          background-color: transparent;
+          border: none;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -204,6 +215,10 @@
 
     border: 1px solid $shadow;
     background: $white;
+
+    &__active {
+      display: none;
+    }
 
     @include on-tablet {
       grid-column: span 12;

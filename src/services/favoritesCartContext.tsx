@@ -1,4 +1,4 @@
-import React, { ReactNode, createContext, useState } from 'react';
+import React, { ReactNode, createContext, useEffect, useState } from 'react';
 
 interface FavoritesCartContextType {
   favorites: string[];
@@ -23,6 +23,24 @@ export const FavoritesCartProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [favorites, setFavorites] = useState<string[]>([]);
   const [cartItems, setCartItems] = useState<string[]>([]);
+
+  useEffect(() => {
+    const savedFavorites = localStorage.getItem('favorites');
+    const savedCartItems = localStorage.getItem('cartItems');
+
+    if (savedFavorites) {
+      setFavorites(JSON.parse(savedFavorites));
+    }
+
+    if (savedCartItems) {
+      setCartItems(JSON.parse(savedCartItems));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [favorites, cartItems]);
 
   const addToFavorites = (itemId: string) => {
     setFavorites([...favorites, itemId]);

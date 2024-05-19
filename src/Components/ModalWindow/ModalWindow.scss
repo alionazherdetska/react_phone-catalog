@@ -1,0 +1,42 @@
+.modal {
+  position: fixed;
+  width: 92%;
+  top: 50%;
+  font-family: inherit;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 16px;
+  background-color: #fff;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  height: fit-content;
+  border: 1px solid $shadow;
+
+  &-content {
+    width: 100%;
+    & h2 {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    & p {
+      color: $gray-light;
+      margin: 10px 0;
+      font-family: inherit;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 21px;
+    }
+  }
+
+  & button {
+    @include button-style;
+    
+    width: 100%;
+    height: 48px;
+  }
+}

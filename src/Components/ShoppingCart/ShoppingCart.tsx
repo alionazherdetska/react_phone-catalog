@@ -7,10 +7,13 @@ import gray_slider_right from '../../assets/icons/slider_gray_right.svg';
 import { getCompleteListOfProducts } from '../../services/fetchClients';
 import { ProductType } from '../../types/types';
 import { FavoritesCartContext } from '../../services/favoritesCartContext';
+import ModalWindow from '../ModalWindow/ModalWindow';
+import classNames from 'classnames';
 
 const ShoppingCart: React.FC = () => {
-  const { cartItems } = useContext(FavoritesCartContext);
+  const { cartItems, removeFromCart } = useContext(FavoritesCartContext);
   const [listOfCartItems, setListOfCartItems] = useState<ProductType[]>([]);
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
     getCompleteListOfProducts('products').then(
@@ -24,8 +27,12 @@ const ShoppingCart: React.FC = () => {
     );
   }, [cartItems]);
 
+  const totalPrice = listOfCartItems.reduce((sum, item) => sum + item.price, 0);
+
   return (
     <div className="shopping-cart" id="#cart">
+      {modalIsOpen && <ModalWindow />}
+
       <section className="shopping-cart__top">
         <div className="shopping-cart__top--search-params">
           <div className="favorites__top--search-params__icons">
@@ -43,11 +50,19 @@ const ShoppingCart: React.FC = () => {
 
       <ul className="shopping-cart__left">
         {listOfCartItems.map(cartItem => (
-          <article className="shopping-cart__left__element" key={cartItem.id}>
+          <article
+            className={classNames('shopping-cart__left__element', {
+              'shopping-cart__left__element__active': modalIsOpen,
+            })}
+            key={cartItem.id}
+          >
             <div className="shopping-cart__left__element__top">
-              <div className="shopping-cart__left__element__top__close">
+              <button
+                onClick={() => removeFromCart(cartItem.itemId)}
+                className="shopping-cart__left__element__top__close"
+              >
                 <img src={close} alt="Closing icon" />
-              </div>
+              </button>
               <div className="shopping-cart__left__element__top__img">
                 <img src={cartItem.image} alt={cartItem.name} />
               </div>
@@ -73,16 +88,24 @@ const ShoppingCart: React.FC = () => {
         ))}
       </ul>
 
-      <article className="shopping-cart__total">
-        <div className="shopping-cart__total__top">
-          <h3 className="shopping-cart__total__top--price">$2657</h3>
-          <p>Total for 3 items</p>
-        </div>
+      {listOfCartItems.length > 0 && (
+        <article
+          className={classNames('shopping-cart__total', {
+            'shopping-cart__total__active': modalIsOpen,
+          })}
+        >
+          <div className="shopping-cart__total__top">
+            <h3 className="shopping-cart__total__top--price">${totalPrice}</h3>
+            <p>Total for {listOfCartItems.length} items</p>
+          </div>
 
-        <div className="shopping-cart__total__bottom">
-          <button>Checkout</button>
-        </div>
-      </article>
+          <div className="shopping-cart__total__bottom">
+            <button onClick={() => setModalIsOpen(!modalIsOpen)}>
+              Checkout
+            </button>
+          </div>
+        </article>
+      )}
     </div>
   );
 };

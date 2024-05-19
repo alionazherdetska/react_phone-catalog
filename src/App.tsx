@@ -10,11 +10,13 @@ import { AsideMenu } from './Components/AsideMenu';
 import { Tablets } from './Components/Tablets';
 import { Accessories } from './Components/Accessories';
 import { FavoritesCartProvider } from './services/favoritesCartContext';
+import ScrollToTop from './Components/ScrollToTop/ScrollToTop';
 
 export const App = () => {
   return (
     <FavoritesCartProvider>
       <Router>
+        <ScrollToTop />
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<HomePage />} />
