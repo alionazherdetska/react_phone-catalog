@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import classNames from 'classnames';
 import { Slider } from '../Slider';
 
@@ -18,33 +18,29 @@ import { ProductCard } from '../ProductCard';
 const HomePage: React.FC = () => {
   const banners = [phone_banner1, phone_banner2, phone_banner3];
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [homeBanner, setHomeBanner] = useState(phone_banner1);
+  const [homeBanner, setHomeBanner] = useState<string>(phone_banner1);
   const [sliceStart, setSliceStart] = useState<number>(0);
   const [sliceEnd, setSliceEnd] = useState<number>(4);
   const [listOfProducts, setListOfProducts] = useState<ProductType[]>([]);
   const touchStartX = useRef<number>(0);
   const touchEndX = useRef<number>(0);
 
-  const changeImage = (photo: File) => {
+  const changeImage = (photo: string) => {
     setHomeBanner(photo);
   };
 
   const moveSlide = (direction: 'left' | 'right') => {
     setCurrentIndex(prevIndex => {
       let newIndex = prevIndex;
-      const totalAmountOfSlides = 3;
+      const totalAmountOfSlides = banners.length;
 
-      switch (direction) {
-        case 'left':
-          newIndex = prevIndex === 0 ? totalAmountOfSlides - 1 : prevIndex - 1;
-          break;
-        case 'right':
-          newIndex = prevIndex === 2 ? 0 : prevIndex + 1;
-          break;
-        default:
-          break;
+      if (direction === 'left') {
+        newIndex = prevIndex === 0 ? totalAmountOfSlides - 1 : prevIndex - 1;
+      } else {
+        newIndex = prevIndex === totalAmountOfSlides - 1 ? 0 : prevIndex + 1;
       }
 
+      setHomeBanner(banners[newIndex]);
       return newIndex;
     });
   };
@@ -52,24 +48,10 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       moveSlide('right');
-    }, 5000);
+    }, 4000);
 
     return () => clearInterval(interval);
-  });
-
-  useEffect(() => {
-    const phoneInterval = setInterval(() => {
-      setHomeBanner((prevBanner: string) => {
-        const currentPhoneBannerIndex = banners.indexOf(prevBanner);
-        const newPhoneBannerIndex =
-          (currentPhoneBannerIndex + 1) % banners.length;
-
-        return banners[newPhoneBannerIndex];
-      });
-    }, 5000);
-
-    return () => clearInterval(phoneInterval);
-  });
+  }, []);
 
   useEffect(() => {
     getCompleteListOfProducts('products').then(
@@ -80,8 +62,8 @@ const HomePage: React.FC = () => {
   }, []);
 
   const handleLeftSliceChange = () => {
-    setSliceStart(prevStart => prevStart - 1);
-    setSliceEnd(prevEnd => prevEnd - 1);
+    setSliceStart(prevStart => Math.max(prevStart - 1, 0));
+    setSliceEnd(prevEnd => Math.max(prevEnd - 1, 4));
   };
 
   const handleRightSliceChange = () => {
