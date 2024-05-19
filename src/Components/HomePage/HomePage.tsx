@@ -141,10 +141,6 @@ const HomePage: React.FC = () => {
               />
             )}
           </a>
-          <li
-            className="home__bottom__slider-right"
-            onClick={() => moveSlide('right')}
-          ></li>
         </div>
         <div className="home__bottom--slider">
           <div
