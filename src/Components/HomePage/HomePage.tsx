@@ -16,6 +16,7 @@ import { getCompleteListOfProducts } from '../../services/fetchClients';
 import { ProductCard } from '../ProductCard';
 
 const HomePage: React.FC = () => {
+  const banners = [phone_banner1, phone_banner2, phone_banner3];
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [homeBanner, setHomeBanner] = useState(phone_banner1);
   const [sliceStart, setSliceStart] = useState<number>(0);
@@ -45,6 +46,28 @@ const HomePage: React.FC = () => {
       return newIndex;
     });
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      moveSlide('right');
+    }, 4000);
+
+    return () => clearInterval(interval);
+  });
+
+  useEffect(() => {
+    const phoneInterval = setInterval(() => {
+      setHomeBanner((prevBanner: string) => {
+        const currentPhoneBannerIndex = banners.indexOf(prevBanner);
+        const newPhoneBannerIndex =
+          (currentPhoneBannerIndex + 1) % banners.length;
+
+        return banners[newPhoneBannerIndex];
+      });
+    }, 3000);
+
+    return () => clearInterval(phoneInterval);
+  });
 
   useEffect(() => {
     getCompleteListOfProducts('products').then(
