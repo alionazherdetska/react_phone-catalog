@@ -110,15 +110,11 @@ const HomePage: React.FC = () => {
       <div className="home__bottom">
         <h1 className="home__bottom--title">Welcome to Nice Gadgets store!</h1>
         <div
+          className="home__bottom__slider"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
-          className="home__bottom__slider"
         >
-          {/* <li
-            className="home__bottom__slider-left"
-            onClick={() => moveSlide('left')}
-          ></li> */}
           <a className="home__bottom__slider__img" href="#">
             <img
               src={homeBanner}
@@ -145,10 +141,10 @@ const HomePage: React.FC = () => {
               />
             )}
           </a>
-          {/* <li
+          <li
             className="home__bottom__slider-right"
             onClick={() => moveSlide('right')}
-          ></li> */}
+          ></li>
         </div>
         <div className="home__bottom--slider">
           <div
