@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { Slider } from '../Slider';
 
@@ -25,22 +25,25 @@ const HomePage: React.FC = () => {
   const touchStartX = useRef<number>(0);
   const touchEndX = useRef<number>(0);
 
-  const changeImage = (photo: string) => {
+  const changeImage = (photo: File) => {
     setHomeBanner(photo);
   };
 
   const moveSlide = (direction: 'left' | 'right') => {
     setCurrentIndex(prevIndex => {
       let newIndex = prevIndex;
-      const totalAmountOfSlides = banners.length;
+      const totalAmountOfSlides = 3;
 
-      if (direction === 'left') {
-        newIndex = prevIndex === 0 ? totalAmountOfSlides - 1 : prevIndex - 1;
-      } else {
-        newIndex = prevIndex === totalAmountOfSlides - 1 ? 0 : prevIndex + 1;
+      switch (direction) {
+        case 'left':
+          newIndex = prevIndex === 0 ? totalAmountOfSlides - 1 : prevIndex - 1;
+          break;
+        case 'right':
+          newIndex = prevIndex === 2 ? 0 : prevIndex + 1;
+          break;
+        default:
+          break;
       }
-
-      setHomeBanner(banners[newIndex]);
 
       return newIndex;
     });
@@ -49,10 +52,24 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       moveSlide('right');
-    }, 4000);
+    }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  });
+
+  useEffect(() => {
+    const phoneInterval = setInterval(() => {
+      setHomeBanner((prevBanner: string) => {
+        const currentPhoneBannerIndex = banners.indexOf(prevBanner);
+        const newPhoneBannerIndex =
+          (currentPhoneBannerIndex + 1) % banners.length;
+
+        return banners[newPhoneBannerIndex];
+      });
+    }, 5000);
+
+    return () => clearInterval(phoneInterval);
+  });
 
   useEffect(() => {
     getCompleteListOfProducts('products').then(
@@ -63,8 +80,8 @@ const HomePage: React.FC = () => {
   }, []);
 
   const handleLeftSliceChange = () => {
-    setSliceStart(prevStart => Math.max(prevStart - 1, 0));
-    setSliceEnd(prevEnd => Math.max(prevEnd - 1, 4));
+    setSliceStart(prevStart => prevStart - 1);
+    setSliceEnd(prevEnd => prevEnd - 1);
   };
 
   const handleRightSliceChange = () => {
@@ -81,9 +98,9 @@ const HomePage: React.FC = () => {
   };
 
   const handleTouchEnd = () => {
-    if (touchStartX.current - touchEndX.current > 50) {
+    if (touchStartX.current - touchEndX.current > 40) {
       moveSlide('right');
-    } else if (touchStartX.current - touchEndX.current < -50) {
+    } else if (touchStartX.current - touchEndX.current < -40) {
       moveSlide('left');
     }
   };
@@ -93,10 +110,10 @@ const HomePage: React.FC = () => {
       <div className="home__bottom">
         <h1 className="home__bottom--title">Welcome to Nice Gadgets store!</h1>
         <div
-          className="home__bottom__slider"
-          onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
+          onTouchStart={handleTouchStart}
+          className="home__bottom__slider"
         >
           <li
             className="home__bottom__slider-left"
