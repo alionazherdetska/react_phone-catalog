@@ -22,6 +22,8 @@ const HomePage: React.FC = () => {
   const [sliceStart, setSliceStart] = useState<number>(0);
   const [sliceEnd, setSliceEnd] = useState<number>(4);
   const [listOfProducts, setListOfProducts] = useState<ProductType[]>([]);
+  const windowWidth = window.innerWidth;
+
   const touchStartX = useRef<number>(0);
   const touchEndX = useRef<number>(0);
 
@@ -97,6 +99,12 @@ const HomePage: React.FC = () => {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
+          {windowWidth > 638 && (
+            <li
+              className="home__bottom__slider-left"
+              onClick={() => moveSlide('left')}
+            ></li>
+          )}
           <a className="home__bottom__slider__img" href="#">
             <img
               src={homeBanner}
@@ -123,6 +131,12 @@ const HomePage: React.FC = () => {
               />
             )}
           </a>
+          {windowWidth > 638 && (
+            <li
+              className="home__bottom__slider-right"
+              onClick={() => moveSlide('right')}
+            ></li>
+          )}
         </div>
         <div className="home__bottom--slider">
           <div
