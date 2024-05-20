@@ -1,6 +1,7 @@
 @import '/src/styles/utils/variables';
 
 .favorites {
+  box-sizing: border-box;
   padding: 0 $padding-inline-phone 56px $padding-inline-phone;
   width: 100%;
   background: $main-background-color;

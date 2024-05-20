@@ -13,9 +13,24 @@ const Footer: React.FC = () => {
       </a>
 
       <ul className="footer__links">
-        <li className="footer__links__li">Github</li>
-        <li className="footer__links__li">Contacts</li>
-        <li className="footer__links__li">Rights</li>
+        <li className="footer__links__li">
+          <a
+            href="https://github.com/alionazherdetska"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Github
+          </a>
+        </li>
+        <li className="footer__links__li">
+          <a
+            href="https://www.linkedin.com/in/alona-zherdetska/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Contacts
+          </a>
+        </li>
       </ul>
 
       <a href="#" className="footer__back--to--top">

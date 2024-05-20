@@ -14,6 +14,7 @@ import accessory_category from './../../assets/icons/category-accessories.png';
 import { ProductType } from '../../types/types';
 import { getCompleteListOfProducts } from '../../services/fetchClients';
 import { ProductCard } from '../ProductCard';
+import { Link } from 'react-router-dom';
 
 const HomePage: React.FC = () => {
   const banners = [phone_banner1, phone_banner2, phone_banner3];
@@ -233,39 +234,48 @@ const HomePage: React.FC = () => {
 
           <ul className="home__categories--list">
             <li className="home__categories--list--phones">
-              <div className="home__categories--list--phones--wrapper">
-                <img
-                  src={phone_category}
-                  alt="Category Phones"
-                  className="home__categories--list--phones--img"
-                />
-              </div>
-              <h3>Mobile phones</h3>
-              <p>95 models</p>
+              <Link to="/phones" className="home__categories--list--phones">
+                <div className="home__categories--list--phones--wrapper">
+                  <img
+                    src={phone_category}
+                    alt="Category Phones"
+                    className="home__categories--list--phones--img"
+                  />
+                </div>
+                <h3>Mobile phones</h3>
+                <p>95 models</p>
+              </Link>
             </li>
 
             <li className="home__categories--list--tablets">
-              <div className="home__categories--list--tablets--wrapper">
-                <img
-                  src={tablet_category}
-                  className="home__categories--list--tablets--img"
-                  alt="Category Tablets"
-                />
-              </div>
-              <h3>Tablets</h3>
-              <p>24 models</p>
+              <Link to="/tablets" className="home__categories--list--tablets">
+                <div className="home__categories--list--tablets--wrapper">
+                  <img
+                    src={tablet_category}
+                    className="home__categories--list--tablets--img"
+                    alt="Category Tablets"
+                  />
+                </div>
+                <h3>Tablets</h3>
+                <p>24 models</p>
+              </Link>
             </li>
 
             <li className="home__categories--list--accessories">
-              <div className="home__categories--list--accessories--wrapper">
-                <img
-                  src={accessory_category}
-                  className="home__categories--list--accessories--img"
-                  alt="Category Accessories"
-                />
-              </div>
-              <h3>Accessories</h3>
-              <p>100 models</p>
+              <Link
+                to="/accessories"
+                className="home__categories--list--accessories"
+              >
+                <div className="home__categories--list--accessories--wrapper">
+                  <img
+                    src={accessory_category}
+                    className="home__categories--list--accessories--img"
+                    alt="Category Accessories"
+                  />
+                </div>
+                <h3>Accessories</h3>
+                <p>100 models</p>
+              </Link>
             </li>
           </ul>
         </section>

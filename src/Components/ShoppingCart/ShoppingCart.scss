@@ -2,8 +2,10 @@
 @import '/src/styles/utils/variables';
 
 .shopping-cart {
+  height: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto 1fr;
   background: $main-background-color;
   padding: 0 0 56px;
 

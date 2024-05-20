@@ -22,13 +22,19 @@
 
 html {
   margin: 0;
+  height: 100%;
   padding: 0;
   font-family: Mont, sans-serif;
 }
 
 body {
+  height: inherit;
   margin: 0;
   padding: 0;
+}
+
+:root {
+  height: inherit;
 }
 
 @import "./Components/NotFoundPage/NotFoundPage";
@@ -37,7 +43,6 @@ body {
 @import "./Components/ProductCard/ProductCard";
 @import "./Components/ModalWindow/ModalWindow";
 @import "./Components/Accessories/Accessories";
-@import "./Components/ProductPage/ProductPage";
 @import "./Components/Pagination/Pagination";
 @import "./Components/Favorites/Favorites";
 @import "./Components/AsideMenu/AsideMenu";
@@ -47,4 +52,5 @@ body {
 @import "./Components/Header/Header";
 @import "./Components/Phones/Phones";
 @import "./Components/Slider/Slider";
+@import "./Components/Layout/Layout";
 @import "./styles/utils/mixins";
