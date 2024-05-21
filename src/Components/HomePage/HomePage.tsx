@@ -127,6 +127,9 @@ const HomePage: React.FC = () => {
     startAutoSlide();
   };
 
+  const disableLeft = sliceStart === 0;
+  const disableRight = sliceEnd >= listOfProducts.length;
+
   return (
     <div className="home">
       <div className="home__bottom">
@@ -206,6 +209,8 @@ const HomePage: React.FC = () => {
           <Slider
             handleLeftSlide={handleLeftSliceChange}
             handleRightSlide={handleRightSliceChange}
+            disableLeft={disableLeft}
+            disableRight={disableRight}
           />
         </section>
         <div className="home__product-card__scroll">
@@ -285,6 +290,8 @@ const HomePage: React.FC = () => {
           <Slider
             handleLeftSlide={handleLeftSliceChange}
             handleRightSlide={handleRightSliceChange}
+            disableLeft={disableLeft}
+            disableRight={disableRight}
           />
         </section>
         <div className="home__product-card__scroll">

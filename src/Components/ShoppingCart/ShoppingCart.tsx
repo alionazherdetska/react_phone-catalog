@@ -9,11 +9,13 @@ import { ProductType } from '../../types/types';
 import { FavoritesCartContext } from '../../services/favoritesCartContext';
 import ModalWindow from '../ModalWindow/ModalWindow';
 import classNames from 'classnames';
+import { useNavigate } from 'react-router-dom';
 
 const ShoppingCart: React.FC = () => {
   const { cartItems, removeFromCart } = useContext(FavoritesCartContext);
   const [listOfCartItems, setListOfCartItems] = useState<ProductType[]>([]);
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getCompleteListOfProducts('products').then(
@@ -35,15 +37,22 @@ const ShoppingCart: React.FC = () => {
 
       <section className="shopping-cart__top">
         <div className="shopping-cart__top--search-params">
-          <div className="favorites__top--search-params__icons">
+          <div
+            className="favorites__top--search-params__icons"
+            onClick={() => navigate(-1)}
+          >
             <img
               src={gray_slider_right}
               className="shopping-cart__top--search-params__icons-slider"
               alt="Slider"
             />
           </div>
-
-          <h4 className="shopping-cart__top--search-params__name">Back</h4>
+          <h4
+            className="shopping-cart__top--search-params__name"
+            onClick={() => navigate(-1)}
+          >
+            Back
+          </h4>
         </div>
         <h1>Cart</h1>
       </section>

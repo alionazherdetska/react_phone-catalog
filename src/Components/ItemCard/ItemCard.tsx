@@ -8,7 +8,7 @@ import heart_icon from '../../assets/icons/heart.svg';
 import gray_slider_right from '../../assets/icons/slider_gray_right.svg';
 import gray_slider_left from '../../assets/icons/slider_gray_left.svg';
 
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Product, ProductType } from '../../types/types';
 import { getCertainProduct } from '../../services/fetchClients';
 import { getCompleteListOfProducts } from '../../services/fetchClients';
@@ -27,6 +27,7 @@ const ItemCard: React.FC = () => {
   const [sliceEnd, setSliceEnd] = useState<number>(4);
   const { itemId } = useParams<{ itemId: string }>();
   const [activeColor, setActiveColor] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const {
     favorites,
@@ -144,10 +145,8 @@ const ItemCard: React.FC = () => {
   const handleColorChange = async (color: string) => {
     setActiveColor(color);
 
-    // Replace the last part of the itemId with the new color
     let newProductId = itemId;
 
-    // If the color is "rose gold" or "space gray", remove the space and hyphenate
     if (itemId?.includes('rose-gold')) {
       newProductId = itemId?.replace('rose-gold', `${color.replace(' ', '-')}`);
     } else if (itemId?.includes('space-gray')) {
@@ -162,21 +161,17 @@ const ItemCard: React.FC = () => {
     ) {
       newProductId = itemId?.replace(/-[^-]+$/, `-${color.replace(' ', '-')}`);
     } else {
-      // For other colors, replace the last part with the new color
       newProductId = itemId?.replace(/-[^-]+$/, `-${color}`);
     }
 
     try {
       if (item?.category) {
-        // Fetch products from the same category
         const products: Product[] = await getCertainProduct(item.category);
-        // Find the product with the new product ID
         const newProduct = products.find(
           product => product.id === newProductId,
         );
 
         if (newProduct) {
-          // Set the new product details
           setItem(newProduct);
           setBannerPhoto(newProduct.images[0]);
           setActiveCapacity(newProduct.capacityAvailable[0]);
@@ -188,6 +183,9 @@ const ItemCard: React.FC = () => {
       console.error('Error fetching product for the selected color:', error);
     }
   };
+
+  const disableLeft = sliceStart === 0;
+  const disableRight = sliceEnd >= listOfProducts.length;
 
   return (
     <div className="item-card">
@@ -219,13 +217,21 @@ const ItemCard: React.FC = () => {
           </h4>
         </div>
 
-        <div className="item-card__top--search-params__back">
+        <div
+          className="item-card__top--search-params__back"
+          onClick={() => navigate(-1)}
+        >
           <img
             src={gray_slider_right}
             className="phones__top--search-params__icons-slider"
             alt="Slider"
           />
-          <h4 className="item-card__top--search-params__back__name">Back</h4>
+          <h4
+            onClick={() => navigate(-1)}
+            className="item-card__top--search-params__back__name"
+          >
+            Back
+          </h4>
         </div>
         <h1>{item?.name}</h1>
       </section>
@@ -433,6 +439,8 @@ const ItemCard: React.FC = () => {
           <Slider
             handleLeftSlide={handleLeftSliceChange}
             handleRightSlide={handleRightSliceChange}
+            disableLeft={disableLeft}
+            disableRight={disableRight}
           />
         </div>
       </div>

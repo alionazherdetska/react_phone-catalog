@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 import { ProductCard } from '../ProductCard';
 import home_icon from '../../assets/icons/home.svg';
 import gray_slider_left from '../../assets/icons/slider_gray_left.svg';
