@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-
 import minus from '../../assets/icons/minus.svg';
 import plus from '../../assets/icons/plus.svg';
 import close from '../../assets/icons/close.svg';
@@ -14,26 +13,55 @@ import { useNavigate } from 'react-router-dom';
 const ShoppingCart: React.FC = () => {
   const { cartItems, removeFromCart } = useContext(FavoritesCartContext);
   const [listOfCartItems, setListOfCartItems] = useState<ProductType[]>([]);
+  const [quantities, setQuantities] = useState<{ [key: string]: number }>({});
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     getCompleteListOfProducts('products').then(
       (receivedListOfProducts: ProductType[]) => {
-        setListOfCartItems(
-          receivedListOfProducts.filter(product =>
-            cartItems.includes(product.itemId.toString()),
-          ),
+        const filteredProducts = receivedListOfProducts.filter(product =>
+          cartItems.includes(product.itemId.toString()),
         );
+
+        setListOfCartItems(filteredProducts);
+        const initialQuantities = filteredProducts.reduce(
+          (acc, product) => {
+            // eslint-disable-next-line no-param-reassign
+            acc[product.itemId] = 1;
+
+            return acc;
+          },
+          {} as { [key: string]: number },
+        );
+
+        setQuantities(initialQuantities);
       },
     );
   }, [cartItems]);
 
-  const totalPrice = listOfCartItems.reduce((sum, item) => sum + item.price, 0);
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
+  const handleIncrement = (itemId: string) => {
+    setQuantities(prev => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+  };
+
+  const handleDecrement = (itemId: string) => {
+    setQuantities(prev => ({
+      ...prev,
+      [itemId]: Math.max(prev[itemId] - 1, 1),
+    }));
+  };
+
+  const totalPrice = listOfCartItems.reduce((sum, item) => {
+    return sum + item.price * quantities[item.itemId];
+  }, 0);
 
   return (
     <div className="shopping-cart" id="#cart">
-      {modalIsOpen && <ModalWindow />}
+      {modalIsOpen && <ModalWindow closeModal={closeModal} />}
 
       <section className="shopping-cart__top">
         <div className="shopping-cart__top--search-params">
@@ -81,16 +109,22 @@ const ShoppingCart: React.FC = () => {
             </div>
             <div className="shopping-cart__left__bottom">
               <div className="shopping-cart__left__bottom__counter">
-                <div className="shopping-cart__left__bottom__counter__img">
+                <button
+                  onClick={() => handleDecrement(cartItem.itemId)}
+                  className="shopping-cart__left__bottom__counter__img"
+                >
                   <img src={minus} alt="Minus" />
-                </div>
-                <p>1</p>
-                <div className="shopping-cart__left__bottom__counter__img">
+                </button>
+                <p>{quantities[cartItem.itemId]}</p>
+                <button
+                  onClick={() => handleIncrement(cartItem.itemId)}
+                  className="shopping-cart__left__bottom__counter__img"
+                >
                   <img src={plus} alt="Plus" />
-                </div>
+                </button>
               </div>
               <div className="shopping-cart__left__bottom__price">
-                ${cartItem.price}
+                ${cartItem.price * quantities[cartItem.itemId]}
               </div>
             </div>
           </article>

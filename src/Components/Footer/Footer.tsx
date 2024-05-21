@@ -2,6 +2,10 @@ import React from 'react';
 import footer_logo from '../../assets/icons/nice_gadgets_logo.png';
 
 const Footer: React.FC = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className="footer">
       <a href="#">
@@ -33,10 +37,10 @@ const Footer: React.FC = () => {
         </li>
       </ul>
 
-      <a href="#" className="footer__back--to--top">
+      <button onClick={scrollToTop} className="footer__back--to--top">
         <span>Back to top</span>
         <div className="footer__back--to--top__layout"></div>
-      </a>
+      </button>
     </footer>
   );
 };

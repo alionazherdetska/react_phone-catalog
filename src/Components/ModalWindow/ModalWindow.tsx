@@ -1,12 +1,18 @@
 import React from 'react';
 
-const ModalWindow: React.FC = () => {
+interface ModalWindowProps {
+  closeModal: () => void;
+}
+
+const ModalWindow: React.FC<ModalWindowProps> = ({ closeModal }) => {
   return (
     <div className="modal">
       <div className="modal-content">
         <h2>Coming Soon!</h2>
         <p>We&apos;re working hard to bring this feature to you. Stay tuned!</p>
-        <button className="modal-content__close-button">Close</button>
+        <button onClick={closeModal} className="modal-content__close-button">
+          Close
+        </button>
       </div>
     </div>
   );
